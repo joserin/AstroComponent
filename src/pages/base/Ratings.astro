@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Rating from '../../components/base/Rating.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/rating/code-component.md';
+import Css from '../../i18n/base/rating/code-css.md';
+import Js from '../../i18n/base/rating/code-js.md';
+import OneImplementacion from '../../i18n/base/rating/code-one.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+<Layout 
+    title="Components Rating."
+    description='Component UI Rating to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Rating</h2>
+            <p>
+                The component is a customizable rating system. It renders a series of icon based on the provided count prop. 
+                Users can select a icon rating by clicking on individual icon, and the component automatically 
+                selects all preceding icons.
+            </p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>count: (number) This is a required prop that defines the number of star ratings to be displayed.</li>
+                            <li>
+                                identify (string): (Optional) This prop allows you to specify a unique identifier 
+                                prefix for each checkbox and label element. Defaults to "one".
+                            </li>
+                            <li>
+                                name (string): (Required) This prop sets the name attribute for all the checkbox elements.
+                            </li>
+                            <li>
+                                class (string): (Optional) This prop allows you to add a custom class to the overall 
+                                rating container. Defaults to "flex".
+                            </li>
+                            <li>
+                                selectColor (string): (Optional) This prop defines the color of the selected stars.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The template utilizes a div element with two classes: "rating" and the 
+                                one provided through the class prop (defaults to "flex")
+                            </li>
+                            <li>
+                                Inside this div, the component iterates over an array generated using the count prop.
+                            </li>
+                            <li>
+                                For each iteration, it creates a checkbox element and a label element
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                The styles are defined using a CSS style element with a 
+                                define:vars attribute to define the selectColor variable accessible within the styles.
+                            </li>
+                            <li>
+                                .rating input[type="checkbox"]: Hides the checkbox elements themselves.
+                            </li>
+                            <li>
+                                .rating label: Defines the styling for the label elements, including display, 
+                                width, height, color, and cursor.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                The JavaScript code retrieves all elements with the class "rating" and iterates through them.
+                            </li>
+                            <li>
+                                For each rating container, it finds all checkbox elements with the class "mask"
+                            </li>
+                            <li>
+                                It then attaches a click event listener to each checkbox. When a checkbox is clicked
+                                If it's checked, all the previous checkboxes, If it's unchecked, all the subsequent checkboxes
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Rating identify='two' name="rating-1" count={3} selectColor='rgb(85, 48, 246)'>
+                    <svg fill="currentColor" viewBox="0 0 22 20">
+                        <path d="M20.924 7.625a1.523 1.523 0 0 0-1.238-1.044l-5.051-.734-2.259-4.577a1.534 1.534 0 0 0-2.752 0L7.365 5.847l-5.051.734A1.535 1.535 0 0 0 1.463 9.2l3.656 3.563-.863 5.031a1.532 1.532 0 0 0 2.226 1.616L11 17.033l4.518 2.375a1.534 1.534 0 0 0 2.226-1.617l-.863-5.03L20.537 9.2a1.523 1.523 0 0 0 .387-1.575Z"/>
+                    </svg>
+                </Rating>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

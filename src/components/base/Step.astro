@@ -1,0 +1,19 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const { class: className, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={[className, 'step-contain']}>
+    <slot>?</slot>
+</div>
+
+<style>
+    .step-contain{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

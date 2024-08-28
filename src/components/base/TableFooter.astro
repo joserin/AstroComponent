@@ -1,0 +1,17 @@
+---
+interface Props {
+    footer: any[];
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='border-0';
+const { footer, class: className = defaulClass, ...rest } = Astro.props;
+
+---
+
+<tr class={className} {...rest}>
+    {
+        footer.map( (title: any) => <th>{title}</th>)
+    }
+</tr>

@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Calendar from '../../components/base/Calendar.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/calendar/code-component.md';
+import Css from '../../i18n/base/calendar/code-css.md';
+import Js from '../../i18n/base/calendar/code-js.md';
+import OneImplementacion from '../../i18n/base/calendar/code-one.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+<Layout 
+    title="Components Calendar."
+    description='Component UI Calendar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Calendar</h2>
+            <p> This component provides a user-friendly interface for selecting and editing dates.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                daysInfo: An optional array of strings representing the days of the week. 
+                                By default, it uses ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].
+                            </li>
+                            <li>
+                                monthsInfo: An optional array of strings representing the month names. 
+                                By default, it uses ["January", "February", "March", "April", "May", 
+                                "June", "July", "August", "September", "October", "November", "December"].
+                            </li>
+                            <li>
+                                class: An optional string to be added to the component's class list.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Header: This section displays the controls for navigating between months and years.
+                            </li>
+                            <li>
+                                Calendar body: This section displays the days of the week and the dates for the current month.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .days, .dates: These classes style the grid layout for the days and dates sections.
+                            </li>
+                            <li>
+                                .default: This class defines the default styles for the calendar component, 
+                                including background color, padding, border, and text color.
+                            </li>
+                            <li>
+                                .today: This class is applied to the button representing the current date, 
+                                highlighting it with a light blue background.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Calendar class='test'/>
+            </section>
+            <section slot="implementation" class="max-h-60">
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

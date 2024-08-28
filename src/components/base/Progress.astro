@@ -1,0 +1,26 @@
+---
+interface Props {
+    value : number;
+    class?: string;
+    [x: string]: any;
+}
+const { value, class: className, ...rest } = Astro.props;
+---
+<div class="background-Bar">
+    <div class:list={[className]} style={{ width: `${value || 0}%` }} {...rest}>
+        <slot/>
+    </div>
+</div>
+
+<style>
+    .background-Bar{
+        height: fit-content;
+        width: 100%;
+        background-color: rgb(229 229 229);
+        text-align: center;
+    }
+    .background-Bar .progress{
+        height: 25px;
+        background-color: rgb(79, 186, 190);
+    }
+</style>

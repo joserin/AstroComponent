@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Range from '../../components/base/Range.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/range/code-component.md';
+import Css from '../../i18n/base/range/code-css.md';
+import OneImplementacion from '../../i18n/base/range/code-one.md';
+import TwoImplementacion from '../../i18n/base/range/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Range Slider."
+    description='Component UI Range Slider to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Range slider</h2>
+            <p>Range slider is used to select a value by sliding a handle.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class?: string: An optional prop to provide a custom CSS class to the component's outer div.</li>
+                            <li>
+                                [x: string]: any: A rest prop to allow passing arbitrary attributes to the input element. 
+                                This provides flexibility for custom attributes or event handlers.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                div with class:list: Creates a div element and dynamically applies the provided 
+                                className using the class:list directive. This allows for dynamic class management.
+                            </li>
+                            <li>
+                                input element: Creates a range input element with the provided rest props and 
+                                applies the slider-style class for styling.
+                            </li>
+                            <li>
+                                slot: Provides a slot for custom content to be inserted within the component.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>.default: Defines default styling for the component when no custom class is provided.</li>
+                            <li>.slider-style: Defines styling for the input element, setting its width to 100% and adding a pointer cursor.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[9.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-32 fondo-previsual">
+                <Range min="0" max="100"/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-32'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Range min="0" max="100" step="20">
+                    <div class="w-full flex justify-between text-xs">
+                        <span>0</span>
+                        <span>20</span>
+                        <span>40</span>
+                        <span>60</span>
+                        <span>80</span>
+                        <span>100</span>
+                    </div>
+                </Range>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,142 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Count from '../../components/base/Count.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/count/code-component.md';
+import Css from '../../i18n/base/count/code-css.md';
+import Js from '../../i18n/base/count/code-js.md';
+import OneImplementacion from '../../i18n/base/count/code-one.md';
+import TwoImplementacion from '../../i18n/base/count/code-two.md';
+import ThreeImplementacion from '../../i18n/base/count/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'Js'];
+---
+<Layout 
+    title="Components CountDown."
+    description='Component UI CountDown to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Countdown</h2>
+            <p>Countdown gives you a transition effect of changing numbers.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>start: The initial value of the counter.</li>
+                            <li>end: The final value of the counter.</li>
+                            <li>step: The increment or decrement value for each count. Defaults to 0.</li>
+                            <li>time: The interval in milliseconds for updating the counter. Defaults to 1000 (1 second).</li>
+                            <li>class: An optional custom class name to apply to the component. Defaults to 'default'.</li>
+                            <li>[x: string]: any: Allows for additional custom properties to be passed to the component.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                div with class count: This is the main container for the component. 
+                                It applies the provided className and an additional class count for styling.
+                            </li>
+                            <li>
+                                div with class countdown: This displays the current count value. It uses the spread operator 
+                                (...rest) to pass any additional props to the element. It also includes data attributes for start, 
+                                end, step, and time which are used in the script.
+                            </li>
+                            <li>slot: This allows for custom content to be inserted within the component.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default: Defines the default styling for the component, including display, 
+                                background color, width, padding, and gap between elements.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>Retrieves count elements: Gets all elements with the class count.</li>
+                            <li>Iterates over count elements: For each count element</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Count start={60} end={0} time={1000} class='p-3 text-2xl'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[13.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-48 fondo-previsual">
+                <Count start={24} end={1} time={3600000} class='p-3 text-2xl flex'>h</Count>
+                <Count start={59} end={0} time={60000} class='p-3 text-2xl flex'>m</Count>
+                <Count start={59} end={0} time={1000} class='p-3 text-2xl flex'>s</Count>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-48'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-60 fondo-previsual">
+                <Count start={7} end={1} time={30000} class='text-2xl bg-red-800 flex flex-col justify-center items-center'>
+                    <span class="bg-yellow-400 text-sm p-1 text-black">emi</span>
+                </Count>
+                <Count start={6} end={1} time={5000} class='text-2xl bg-red-600 flex flex-col justify-center items-center'>
+                    <span class="bg-yellow-300 text-sm p-1 text-black">ext</span>
+                </Count>
+                <Count start={5} end={1} time={1000} class='text-2xl bg-red-400 flex flex-col justify-center items-center'>
+                    <span class="bg-yellow-200 text-sm p-1 text-black">mil</span>
+                </Count>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,184 @@
+---
+import Detail from '../../components/base/Detail.astro';
+import Layout from '../../layouts/Layout.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/detail/code-component.md';
+import Css from '../../i18n/base/detail/code-css.md';
+import OneImplementacion from '../../i18n/base/detail/code-one.md';
+import TwoImplementacion from '../../i18n/base/detail/code-two.md';
+import ThreeImplementacion from '../../i18n/base/detail/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Detail."
+    description='Component UI Diff to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Detail</h2>
+            <p>Detail can open a menu or any other element when the button is clicked.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>title (optional): String value displayed on the Detail button. Defaults to an empty string</li>
+                            <li>
+                                class (optional): String value added as a class name to the entire Detail element. 
+                                Defaults to "default".
+                            </li>
+                            <li>
+                                Additional props (using spread syntax ...rest): Allows passing any additional attributes 
+                                to the component.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>The component uses a div with the class "Detail" as the main container.</li>
+                            <li>
+                                <p>Inside the Detail, there are two slotted elements:</p>
+                                <li>
+                                    slot name="boton": This slot allows you to customize the button element 
+                                    that triggers the Detail. By default, it uses a button with the class "button-Detail" 
+                                    and the title prop as its text content.
+                                </li>
+                                <li>
+                                    slot: This slot allows you to define the content that appears inside the Detail menu when opened.
+                                </li>
+                            </li>
+                            <li>
+                                The Detail content is another div with class names based on a combination of "Detail-content" 
+                                and the provided class prop (using class binding with :list). This div also receives any additional 
+                                props passed through the spread syntax (...rest).
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The styles define the appearance of the Detail and its elements.</li>
+                            <li>
+                                The .Detail class sets its position to relative, allowing the content 
+                                to be positioned absolutely within it.
+                            </li>
+                            <li>
+                                The .Detail-content class defines the position as absolute, 
+                                display as none initially (hidden), and a z-index of 10 to ensure it 
+                                appears above other elements when opened.
+                            </li>
+                            <li>
+                                The .default class sets default styles for the Detail, including width, 
+                                height, font size, and line-height. This class gets applied if no custom 
+                                class is provided through the class prop.
+                            </li>
+                            <li>
+                                The .default-button class styles the Detail button, defining padding, 
+                                background color, border radius, font properties, and a white border with hover effect.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Detail title='click to open'>
+                    <ul class="bg-black w-fit h-fit absolute text-sm p-3 flex flex-col gap-3">
+                        <li>My Information</li>
+                        <li>Profile</li>
+                        <li>Pay</li>
+                        <li>Github</li>
+                        <li>Facebook</li>
+                    </ul>
+                </Detail>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Detail class='w-36 flex flex-col'>
+                    <summary slot="title" class="border border-blue-200 text-xl bg-black p-1 w-full">
+                        click me
+                    </summary>
+                    <ul class="bg-black w-40 text-sm p-3 flex flex-col gap-3">
+                        <li>My Information</li>
+                        <li>Profile</li>
+                        <li>Team</li>
+                        <li>Keyboard image</li>
+                        <li>Power level english</li>
+                    </ul>
+                </Detail>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <div class="bg-purple-800 w-fit flex h-fit">
+                    <Detail title='first' name="test">
+                        <ul class=" bg-purple-700 w-32 h-fit absolute text-sm p-1 mt-2 flex flex-col gap-3">
+                            <li>My Information</li>
+                            <li>Profile</li>
+                        </ul>
+                    </Detail>
+                    <Detail title='second' name="test">
+                        <ul class=" bg-purple-600 w-32 h-fit absolute text-sm p-1 mt-2 flex flex-col gap-3">
+                            <li>Pay</li>
+                        </ul>
+                    </Detail>
+                    <Detail title='third' name="test">
+                        <ul class=" bg-purple-700 w-32 h-fit absolute text-sm p-1 mt-2 flex flex-col gap-3">
+                            <li>Github</li>
+                            <li>Facebook</li>
+                        </ul>
+                    </Detail>
+                </div>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ButtonLink from "../../components/base/ButtonLink.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/buttonlink/code-component.md';
+import Css from '../../i18n/base/buttonlink/code-css.md';
+import OneImplementacion from '../../i18n/base/buttonlink/code-one.md';
+import TwoImplementacion from '../../i18n/base/buttonlink/code-two.md';
+import ThreeImplementacion from '../../i18n/base/buttonlink/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components ButtonLink"
+    description='Component UI ButtonLink to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">ButtonLink</h2>
+            <p>ButtonLink allow the user to take actions or make choices.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>url: A string representing the URL to link to.</li>
+                            <li>
+                                class: An optional string representing additional CSS classes to apply to the link element.
+                            </li>
+                            <li>...rest: Additional props that can be passed to the link element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                This template creates a simple anchor tag (a) with the provided URL and class attributes
+                            </li>
+                            <li>
+                                The slot element allows for custom content to be inserted within the link.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The style defines a default class for the link element</li>
+                            <li>
+                                It sets the padding, border radius, text alignment, and background color
+                            </li>
+                            <li>
+                                It defines a hover state that changes the background color to blue when the link is hovered over
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>basico</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <ButtonLink url=''>ButtonLink Text</ButtonLink>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Active</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <ButtonLink url='' class="px-3 py-2 border-2 bg-white text-black border-black hover:shadow-lg active:bg-blue-400"> 
+                    ButtonLink Text 
+                </ButtonLink>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>ButtonLink de texto</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <ButtonLink url='' class="hover:underline text-blue-400 hover:font-semibold"> ButtonLink Text </ButtonLink>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

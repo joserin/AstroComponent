@@ -1,0 +1,203 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Table from '../../components/base/Table.astro';
+import TableHeader from '../../components/base/TableHeader.astro';
+import TableRow from '../../components/base/TableRow.astro';
+import TableColumn from '../../components/base/TableColumn.astro';
+import Button from '../../components/base/Button.astro';
+import TableFooter from '../../components/base/TableFooter.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/table/code-component.md';
+import Css from '../../i18n/base/table/code-css.md';
+import OneImplementacion from '../../i18n/base/table/code-one.md';
+import TwoImplementacion from '../../i18n/base/table/code-two.md';
+import ThreeImplementacion from '../../i18n/base/table/code-three.md';
+import FourImplementacion from '../../i18n/base/table/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+const headOne = ['name', 'job', 'color'];
+const headTwo = ['#','name', 'job', 'color'];
+const headThree = ['','name', 'job', 'color'];
+const headFour = ['','name', 'job', 'color', ''];
+const elements = [
+    ['joel', 'mar', 'negro'],
+    ['lejo', 'vient', 'azul'],
+    ['pedro', 'fuego', 'blanco'],
+    ['mario', 'tierra', 'negro'],
+    ['cris', 'agua', 'amarillo'],
+    ['zeus', 'mente', 'rojo'],
+];
+---
+<Layout 
+    title="Components Table."
+    description='Component UI Table to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Table</h2>
+            <p></p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class?: string: An optional prop to provide a custom CSS class to the table element.</li>
+                            <li>
+                                [x: string]: any: A rest prop to allow any additional attributes to be passed to the table element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>The component takes a class prop to allow for custom styling.</li>
+                            <li>
+                                The template utilizes three child components: TableHeader, TableRow, TableColumn
+                            </li>
+                            <li>slot: A slot element to allow content to be inserted into the table.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default: Defines the default styling for the table, setting it to a 
+                                flex container with a column direction.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Table class='text-center w-96'>
+                    <TableHeader slot="thead" head={headOne}/>
+                    <tbody>
+                        {elements.map( elem => 
+                                <TableRow>
+                                    <TableColumn column={elem}/>
+                                </TableRow>
+                            )
+                        }
+                    </tbody>
+                </Table>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Table class='text-center w-96'>
+                    <TableHeader slot="thead" class='bg-gray-700' head={headTwo}/>
+                    <tbody>
+                        {
+                            elements.map( (element: any, index) => 
+                                <TableRow count={index}>
+                                    <TableColumn column={element}/>
+                                </TableRow>
+                            )
+                        }
+                    </tbody>
+                </Table>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Table class='text-center w-96'>
+                    <TableHeader slot="thead" class='bg-orange-700' head={headThree}/>
+                    <tbody>
+                        {
+                            elements.map( (element: any, index) => 
+                                <TableRow count={index} class=' hover:bg-orange-500'>
+                                    <TableColumn column={element}/>
+                                </TableRow>
+                            )
+                        }
+                    </tbody>
+                </Table>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Table class='text-center w-96'>
+                    <TableHeader slot="thead" class='bg-white text-black' head={headFour}/>
+                    <tbody>
+                        {
+                            elements.map( (element: any, index) => {
+                                const isEven = index % 2 === 0;
+                                return(
+                                    <tr class={isEven ? 'bg-sky-700' : 'bg-sky-950'}>
+                                        <td>
+                                            <input type="checkbox" name={index.toString()} aria-label="input-table"/>
+                                        </td>
+                                        <TableColumn column={element}/>
+                                        <td>
+                                            <Button class='bg-red-700 px-2 py-1 hover:bg-red-500 text-sm rounded-full'>Details</Button>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
+                    </tbody>
+                    <TableFooter slot="tfooter" class='bg-black text-white' footer={headFour}/>
+                </Table>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    .cover-background{
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        inset: 0;
+        width: var(--position)
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

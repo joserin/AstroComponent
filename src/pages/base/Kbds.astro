@@ -1,0 +1,119 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Kbd from '../../components/base/Kbd.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/kbd/code-component.md';
+import Css from '../../i18n/base/kbd/code-css.md';
+import OneImplementacion from '../../i18n/base/kbd/code-one.md';
+import TwoImplementacion from '../../i18n/base/kbd/code-two.md';
+import ThreeImplementacion from '../../i18n/base/kbd/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components KBD."
+    description='Component UI KBD to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Kbd</h2>
+            <p>Kbd is used to display keyboard shortcuts.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class?: string: An optional prop to provide a custom CSS class to the component.</li>
+                            <li>
+                                [x: string]: any: A catch-all prop to allow any additional attributes to be 
+                                passed to the underlying element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Renders a span element.</li>
+                            <li>Applies the className prop to the class attribute.</li>
+                            <li>Spreads the remaining props (defined in ...rest) to the span element.</li>
+                            <li>slot: A slot for injecting content into the component.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>.default: Defines a CSS class with default styling for the component.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[9.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-32 fondo-previsual">
+                <Kbd>shift</Kbd>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-32'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[13.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-48 fondo-previsual">
+                <div class="flex justify-center items-center">
+                    <p>Press</p>
+                    <Kbd class='px-2 py-1 text-black bg-white border rounded-xl m-1 text-sm'>shift</Kbd>
+                    <p>to pay respects.</p>
+                </div>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-48'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Kbd>@</Kbd>
+                <Kbd>#</Kbd>
+                <Kbd>$</Kbd>
+                <Kbd>%</Kbd>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

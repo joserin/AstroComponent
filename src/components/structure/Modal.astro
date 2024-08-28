@@ -1,0 +1,81 @@
+---
+interface Props {
+    buttonText?: string;
+    class?: string;
+    [x: string]: any;
+}
+const { buttonText, class: className, ...rest } = Astro.props;
+---
+<div {...rest} class="modal-content">
+    <slot name="button-open">
+        <button class="button-modal">{buttonText}</button>
+    </slot>
+    <dialog class:list={["hidden modal-background", className]}>
+        <slot/>
+    </dialog>
+</div>
+
+<style>
+    .button-modal{
+        padding: 0.5rem 0.25rem;
+        border-radius: 0.75rem;
+        background-color: rgb(90, 90, 248);
+    }
+    .modal-background{
+        position: fixed;
+        left: 0;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100vw;
+        height: 100vh;
+        z-index: 10;
+    }
+</style>
+
+<script>
+    const modal = document.getElementsByClassName("modal-content");
+
+    if(modal){
+        for(let i=0; i < modal.length; i++){
+
+            const buttonsModalOpen = modal[i].querySelector('.button-modal');
+            const modalCloseButtons = modal[i].querySelector('.modal-close');
+            const modalCloseEsc = modal[i].querySelector('.modal-closeEsc');
+            const modalCloseClick = modal[i].querySelector('.modal-closeClick');
+
+            if(buttonsModalOpen){
+                buttonsModalOpen.addEventListener("click", () => {
+                    const targetModal = buttonsModalOpen.nextElementSibling;
+                    targetModal?.classList.replace("hidden", "flex");
+                });
+            }
+
+            function closeModalView(){
+                const targetModal = buttonsModalOpen?.nextElementSibling;
+                targetModal?.classList.replace("flex", "hidden");
+            }
+
+            if(modalCloseButtons){
+                modalCloseButtons.addEventListener("click", () => {
+                    closeModalView()
+                });
+            }
+            if (modalCloseEsc) {
+                modal[i].addEventListener('keydown', (event: any) => {
+                    if (event.key === 'Escape') {
+                        closeModalView()
+                    }
+                });
+            }
+            if (modalCloseClick){
+                modalCloseClick.addEventListener('click', (event) => {
+                    if ((event.target as HTMLElement).contains(modalCloseClick)) {
+                        closeModalView()
+                    }
+                });
+            }
+        }
+    }
+</script>

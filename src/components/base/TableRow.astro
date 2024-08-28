@@ -1,0 +1,20 @@
+---
+interface Props {
+    count?:number;
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass='default';
+const { count = -1, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<tr class={className} {...rest}>
+    {count > -1  && <th>{count}</th>}
+    <slot/>
+</tr>
+
+<style>
+    .default{
+        border-bottom: 1px white solid;
+    }
+</style>

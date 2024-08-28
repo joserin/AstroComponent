@@ -1,0 +1,27 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaultClass="default";
+const { class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<picture class={className} {...rest}>
+    <slot />
+</picture>
+
+<style>
+    picture{
+        position: relative;
+        overflow: scroll;
+    }
+    .default{
+        display: flex;
+        scroll-snap-type: mandatory;
+    }
+    .default::-webkit-scrollbar { 
+        display: none; 
+    } 
+</style>

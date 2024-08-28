@@ -1,0 +1,181 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Indicator from '../../components/base/Indicator.astro';
+import IndicatorBadge from '../../components/base/Indicator-Badge.astro';
+import Button from '../../components/base/Button.astro';
+import Card from '../../components/segment/Card.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/indicator/code-component.md';
+import Css from '../../i18n/base/indicator/code-css.md';
+import OneImplementacion from '../../i18n/base/indicator/code-one.md';
+import TwoImplementacion from '../../i18n/base/indicator/code-two.md';
+import ThreeImplementacion from '../../i18n/base/indicator/code-three.md';
+import FourImplementacion from '../../i18n/base/indicator/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Indicator."
+    description='Component UI Indicator to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Indicator</h2>
+            <p>
+                This component seems designed to represent a notification badge or indicator with a counter and a brief message.
+            </p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>Component Indicator</li>
+                            <li>class: An optional string to add custom CSS classes to the container.</li>
+                            <li>...rest: Allows for the passing of additional attributes to the container element.</li>
+                            <li>Component Indicator Badge</li>
+                            <li>class: An optional string to add custom CSS classes to the indicator.</li>
+                            <li>...rest: Allows for the passing of additional attributes to the span element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Component Indicator</li>
+                            <li>
+                                Creates a div element with the class container-indicator and any additional 
+                                classes passed through the class prop.
+                            </li>
+                            <li>Applies the container-indicator class to the div element.</li>
+                            <li>
+                                Uses the spread operator (...rest) to pass any additional attributes to the div element.
+                            </li>
+                            <li>Includes a slot element to allow for custom content within the container.</li>
+                            <li>Component Indicator Badge</li>
+                            <li>
+                                Creates a span element with the specified class and any additional attributes 
+                                passed through the ...rest prop.
+                            </li>
+                            <li>Includes a slot element to allow for custom content within the indicator.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>Component Indicator</li>
+                            <li>Defines the container-indicator class</li>
+                            <li>Component Indicator Badge</li>
+                            <li>Defines the default styles for the element</li>
+                            <li>Defines the default class .default with additional styles</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 p-2 fondo-previsual">
+                <Indicator class='px-5 py-2.5 text-center bg-blue-700 rounded-lg hover:bg-blue-500'>
+                    <IndicatorBadge>+99</IndicatorBadge>
+                    <div>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum sapiente enim natus quis 
+                        nobis ea aperiam  temporibus consectetur mollitia sit explicabo in quam amet possimus magni 
+                        itaque non, doloremque ipsum.
+                    </div>
+                </Indicator>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Indicator>
+                    <IndicatorBadge class='rounded-xl p-1 bg-yellow-700 top-0 -left-10'>
+                        <span>typing...</span>
+                    </IndicatorBadge>
+                    <div>
+                        <img class="w-20 h-20" alt="Tailwind CSS examples" src="/img-1.webp" />
+                    </div>
+                </Indicator>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Indicator>
+                    <IndicatorBadge class='-bottom-4 -left-10 bg-black px-1'>
+                        <span>write me</span>
+                    </IndicatorBadge>
+                    <div>
+                        <input class='border-2 border-slate-500 p-2 text-black' type="email" placeholder="your email address"/>
+                    </div>
+                </Indicator>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[25.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-96 fondo-previsual">
+                <Indicator>
+                    <IndicatorBadge class='-bottom-4 -right-10 bg-white'>
+                        <Button>Next</Button>
+                    </IndicatorBadge>
+                    <div>
+                        <Card class="flex-flex-col justify-center items-center bg-purple-600 w-fit rounded-xl overflow-hidden">
+                            <header slot="header" class="w-fit">
+                                <img class="w-64 h-52" alt="desk computer" src="/img-2.webp">
+                            </header>
+                            <div class="p-3 flex flex-col">
+                                <h4 class="font-semibold text-lg">Blog title</h4>
+                                <p class="p-1">Description for this product</p>
+                            </div>
+                        </Card>
+                    </div>
+                </Indicator>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-96'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

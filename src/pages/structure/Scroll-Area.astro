@@ -1,0 +1,114 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+import SectionTab from '../../components/sectionTab.astro';
+
+import Component from '../../i18n/structure/scroll/code-component.md';
+import Css from '../../i18n/structure/scroll/code-css.md';
+import OneImplementacion from '../../i18n/structure/scroll/code-one.md';
+import TwoImplementacion from '../../i18n/structure/scroll/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Scroll Area."
+    description='Component UI Scroll Area to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Scroll-area</h2>
+            <p>Augments native scroll functionality for custom, cross-browser styling.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: An optional string prop to apply custom CSS classes to the component's outer div.</li>
+                            <li>
+                                rest: A spread operator to capture any additional props passed to the component. 
+                                These props will be directly applied to the outer div.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>div: The main container element for the component.</li>
+                            <li>slot: A slot to render any child content passed to the component.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>overflow: auto: Enables scrollbars if the content overflows the container.</li>
+                            <li>scrollbar-width: thin: Sets the width of the scrollbars to thin.</li>
+                            <li>scrollbar-color: Sets the color of the scrollbar thumb and track.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Scroll class='w-60'>
+                    <div class="w-96">
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maiores voluptatum repellat 
+                        facilis error sint minus eveniet, dolorum perferendis ad totam commodi eligendi, 
+                        esse eum quaerat incidunt! Velit dicta odio incidunt.
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Scroll class=' w-32 h-full'>
+                    <ul class="flex">
+                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    </ul>
+                </Scroll>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

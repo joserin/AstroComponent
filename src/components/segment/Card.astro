@@ -1,0 +1,34 @@
+---
+interface Props {
+  class?: string;
+  [x: string]: any;
+}
+
+const defaulClass='default transition focus-visible:ring-2 ring-offset-2 ring-gray-200';
+const { class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<div {...rest}  class:list={['default-card',className]}>
+  <slot name="header"/>
+  <slot/>
+  <slot name="footer"/>
+</div>
+
+<style>
+  .default-card{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 0.5rem;
+  }
+  .default{
+    background-color: rgb(96, 165, 250);
+    border-radius: 0.25rem;
+  }
+  .default:hover{
+    background-color: rgb(191, 219, 254)
+  }
+</style>

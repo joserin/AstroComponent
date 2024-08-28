@@ -1,0 +1,29 @@
+---
+interface Props {
+    title?:string;
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default';
+const { title, class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<details class={className} {...rest}>
+    <slot name="title">
+        <summary class="sumary-default">{title}</summary>
+    </slot>
+    <slot/>
+</details>
+
+<style>
+    .default{
+        padding: 0.5em 0.5em;
+        position: relative;
+    }
+    .sumary-default{
+        font-weight: 500;
+        margin: -0.5em -0.5em;
+        padding: 0.5em;
+        display: block;
+    }
+</style>

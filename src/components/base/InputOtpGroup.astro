@@ -1,0 +1,88 @@
+---
+interface Props {
+    count:number;
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default border-y border-r';
+const { count = 0, class: className = defaultClass, ...rest } = Astro.props;
+
+let emptyArray = new Array(count);
+for (let i = 0; i < count; i++) {
+    emptyArray[i] = i;
+}
+---
+<div class={'otp-container has-[:disabled]:opacity-50'}>
+    {
+        emptyArray.map(() =>
+            <input class:list={[className, 'input-group first:rounded-l-md first:border-l last:rounded-r-md']} type="text" {...rest} aria-label="label-inputotp-Group"/>
+        )
+    }
+</div>
+
+<style>
+    .otp-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .default{
+        background-color: black;
+        height: 2.5rem;
+        width: 2.5rem;
+        font-size: 0.8rem;
+        line-height: 1.25rem;
+    }
+    .input-group{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+</style>
+
+<script>
+    const inputGroup = document.getElementsByClassName('otp-container');
+    
+    if(inputGroup) {
+        for(let i=0; i < inputGroup.length; i++){
+            const inputElementGroup = inputGroup[i] as HTMLInputElement;
+            const imputElement = inputElementGroup.querySelectorAll('.input-group');
+            
+            if(imputElement){
+                for(let j=0; j < imputElement.length; j++){
+                    const elementInputIndividual = imputElement[j] as HTMLInputElement;
+                    if(j === 0){
+                        elementInputIndividual.focus();
+                    }else{
+                        elementInputIndividual.disabled = true;
+                    }
+
+                    elementInputIndividual.addEventListener('input', () => {
+                        if (elementInputIndividual.value.length > 0 ) {
+                            elementInputIndividual.value = elementInputIndividual.value.slice(0, 1);
+                            const nextElement = imputElement[j+1] as HTMLInputElement;
+                            if(nextElement){
+                                elementInputIndividual.disabled = true
+                                nextElement.disabled = false;
+                                nextElement.focus()
+                            }
+                        }
+                    });
+                    elementInputIndividual.addEventListener('keydown', (e) =>{
+                        if (elementInputIndividual.value.length === 0 && e.key === 'Backspace') {
+                            const beforeElement = imputElement[j-1] as HTMLInputElement;
+                            if(beforeElement){
+                                elementInputIndividual.disabled = true;
+                                beforeElement.disabled = false;
+                                beforeElement.focus()
+                                beforeElement.value = ''
+                            }
+                        }
+                    });
+                }
+            }
+        }
+    }
+</script>

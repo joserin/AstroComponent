@@ -1,0 +1,21 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='default';
+const { class: className= defaulClass, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={[className]}>
+    <slot/>
+</div>
+
+<style>
+    .default{
+        width: 5rem;
+        height: 5rem;
+        border-radius: 9999px;
+    }
+</style>

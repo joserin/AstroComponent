@@ -1,0 +1,189 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Beteewn from '../../components/structure/Beteewn.astro';
+import Divider from '../../components/structure/Divider.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/divider/code-component.md';
+import Css from '../../i18n/structure/divider/code-css.md';
+import OneImplementacion from '../../i18n/structure/divider/code-one.md';
+import TwoImplementacion from '../../i18n/structure/divider/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/divider/code-three.md';
+import FourImplementacion from '../../i18n/structure/divider/code-four.md';
+import FiveImplementacion from '../../i18n/structure/divider/code-five.md';
+import SixImplementacion from '../../i18n/structure/divider/code-six.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Divider."
+    description='Component UI Divider to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Divider</h2>
+            <p>Divider will be used to separate content vertically or horizontally.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: A custom CSS class to apply to the component.</li>
+                            <li>
+                                direction: Determines the layout orientation of the component, 
+                                either 'horizontal' or 'vertical'.
+                            </li>
+                            <li>
+                                rest: A spread operator to pass any additional props to the inner divs.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Outer div with flex items-center: Creates a flex container that centers its 
+                                children both horizontally and vertically.
+                            </li>
+                            <li>
+                                Inner div with class= direction: Defines the main layout container based on the direction prop.
+                            </li>
+                            <li>
+                                First inner div with ...rest class:list=[className]: 
+                                Renders a first child element, passing along additional props and applying the className prop.
+                            </li>
+                            <li>slot: A slot for custom content to be inserted.</li>
+                            <li>
+                                Second inner div with ...rest class:list=[className]: 
+                                Renders a second child element, passing along additional props and applying the className prop.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                <p>.horizontal: Defines styles for a horizontal layout</p>
+                                <li>Flex display with row direction.</li>
+                                <li>Centers content both horizontally and vertically.</li>
+                            </li>
+                            <li>
+                                <p>.vertical: Defines styles for a vertical layout</p>
+                                <li>Flex display with column direction.</li>
+                                <li>Centers content both horizontally and vertically.</li>
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>Retrieves count elements: Gets all elements with the class count.</li>
+                            <li>Iterates over count elements: For each count element</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual font-semibold">
+                <span>hello</span>
+                    <Beteewn/>
+                <span>bye</span>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[15.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-56 fondo-previsual">
+                <span>I have</span>
+                <Beteewn>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff2825" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M12 4l0 16" />
+                        <path d="M8 8l-4 4l4 4" />
+                        <path d="M16 16l4 -4l-4 -4" />
+                    </svg>
+                </Beteewn>
+                <span>bye</span>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-56'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[15.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-56 fondo-previsual">
+                <Divider class=" bg-white w-1 h-20">between</Divider>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-56'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual">
+                <Divider class=" bg-white w-40 h-1 m-1" direction='horizontal'>between</Divider>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[15.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-56 fondo-previsual">
+                <Divider class=" bg-white w-1 h-20">
+                    <span class=" order-first p-1"> between </span>
+                </Divider>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-56'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[15.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-56 fondo-previsual">
+                <Divider class=" bg-white w-1 h-20">
+                    <span class=" order-last p-1"> between </span>
+                </Divider>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-56'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,137 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Radio from '../../components/base/radio.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/radio/code-component.md';
+import Css from '../../i18n/base/radio/code-css.md';
+import OneImplementacion from '../../i18n/base/radio/code-one.md';
+import TwoImplementacion from '../../i18n/base/radio/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+const elementos = ['uno', 'dos', 'tres', 'cuatro'];
+---
+
+<Layout 
+    title="Components Radio Group."
+    description='Component UI Radio Group to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Radio Group</h2>
+            <p>A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>elements: (Required) An array of strings representing the labels and values for each radio button.</li>
+                            <li>
+                                identify (Optional): An optional number used as a unique identifier for each radio button's id attribute. 
+                                Defaults to 0.
+                            </li>
+                            <li>
+                                class (Optional): An optional string to add a custom class to the outer ul element. 
+                                Defaults to "radio-group".
+                            </li>
+                            <li>
+                                rest (Optional): Catches any additional props passed to the component and spreads them 
+                                to the radio button inputs. This allows you to control attributes like name, checked, etc.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The component uses an unordered list (ul) with the class name determined by props. 
+                                class or the default "radio-group".
+                            </li>
+                            <li>
+                                It iterates through the elements prop using a map function.
+                            </li>
+                            <li>
+                                Inside the loop, it creates a list item (li) for each element. Each(li) contains A radio button input (input) 
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The CSS styles target the classes defined in the component</li>
+                            <li>
+                                .radio-group: Sets the display to flex and flex-direction to column, 
+                                arranging radio buttons vertically by default.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <Radio elements={elementos} name="test"/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Radio elements={elementos} identify={1} name="testear" class='tester flex gap-3'/>
+                <span class="m-2 p-1 flex gap-5 w-40">Select: <p id="value"></p></span>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>
+
+<script>
+
+    function check() {
+        const selected = document.querySelector('.tester input[type="radio"]:checked') as HTMLInputElement;
+        const valueElement  = document.getElementById('value');
+        if(selected && valueElement) {
+            valueElement .textContent = selected.value
+        } else {
+            console.log('no selection');
+        }
+    }
+
+    document.querySelector(".tester")?.addEventListener("click", check)
+
+</script>

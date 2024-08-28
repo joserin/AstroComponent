@@ -1,0 +1,40 @@
+---
+interface Props {
+    value: number;
+    strokeW?:number;
+    class?: string;
+    size?: number;
+    [x: string]: any;
+}
+const defaulClass='text-blue-600 dark:text-blue-500';
+const { size = 15, value, strokeW = 2, class: className = defaulClass, ...rest } = Astro.props;
+
+---
+<div class="radial-progress-container" style={{ width: `${size || 0}%` }} {...rest}>
+  <slot name="specifica-bar">
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="18" cy="18" r="16" fill="none" class:list={["stroke-current", className]} stroke-width={strokeW} ></circle>
+      <g class="origin-center -rotate-90 transform">
+        <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-gray-200 dark:text-gray-700" 
+          stroke-width={strokeW} stroke-dasharray="100" stroke-dashoffset={value}>
+        </circle>
+      </g>
+    </svg>
+  </slot>
+  <main class="default">
+    <slot/>
+  </main>
+</div>
+
+<style>
+  .radial-progress-container{
+    position: relative;
+  }
+  .default{
+    position: absolute;
+    top: 45%;
+    inset-inline-start: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default';
+const { class: className = defaultClass, ...rest } = Astro.props;
+---
+<input class:list={[className, 'input-select']} type="text" {...rest} aria-label="label-inputotp"/>
+
+<style>
+    .default{
+        background-color: rgb(241, 142, 248);
+        height: 2.5rem;
+        width: 2.5rem;
+        border-top: 0.1rem;
+        border-bottom: 0.1rem;
+        font-size: 1.3rem;
+        line-height: 1.25rem;
+        color: black;
+    }
+    .input-select{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 0.3rem;
+        text-align: center;
+    }
+</style>
+
+<script>
+    const input = document.getElementsByClassName('input-select');
+    if(input) {
+        for(let i=0; i < input.length; i++){
+            const inputElement = input[i] as HTMLInputElement;
+            inputElement.addEventListener('input', () => {
+                if (inputElement.value.length > 1) {
+                    inputElement.value = inputElement.value.slice(0, 1);
+                }
+            });
+        }
+    }
+</script>

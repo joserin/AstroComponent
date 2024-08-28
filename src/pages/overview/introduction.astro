@@ -1,0 +1,85 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout 
+	title="Introduction."
+	description="Introducion of component">
+	<main class="maqueta">
+		<header class="flex flex-col gap-5 mt-5">
+            <h1 class="text-xl md:text-5xl text-center">Introduction</h1>
+            <div>
+                <h2>Welcome to AstroBlocks</h2>
+                <p>
+                    Hello and welcome to AstroBlocks! Here, you'll find a collection of web components designed 
+                    to simplify the development process and speed up the creation of your websites.
+                </p>
+            </div>
+        </header>
+        <div>
+            <h3>What Do We Offer?</h3>
+            <p>
+                At AstroBlocks, we provide a variety of reusable components that you can copy and paste 
+                directly into your project. Our components are designed to be easy to integrate and customize to fit your needs.
+            </p>
+            <ul>
+                <li>
+                    HTML and CSS: Most of our components use only HTML and CSS, so you can customize styles 
+                    using Tailwind CSS to match your project's aesthetic.
+                </li>
+                <li>
+                    JavaScript: Some components incorporate JavaScript for additional functionality, 
+                    giving you the flexibility to create interactive and dynamic interfaces.
+                </li>
+            </ul>
+            <h3>How Does It Work?</h3>
+            <ul>
+                <li>
+                    Explore: Browse through our component gallery to find the ones that suit your needs.
+                </li>
+                <li>
+                    Copy and Paste: Simply copy the code for the component you like and paste it into your project.
+                </li>
+                <li>
+                    Customize: Adjust styles and behaviors using Tailwind CSS and your own custom CSS or JavaScript.
+                </li>
+            </ul>
+            <h3>Why Use Our Components?</h3>
+            <ul>
+                <li>No dependencies: You don't need to install any dependencies other than tailwind or use npm.</li>
+                <li>Flexibility: With Tailwind CSS, you can quickly and easily adapt and customize styles.</li>
+                <li>Interactivity: Includes components with interactive features through JavaScript to enhance user experience.</li>
+            </ul>
+        </div>
+        <footer class="flex flex-col gap-3 text-sm">
+            <p>
+                Explore our collection, choose the components you like, and start building your web projects with ease. 
+                If you have any questions or need support, feel free to contact us.
+            </p>
+            <label class="text-xs">Thank you for visiting AstroBlocks and happy web development!</label>
+        </footer>
+	</main>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+        margin: 0.25rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+    p{
+        padding: 0.25rem;
+    }
+</style>

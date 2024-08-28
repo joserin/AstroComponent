@@ -1,0 +1,48 @@
+---
+import Detail from './base/Detail.astro'
+---
+
+<section class=" p-3 w-full">
+    <ul>
+        <li>
+            <Detail title='Overview'>
+                <ul class="m-3">
+                    <li class="element">
+                        <a href="/overview/introduction/">Introduction</a>
+                    </li>
+                </ul>
+            </Detail>
+        </li>
+        <li>
+            <Detail title='Components'>
+                <ul class="m-3">
+                    <li class="element">
+                        <a href="/component/#_base">Base</a>
+                    </li>
+                    <li class="element">
+                        <a href="/component/#_segment">Segment</a>
+                    </li>
+                    <li class="element">
+                        <a href="/component/#_structure">Structure</a>
+                    </li>
+                </ul>
+            </Detail>
+            <a class="p-2" href="/component/"></a>
+        </li>
+    </ul>
+</section>
+
+<style>
+	section{
+        background: linear-gradient(353deg, rgba(2,0,36,1) 0%, rgba(108, 68, 150, 0.8) 99%);
+	}
+    ul{
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .element:hover{
+        background-color: rgba(121, 16, 220, 0.603);
+        padding: 0.25rem;
+    }
+</style>

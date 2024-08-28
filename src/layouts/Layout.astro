@@ -1,0 +1,75 @@
+---
+import AsideI from '../components/asideI.astro';
+import Seo from '../components/Seo.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	canonical?: string;
+	image?: string;
+}
+const { title, image, description, canonical } = Astro.props;
+
+---
+<!doctype html>
+<html lang="en" class="overflow-x-hidden">
+	<head>
+		<Seo title={title} description={description} canonical={canonical} image={image}/>
+	</head>
+	<body>
+		<main class="flex flex-row">
+			<aside class="hidden md:w-[30%] lg:w-[20%] 2xl:w-[15%] sticky top-0 h-screen md:flex" >
+				<AsideI/>
+			</aside>
+			<div class="w-full h-full md:w-[70%] lg:w-[80%] 2xl:w-[85%] flex flex-col justify-center items-center">
+				<header class="header-up">Less Ui</header>
+				<slot/>
+			</div>
+		</main>
+	</body>
+</html>
+
+<style is:global>
+	body{
+		background:rgba(2,0,36,1);
+		color: #fff;
+	}
+	.header-up{
+		padding: 0.5rem;
+        background: linear-gradient(353deg, rgba(2,0,36,1) 0%, rgb(79, 39, 121) 99%);
+		width: 100%;
+		text-align: center;
+	}
+	.maqueta{
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 0.25rem;
+		width: 80%;
+    }
+	.fondo-previsual {
+        background-image:
+        linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px),
+        linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px);
+        background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
+        background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+    }
+	@media (max-width: 767px) {
+		body {
+			font-size: 0.8rem;
+		}
+		.maqueta{
+			width: 90%;
+		}
+	}
+	@media (max-width: 400px) {
+		body {
+			font-size: 0.75rem;
+		}
+		.maqueta{
+			width: 100%;
+		}
+	}
+</style>

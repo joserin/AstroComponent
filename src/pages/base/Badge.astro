@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BadgeC from "../../components/base/badge.astro";
+import Button from "../../components/base/Button.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/badge/code-component.md';
+import Css from '../../i18n/base/badge/code-css.md';
+import OneImplementacion from '../../i18n/base/badge/code-one.md';
+import TwoImplementacion from '../../i18n/base/badge/code-two.md';
+import ThreeImplementacion from '../../i18n/base/badge/code-three.md';
+import FourImplementacion from '../../i18n/base/badge/code-four.md';
+import FiveImplementacion from '../../i18n/base/badge/code-five.md';
+import SixImplementacion from '../../i18n/base/badge/code-six.md';
+import SevenImplementacion from '../../i18n/base/badge/code-seven.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Badge."
+    description='Component UI Badge to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Badge</h2>
+            <p>
+                This component serves as a versatile building block, allowing you to create reusable containers 
+                with customizable styles and content.
+            </p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <div class="flex flex-col gap-2">
+                    <h3>Props</h3>
+                    <ul>
+                        <li>
+                            The component defines an interface named Props that optionally accepts a class property (string)
+                            and allows for any additional custom properties using TypeScript's index signature syntax ([x: string]: any).
+                        </li>
+                    </ul>
+                    <h3>Template</h3>
+                    <ul>
+                        <li>A div element is created, spreading (...rest) any custom properties it receives.</li>
+                        <li>
+                            The class attribute is dynamically set using a list comprehension ([className]), 
+                            ensuring the class name is always an array, even if a single string is provided.
+                        </li>
+                        <li>
+                            A slot element is included within the div, allowing you to pass content into the container.
+                        </li>
+                    </ul>
+                    <h3>Styles</h3>
+                    <ul>
+                        <li>
+                            A CSS style block defines styles for the class .default. These styles control the container's 
+                            layout (flexbox), alignment (centered), padding, and rounded corners.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[9.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-32 fondo-previsual">
+                <BadgeC>99</BadgeC>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-32'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex justify-center items-center gap-5 h-44 fondo-previsual">
+                <BadgeC class=" rounded-xl bg-red-700 p-1 w-fit">red</BadgeC>
+                <BadgeC class=" rounded-xl bg-blue-700 p-1 w-fit">blue</BadgeC>
+                <BadgeC class=" rounded-xl bg-pink-700 p-1 w-fit">pink</BadgeC>
+                <BadgeC class=" rounded-xl bg-purple-700 p-1 w-fit">purple</BadgeC>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex justify-center items-center gap-5 h-44 fondo-previsual">
+                <BadgeC class=" rounded-3xl border-2 border-red-400 py-1 px-2 w-fit">red</BadgeC>
+                <BadgeC class=" rounded-3xl border-2 border-blue-400 py-1 px-2 w-fit">blue</BadgeC>
+                <BadgeC class=" rounded-3xl border-2 border-pink-400 py-1 px-2 w-fit">pink</BadgeC>
+                <BadgeC class=" rounded-3xl border-2 border-purple-400 py-1 px-2 w-fit">purple</BadgeC>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex justify-center items-center gap-3 p-3 h-44 fondo-previsual">
+                <BadgeC class=" rounded-full bg-red-500 w-10 h-10"></BadgeC>
+                <BadgeC class=" rounded-full bg-red-500 w-8 h-8"></BadgeC>
+                <BadgeC class=" rounded-full bg-red-500 w-5 h-5"></BadgeC>
+                <BadgeC class=" rounded-full bg-red-500 w-2 h-2"></BadgeC>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex justify-center items-center gap-3 p-3 h-72 fondo-previsual">
+                <BadgeC class=" rounded-xl bg-red-700 p-1 w-fit flex justify-center items-center">
+                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
+                    </svg>
+                    <span>red</span>
+                </BadgeC>
+                <BadgeC class=" rounded-xl bg-blue-700 p-1 w-fit flex justify-center items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                    <span>blue</span>
+                </BadgeC>
+                <BadgeC class=" rounded-xl bg-pink-700 p-1 w-fit flex justify-center items-center">
+                    <span>pink</span>
+                    <svg class="w-5 h-5 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11.917 9.724 16.5 19 7.5"/>
+                    </svg>
+                </BadgeC>
+                <BadgeC class=" rounded-xl bg-purple-700 p-1 w-fit">
+                    <span>purple</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-4 h-4 stroke-current">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </BadgeC>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="p-3 gap-3 flex flex-col items-center justify-center h-60 fondo-previsual">
+                <span class="flex  gap-3 text-2xl">
+                    <label>primero</label>
+                    <BadgeC class="rounded-xl border-[1px] border-slate-300 p-1">New</BadgeC>
+                </span>
+                <span class="flex  gap-3 text-lg">
+                    <label>segundo</label>
+                    <BadgeC class=" rounded-xl border-[1px] border-slate-300 p-1">New</BadgeC>
+                </span>
+                <span class="flex gap-3 text-base">
+                    <label>tercero</label>
+                    <BadgeC class=" rounded-xl border-[1px] border-slate-300 p-1">New</BadgeC>
+                </span>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[17.8rem]'>
+            <section slot="preview" class="flex gap-3 items-center justify-center h-64 fondo-previsual">
+                <Button class="flex bg-slate-700 hover:bg-slate-400 p-2 rounded-xl gap-2 items-center justify-center">
+                    <p>Inbox</p>
+                    <BadgeC class=" bg-slate-500 rounded-lg p-1 text-sm font-semibold">+99</BadgeC>
+                </Button>
+                <Button class="flex bg-pink-500 hover:bg-slate-400 p-2 rounded-xl gap-2 items-center justify-center">
+                    <p class="text-black font-semibold">Inbox</p>
+                    <BadgeC class=" bg-pink-300 rounded-lg p-1 text-sm text-black font-semibold">+99</BadgeC>
+                </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-64'>
+                    <SevenImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    h3{
+      text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

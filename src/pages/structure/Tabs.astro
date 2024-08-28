@@ -1,0 +1,233 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Tab from '../../components/structure/Tab.astro';
+import TabHead from '../../components/structure/Tab-head.astro';
+import TabContent from '../../components/structure/Tab-Content.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/tab/code-component.md';
+import Css from '../../i18n/structure/tab/code-css.md';
+import OneImplementacion from '../../i18n/structure/tab/code-one.md';
+import TwoImplementacion from '../../i18n/structure/tab/code-two.md';
+
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Tabs."
+    description='Component UI Tabs to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Tabs</h2>
+            <p>Tabs can be used to show a list of links in a tabbed format.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: An optional string prop to add custom CSS classes to the component.</li>
+                            <li>
+                                [x: string]: any: Allows for passing arbitrary props to the component, 
+                                which can be useful for passing data or other properties without explicitly 
+                                defining them in the interface.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Renders a div element with the combined class names className 
+                                (which defaults to default) and element-tab.
+                            </li>
+                            <li>
+                                The list directive is used to dynamically create the class attribute.
+                            </li>
+                            <li>
+                                slot: This is a slot where child components can be placed. 
+                                It acts as a placeholder for content that will be inserted into the component.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .button-selected: Defines styles for elements with the button-selected class, 
+                                likely used to indicate an active tab.
+                            </li>
+                            <li>
+                                .default: Defines default styles for the component, including display, 
+                                flex direction, width, height, and positioning.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>tab: Stores all elements with the class element-tab.</li>
+                            <li>boton: Stores all elements with the class show-select within each tab element.</li>
+                            <li>cuerpo: Stores all elements with the class tab-select within each tab element.</li>
+                            <li>
+                                Closes all dropdown elements (with the class tab-select) 
+                                except for the one associated with the clicked button.
+                            </li>
+                            <li>
+                                Adds a click event listener to each button with the class show-select.
+                            </li>
+                            <li>
+                                When a button is clicked, it opens the corresponding dropdown and closes all other dropdowns.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <div class='h-[16.8rem] tab-element'>
+            <header class="flex gap-3">
+                <button class="button-tab">Preview</button>
+                <button class="button-tab">Implementation</button>
+            </header>
+            <main class="w-full h-60 overflow-hidden">
+                <section class="flex gap-1 justify-center items-center h-60 content-tab fondo-previsual">
+                    <Tab>
+                        <header class="flex gap-3">
+                            <TabHead>One</TabHead>
+                            <TabHead>Two</TabHead>
+                            <TabHead>Three</TabHead>
+                        </header>
+                        <div class="w-full h-full overflow-hidden">
+                                <TabContent class='bg-yellow-700 h-full p-1'>
+                                    <p>One upon a time</p>
+                                </TabContent>
+                                <TabContent class='bg-blue-700 h-full p-1'>
+                                    <p>two time slash</p>
+                                </TabContentiv>
+                                <TabContent class='bg-red-700 h-full p-1'>
+                                    <p>Three weeks ago</p>
+                                </TabContent>
+                        </div>
+                    </Tab>
+                </section>
+                <section class="content-tab">
+                    <Scroll class='w-full h-60'>
+                        <OneImplementacion />
+                    </Scroll>
+                </section>
+            </main>
+        </div>
+        <div class='h-[16.8rem] tab-element'>
+            <header class="flex gap-3">
+                <button class="button-tab">Preview</button>
+                <button class="button-tab">Implementation</button>
+            </header>
+            <main class="w-full h-60 overflow-hidden">
+                <section class="flex gap-1 justify-center items-center h-60 content-tab fondo-previsual">
+                    <Tab class='flex relative w-full h-full'>
+                        <div class="flex flex-col gap-1 w-fit">
+                            <TabHead class=' hover:bg-yellow-700 p-1'>One</TabHead>
+                            <TabHead class='hover:bg-blue-700 p-1'>Two</TabHead>
+                            <TabHead class='hover:bg-red-700 p-1'>Three</TabHead>
+                        </div>
+                        <div class="w-full">
+                            <TabContent class='active bg-yellow-700 h-full'>
+                                <p>One upon a time</p>
+                            </TabContent>
+                            <TabContent class='deactive bg-blue-700 h-full'>
+                                <p>two time slash</p>
+                            </TabContentiv>
+                            <TabContent class='deactive bg-red-700 h-full'>
+                                <p>Three weeks ago</p>
+                            </TabContent>
+                        </div>
+                    </Tab>
+                </section>
+                <section class="content-tab">
+                    <Scroll class='w-full h-60'>
+                        <TwoImplementacion />
+                    </Scroll>
+                </section>
+            </main>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .button-tab{
+        padding: 1px 2px;
+    }
+    .button-selected{
+        background-color: rgb(119, 0, 255);
+    }
+    .hide-tab{
+        display: none;
+    }
+    .show-tab{
+        display: block;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+    .content-tab{
+        font: 0.8em sans-serif;
+        padding: 0.25rem;
+    }
+</style>
+
+<script>
+    const tab = document.getElementsByClassName("tab-element");
+    
+    if(tab){
+        for(let j=0; j < tab.length; j++){
+            const boton = tab[j].getElementsByClassName("button-tab");
+            const cuerpo = tab[j].getElementsByClassName("content-tab");
+
+            function closeAllDropdowns(drop: any) {
+                if(boton){
+                    for(let i=0; i < boton.length; i++){
+                        if(boton[i] !== drop){
+                            if(cuerpo[i]){
+                                cuerpo[i].classList.remove('show-tab');
+                                cuerpo[i].classList.add('hide-tab');
+                            }
+                            boton[i].classList.remove('button-selected');
+                        }else{
+                            boton[i].classList.add('button-selected');
+                        }
+                    }
+                }
+            }
+            if(boton && cuerpo){
+                boton[0].classList.add('button-selected');
+                for(let i=0; i < boton.length; i++){
+                    boton[i].addEventListener("click", () =>{
+                        if(cuerpo[i]){
+                            cuerpo[i].classList.remove('hide-tab');
+                            cuerpo[i].classList.add('show-tab');
+                        }
+                        closeAllDropdowns(boton[i])
+                    });
+                }
+            }
+        }
+    }
+</script>

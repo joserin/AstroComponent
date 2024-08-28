@@ -1,0 +1,156 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Avatares from "../../components/base/Avatar.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/alert/code-component.md';
+import Css from '../../i18n/base/alert/code-css.md';
+import OneImplementacion from '../../i18n/base/alert/code-one.md';
+import TwoImplementacion from '../../i18n/base/alert/code-two.md';
+import ThreeImplementacion from '../../i18n/base/alert/code-three.md';
+import FourImplementacion from '../../i18n/base/alert/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Avatar."
+    description='Component UI Avatar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Avatar</h2>
+            <p>Avatars are used to show a thumbnail representation of an individual or business in the interface.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <div class="flex flex-col gap-3">
+                    <h3>Props</h3>
+                    <ul>
+                        <li>class?: string allows an optional class property to be passed.</li>
+                        <li>
+                            [x: string]: any using index signature syntax allows for any additional 
+                            properties to be passed (flexible)
+                        </li>
+                    </ul>
+                    <h3>Template</h3>
+                    <ul>
+                        <li>creates a div element and spreads the rest object as attributes onto it. This allows you to pass additional
+                            attributes like id, data-*, etc. to the component.
+                        </li>
+                        <li>
+                            The [className] syntax creates a class attribute by converting className to a list (array) 
+                            and joining the elements. This ensures consistent class application even if className is an empty string.
+                        </li>
+                        <li>
+                            slot inserts content placed within the component's usage in Astro. This allows you to fill the container 
+                            with your desired elements.
+                        </li>
+                    </ul>
+                    <h3>Styles</h3>
+                    <ul>
+                        <li>
+                            The style block defines styles for the .default class. You can customize these styles to change the 
+                            appearance of the component.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Avatares>
+                    <img src="/img-4.webp" alt="">
+                </Avatares>
+                <Avatares class=" w-14 h-14">
+                    <img src="/img-4.webp" alt="">
+                </Avatares>
+                <Avatares class=" w-10 h-10">
+                    <img src="/img-4.webp" alt="">
+                </Avatares>
+                <Avatares class=" w-5 h-5">
+                    <img src="/img-4.webp" alt="">
+                </Avatares>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Avatares class="w-20 h-20 rounded-xl">
+                    <img src="/img-4.webp" alt="">
+                </Avatares>
+                <Avatares class="w-20 h-20">
+                    <img class=" rounded-full" src="/img-4.webp" alt="">
+                </Avatares>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Avatares>
+                    <img class="w-20 h-24 rounded-3xl" src="/img-4.webp" alt="">
+                </Avatares>
+                <Avatares class="w-20 h-20">
+                    <img class=" rounded-full" src="/img-4.webp" alt="">
+                </Avatares>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Avatares class="w-20 h-20 relative rounded-full">
+                    <div class="w-5 h-5 bg-green-600 border-2 border-white rounded-full absolute right-0"></div>
+                    <img class=" rounded-full" src="/img-4.webp" alt="">
+                    
+                </Avatares>
+                <Avatares class="w-20 h-20 relative rounded-full">
+                    <div class="w-5 h-5 bg-gray-300 border-2 border-white rounded-full absolute right-0"></div>
+                    <img class=" rounded-full" src="/img-4.webp" alt="">
+                </Avatares>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

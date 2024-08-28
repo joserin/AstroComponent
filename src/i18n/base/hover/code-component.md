@@ -1,0 +1,22 @@
+```astro
+---
+interface Props {
+    title?:string;
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default';
+const { title, class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<div class="container-hover">
+    <div class:list={["hover-element", className]} {...rest}>
+        <slot name="hover">
+            {title}
+        </slot>
+    </div>
+    <main class="hover-content">
+        <slot/>
+    </main>
+</div>
+```

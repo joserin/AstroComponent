@@ -1,0 +1,79 @@
+---
+interface Props {
+    title?:string;
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default';
+const { title, class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<div class="relative element-popover">
+    <slot name="boton-action">
+        <button class="button-popover">
+            {title}
+        </button>
+    </slot>
+    <span class:list={[className, "popover-display", "hide"]} {...rest}>
+        <slot/>
+    </span>
+</div>
+
+<style>
+    .default{
+        background-color: black;
+        color: white;
+        padding: 0.25rem;
+        width:fit-content;
+    }
+    .button-popover{
+        padding: 0.5rem 1rem;
+        border-radius: 0.75rem;
+        background-color: blueviolet;
+        font-size: 1.25rem;
+        border: 2px white solid;
+    }
+    .button-popover:hover{
+        background-color: rgb(171, 157, 188);
+    }
+
+    .popover-container{
+        position: relative;
+    }
+    .hide{
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+    .popover-display{
+        position: absolute;
+    }
+</style>
+
+<script>
+    const elementList = document.getElementsByClassName('element-popover');
+
+    if(elementList){
+        for(let i=0; i < elementList.length; i++){
+            const botonPopover = elementList[i].querySelector('.button-popover');
+            const popoverContent = elementList[i].querySelector('.popover-display') as HTMLElement;
+
+            botonPopover?.addEventListener("click", ()=>{
+                
+                if(!popoverContent) return 0;
+                popoverContent.classList.remove("hide");
+                popoverContent.classList.add("show");
+            });
+
+            document.addEventListener("click", (event) => {
+                if(!popoverContent) return 0;
+                const targetElement = event.target as HTMLElement;
+                if (event.target !== botonPopover && !popoverContent.contains(targetElement)) {
+                    popoverContent.classList.add("hide");
+                    popoverContent.classList.remove("show");
+                }
+            });
+        }
+    }
+</script>

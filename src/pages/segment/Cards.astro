@@ -1,0 +1,250 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Card from "../../components/segment/Card.astro";
+import Button from "../../components/base/Button.astro";
+import Badge from "../../components/base/badge.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/segment/card/code-component.md';
+import Css from '../../i18n/segment/card/code-css.md';
+import OneImplementacion from '../../i18n/segment/card/code-one.md';
+import TwoImplementacion from '../../i18n/segment/card/code-two.md';
+import ThreeImplementacion from '../../i18n/segment/card/code-three.md';
+import FourImplementacion from '../../i18n/segment/card/code-four.md';
+import FiveImplementacion from '../../i18n/segment/card/code-five.md';
+import SixImplementacion from '../../i18n/segment/card/code-six.md';
+import SevenImplementacion from '../../i18n/segment/card/code-seven.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Card."
+    description='Component UI Card to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Card</h2>
+            <p>Cards are used to group and display content in a way that is easily readable.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 p-1 my-1 h-72 fondo-previsual">
+                <Scroll class=' h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                Cada componente (Card, header, div, footer) acepta propiedades (props) 
+                                para personalizar su apariencia y comportamiento.
+                            </li>
+                            <li>La propiedad class permite agregar clases CSS personalizadas.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Define la estructura HTML del componente. Utiliza slot para permitir contenido dinámico 
+                                dentro de cada sección.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                Incluye estilos CSS básicos para el componente Card, estableciendo un ancho ajustado, 
+                                disposición de elementos centrados, desbordamiento oculto y un ligero padding inferior
+                            </li>
+                        </ul>
+                        <h3>Structure</h3>
+                        <ul>
+                            <li>Card: El contenedor principal de la tarjeta.</li>
+                            <li>header: La sección superior de la tarjeta, típicamente usada para títulos o encabezados.</li>
+                            <li>div: El contenido principal de la tarjeta.</li>
+                            <li>footer: La sección inferior de la tarjeta, comúnmente usada para acciones o información adicional.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component">
+                <Scroll class=' h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css">
+                <Scroll class=' h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[23.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-[22rem] fondo-previsual">
+                <Card class="default flex-col rounded-xl bg-blue-700">
+                    <header slot="header" class="w-fit border border-black">
+                        <img class="w-56 h-56" src="/img-9.webp" alt="">
+                    </header>
+                    <div class="p-3 flex flex-col">
+                        <h4 class="font-semibold text-2xl">Title</h4>
+                        <p class="p-1">Description for this product</p>
+                    </div>
+                    <footer slot="footer" class="flex justify-end pr-2">
+                        <Button class="text-black bg-white hover:bg-blue-300 p-1 w-fit rounded-xl">Buy Now</Button>
+                    </footer>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-[22rem]'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[23.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-[22rem] fondo-previsual">
+                <Card class="default flex-col bg-blue-200 rounded-xl text-black">
+                    <header slot="header" class="w-fit">
+                        <img class="w-56 h-56" src="/img-9.webp" alt="">
+                    </header>
+                    <div class="p-3 flex flex-col">
+                        <div class="flex items-center gap-2">
+                            <h4 class="font-bold text-2xl">Title</h4>
+                            <Badge class="border-2 border-red-500 px-2 py-1 text-black font-semibold rounded-xl">New</Badge>
+                        </div>
+                        <p class="p-1">description for this product</p>
+                    </div>
+                    <footer slot="footer" class="flex justify-end pr-2">
+                        <div class="flex justify-end gap-2">
+                            <Badge class="border-2 border-black rounded-full p-1 bg-red-400">better</Badge>
+                            <Badge class="border-2 border-black rounded-full p-1 bg-yellow-400">bag</Badge>
+                        </div>
+                    </footer>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-[22rem]'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[20.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-[19rem] fondo-previsual">
+                <Card class="default flex-col bg-white rounded-xl text-black">
+                    <header slot="header" class="flex justify-center items-center">
+                        <img class="w-40 h-40 m-2" src="/img-9.webp" alt="">
+                    </header>
+                    <div class="p-3 flex flex-col w-full h-full">
+                        <div class="flex items-center gap-2 justify-center">
+                            <h4 class="font-semibold text-2xl">Title</h4>
+                            <Badge class="px-1 text-red-600 font-semibold rounded-xl">New</Badge>
+                        </div>
+                        <p class="p-1">description for this product</p>
+                    </div>
+                    <footer slot="footer" class="flex justify-center gap-2 items-end">
+                        <Button class=" bg-blue-300 hover:bg-blue-500 p-1 w-fit rounded-xl">Buy Now</Button>
+                    </footer>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-[19rem]'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-72 fondo-previsual">
+                <Card class="relative w-fit rounded-xl overflow-hidden">
+                    <header slot="header" class="w-fit">
+                        <img class="w-96 h-72" src="/img-9.webp" alt="">
+                    </header>
+                    <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 text-white p-10 flex flex-col">
+                        <div class="flex items-center gap-2">
+                            <h4 class="font-semibold text-2xl">Title</h4>
+                        </div>
+                        <p class="p-1 font-semibold">Description for this product</p>
+                        <footer class="flex justify-end gap-2 items-end m-7 py-10">
+                            <Button class=" bg-orange-700 hover:bg-orange-500 p-1 w-fit rounded-xl">Buy Now</Button>
+                        </footer>
+                    </div>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Card class="w-80 h-40 rounded-xl overflow-hidden shadow-xl p-3 border flex flex-col justify-between">
+                    <header class="flex items-center gap-2">
+                        <h4 class="font-semibold text-2xl">Title</h4>
+                    </header>
+                    <div class="w-fit">
+                        <p class="p-1">description for this product</p>
+                    </div>
+                    <footer class="flex justify-end gap-2 items-end">
+                        <Button class=" bg-lime-700 hover:bg-lime-500 px-2 py-1 w-fit rounded-xl">Buy Now</Button>
+                    </footer>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FiveImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Card class="w-80 h-40 rounded-xl overflow-hidden shadow-xl p-3 bg-black text-center flex flex-col justify-center">
+                    <header class="flex items-center gap-2">
+                        <h4 class="font-semibold text-2xl text-white">Cookies!</h4>
+                    </header>
+                    <div>
+                        <p class="p-1 text-white">description for this product</p>
+                        <footer class="flex justify-center gap-2 items-end">
+                            <Button class=" bg-slate-600 hover:bg-slate-400 px-2 py-1 w-fit rounded-xl">Accept</Button>
+                            <Button class=" bg-slate-700 hover:bg-slate-500 px-2 py-1 w-fit rounded-xl">Cancel</Button>
+                        </footer>
+                    </div>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Card class="w-[30rem] h-60 rounded-xl shadow-xl flex overflow-hidden border">
+                    <header>
+                        <img class="w-60 h-full" src="/img-9.webp" alt="">
+                    </header>
+                    <div class="flex flex-col gap-2 p-3">
+                        <h4 class="font-semibold text-2xl">Movie!</h4>
+                        <p class="p-1">description for this product</p>
+                        <footer class="flex justify-center gap-2 items-end">
+                            <Button class=" bg-purple-600 hover:bg-purple-400 px-2 py-1 w-fit rounded-xl">Buy Now</Button>
+                        </footer>
+                    </div>
+                </Card>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SevenImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

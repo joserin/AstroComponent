@@ -1,0 +1,83 @@
+---
+import Tab from './structure/Tab.astro';
+import TabHead from './structure/Tab-head.astro';
+
+interface Props {
+    titles?: string[];
+    slotName?:string[];
+    class?: string;
+    [x: string]: any;
+}
+const { slotName, titles, class: className, ...rest } = Astro.props;
+---
+<section class:list={[className, 'container-show w-full 2xl:w-[80%]']} {...rest}>
+    <Tab>
+        <header class="flex gap-3">
+            {
+                titles?.map(title => <TabHead>{title}</TabHead>)
+            }
+        </header>
+        <main class="main-container">
+            {
+                slotName?.map((slotNames) => {
+                    if (slotNames === 'preview') {
+                        return (
+                            <div class='active tab-select'>
+                                <slot name="preview"> NOT preview</slot>
+                            </div>
+                        );
+                    } else if (slotNames === 'implementation') {
+                        return (
+                        <div class='deactive tab-select'>
+                            <slot name="implementation"> NOT implementation</slot>
+                        </div>
+                        );
+                    } else if (slotNames === 'component') {
+                        return (
+                        <div class='deactive tab-select'>
+                            <slot name="component"> NOT component</slot>
+                        </div>
+                        );
+                    } else if (slotNames === 'css') {
+                        return (
+                        <div class='deactive tab-select'>
+                            <slot name="css"> NOT css</slot>
+                        </div>
+                        );
+                    } else if (slotNames === 'js') {
+                        return (
+                        <div class='deactive tab-select'>
+                            <slot name="js"> NOT js</slot>
+                        </div>
+                        );
+                    } else {
+                        return null;
+                    }
+                })
+            }
+        </main>
+    </Tab>
+</section>
+
+<style>
+    .container-show{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .main-container{
+        width: 100%;
+        font: 0.8em sans-serif;
+    }
+    .deactive{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+    .tab-select{
+        height: 100%;
+    }
+</style>
+

@@ -1,0 +1,76 @@
+---
+
+import Resizable from "../../components/base/Resizable.astro";
+import Layout from '../../layouts/Layout.astro';
+import ResizePanel from "../../components/base/Resize-Panel.astro";
+import ResizableGroup from "../../components/base/Resizable-Group.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/resizable/code-component.md';
+import Css from '../../i18n/base/resizable/code-css.md';
+import Js from '../../i18n/base/resizable/code-js.md';
+import OneImplementacion from '../../i18n/base/resizable/code-one.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+<Layout 
+    title="Components Resizable."
+    description='Component UI Resizable to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Resizable</h2>
+            <p>Accessible resizable panel groups and layouts with keyboard support.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                In progress
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <!-- 
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Resizable>
+                    <ResizableGroup>
+                        <ResizePanel class="w-20 h-20 bg-red-400 resize-x">
+                            izquierdo
+                        </ResizePanel>
+                        <ResizePanel class="w-20 h-20 bg-blue-500 resize-y">
+                            <ResizableGroup>
+                                <ResizePanel class="w-20 h-20 bg-yellow-500 resize-y">
+                                    arriba
+                                </ResizePanel>
+                                <ResizePanel class="w-20 h-20 bg-red-400 resize-x">
+                                    abajo
+                                </ResizePanel>
+                            </ResizableGroup>
+                        </ResizePanel>
+                    </ResizableGroup>
+                    
+                </Resizable>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        -->
+    </div>
+</Layout>

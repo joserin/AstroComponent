@@ -1,0 +1,24 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='default';
+const { class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<div class:list={[className]}>
+    <input {...rest} type="range" class="slider-style" aria-label="input-range"/>
+    <slot/>
+</div>
+
+<style>
+    .default{
+        width: 50%;
+    }
+    .slider-style{
+        width: 100%;
+        cursor: pointer;
+    }
+</style>

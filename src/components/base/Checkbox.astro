@@ -1,0 +1,20 @@
+---
+interface Props {
+    title?:string;
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='w-5 h-5 appearance-none border-blue-500 bg-blue-200 rounded-xl checked:bg-blue-500';
+
+const { title, class: className = defaulClass, ...rest } = Astro.props;
+---
+ 
+<div class="flex items-center space-x-2 justify-center">
+    <input type="checkbox" {...rest} class:list={[className]}>
+    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 ">
+        <slot>
+            {title}
+        </slot>
+    </label>
+</div>

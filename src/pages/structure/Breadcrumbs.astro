@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumb from '../../components/structure/Breadcrumb.astro';
+import BreadcrumbLink from '../../components/structure/Breadcrumb-link.astro';
+import Beteewn from '../../components/structure/Beteewn.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/breadcrumb/code-component.md';
+import Css from '../../i18n/structure/breadcrumb/code-css.md';
+import OneImplementacion from '../../i18n/structure/breadcrumb/code-one.md';
+import TwoImplementacion from '../../i18n/structure/breadcrumb/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/breadcrumb/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Breadcrumbs."
+    description='Component UI Breadcrumbs to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Breadcrumbs</h2>
+            <p>Breadcrumbs helps users to navigate through the website.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <p>
+                            <strong>Breadcrumb</strong> This component represents a breadcrumb trail, which is a navigational aid that helps 
+                            users visualize their location within your website's hierarchy.
+                        </p>
+                        <p>
+                            <strong>BreadcrumbLink</strong> This component represents an individual link within the breadcrumb trail. 
+                            It inherits styling and properties from the parent Breadcrumb component.
+                        </p>
+                        <h3>Props</h3>
+                        <ul>
+                            <li>Both components (Breadcrumb and BreadcrumbLink) define an interface named Props.</li>
+                            <li>This interface allows you to pass custom CSS classes and other attributes to the components for customization.</li>
+                            <li>The spread operator (...rest) in the JSX is used to pass these props to the underlying HTML elements.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The div element for Breadcrumb and the a element for BreadcrumbLink serve as the containers for the breadcrumb content.
+                            </li>
+                            <li>
+                                The slot element in each component acts as a placeholder where you can insert the actual breadcrumb content 
+                                (text or other components) when using these components in your Astro pages.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                The first style section targets the .default class, which is likely applied to both components by default. 
+                                It sets the display, justification, alignment, and gap properties for the breadcrumb trail.
+                            </li>
+                            <li>
+                                The second style section targets anchor tags (a) and the .default class. It defines hover behavior 
+                                (underlining) for links and additional styling for the .default class (padding, margin, display, justification, and alignment).
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 m-1 fondo-previsual">
+                <Breadcrumb>
+                    <BreadcrumbLink url="/">Home</BreadcrumbLink>
+                    <Beteewn/>
+                    <BreadcrumbLink url="/component/">Components</BreadcrumbLink>
+                    <Beteewn/>
+                    <BreadcrumbLink url="/component/Breadcrumbs/">Breadcrumbs</BreadcrumbLink>
+                </Breadcrumb>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 m-1 fondo-previsual">
+                <Breadcrumb>
+                    <BreadcrumbLink url="/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                            </svg>                          
+                        </picture>
+                        <p>Home</p>
+                    </BreadcrumbLink>
+                    <Beteewn/>
+                    <BreadcrumbLink url="/component/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m14 9.006h-.335a1.647 1.647 0 0 1-1.647-1.647v-1.706a1.647 1.647 0 0 1 1.647-1.647L19 12M5 12v5h1.375A1.626 1.626 0 0 0 8 15.375v-1.75A1.626 1.626 0 0 0 6.375 12H5Zm9 1.5v2a1.5 1.5 0 0 1-1.5 1.5v0a1.5 1.5 0 0 1-1.5-1.5v-2a1.5 1.5 0 0 1 1.5-1.5v0a1.5 1.5 0 0 1 1.5 1.5Z"/>
+                            </svg> 
+                        </picture>
+                        <p>Docs</p>
+                    </BreadcrumbLink>
+                    <Beteewn/>
+                    <BreadcrumbLink url="/component/Breadcrumbs/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v9m-5 0H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2M8 9l4-5 4 5m1 8h.01"/>
+                            </svg>
+                        </picture>
+                        <p>Breadcrumbs</p>
+                    </BreadcrumbLink>
+                </Breadcrumb>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-72 m-1 fondo-previsual">
+                <Breadcrumb>
+                    <BreadcrumbLink url="/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M11.293 3.293a1 1 0 0 1 1.414 0l6 6 2 2a1 1 0 0 1-1.414 1.414L19 12.414V19a2 2 0 0 1-2 2h-3a1 1 0 0 1-1-1v-3h-2v3a1 1 0 0 1-1 1H7a2 2 0 0 1-2-2v-6.586l-.293.293a1 1 0 0 1-1.414-1.414l2-2 6-6Z" clip-rule="evenodd"/>
+                            </svg>                          
+                        </picture>
+                        <p>first</p>
+                    </BreadcrumbLink>
+                    <Beteewn> 
+                        <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+                        </svg>
+                    </Beteewn>
+                    <BreadcrumbLink url="/component/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10V7.914a1 1 0 0 1 .293-.707l3.914-3.914A1 1 0 0 1 9.914 3H18a1 1 0 0 1 1 1v6M5 19v1a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1M10 3v4a1 1 0 0 1-1 1H5m14 9.006h-.335a1.647 1.647 0 0 1-1.647-1.647v-1.706a1.647 1.647 0 0 1 1.647-1.647L19 12M5 12v5h1.375A1.626 1.626 0 0 0 8 15.375v-1.75A1.626 1.626 0 0 0 6.375 12H5Zm9 1.5v2a1.5 1.5 0 0 1-1.5 1.5v0a1.5 1.5 0 0 1-1.5-1.5v-2a1.5 1.5 0 0 1 1.5-1.5v0a1.5 1.5 0 0 1 1.5 1.5Z"/>
+                            </svg> 
+                        </picture>
+                        <p>second</p>
+                    </BreadcrumbLink>
+                    <Beteewn> 
+                        <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/>
+                        </svg>
+                    </Beteewn>
+                    <BreadcrumbLink url="/component/Breadcrumbs/">
+                        <picture>
+                            <svg class="w-6 h-6 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v9m-5 0H5a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1h-2M8 9l4-5 4 5m1 8h.01"/>
+                            </svg>
+                        </picture>
+                        <p>updown</p>
+                    </BreadcrumbLink>
+                </Breadcrumb>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    p{
+        font-size: 0.75rem;
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.7rem;
+    }
+    h3, strong{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+        margin: 0.25rem;
+    }
+</style>

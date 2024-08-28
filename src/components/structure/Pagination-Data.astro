@@ -1,0 +1,71 @@
+---
+interface Props {
+    totalPage: number;
+    currentPage: number;
+    elementCount: number;
+    class?: string;
+    [x: string]: any;
+}
+
+const defaultClass='';
+const { elementCount, totalPage, currentPage, class: className = defaultClass, ...rest} = Astro.props;
+
+---
+
+<nav {...rest} class:list={[className]}>
+    {
+        (currentPage > 1) && (
+            <div class="prev">
+                <slot name="boton-prev"/>
+            </div>
+        )
+    }
+    {
+        (() => {
+            let buttons = [];
+            for (let i = 0; i < totalPage; i++) {
+                const buttonClass = `pagination-buttons ${i === currentPage ? 'normal' : 'select'}`;
+                if (i === currentPage) {
+                    buttons.push(
+                        <span class="p-2 bg-slate-400"> {i} </span>
+                    );
+                }else{
+                    buttons.push(
+                        <button class={buttonClass} disabled={i === currentPage}> {i} </button>
+                    );
+                }
+                
+            }
+            return buttons;
+        })
+    }
+    {
+        (currentPage < 10) && (
+            <div class="next">
+                <slot name="boton-next"/>
+            </div>
+        )
+    }
+</nav>
+
+<style>
+    button{
+        padding: 0.5rem;
+    }
+    button:hover{
+        background-color: rgb(215, 0, 0);
+    }
+    .normal{
+        background-color: dimgray;
+    }
+    .select{
+        background-color: blue;
+        padding: 0.5rem;
+    }
+    .defaul{
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

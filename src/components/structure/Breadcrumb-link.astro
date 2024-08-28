@@ -1,0 +1,27 @@
+---
+interface Props {
+    url: string;
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='default';
+const { url, class: className= defaulClass, ...rest } = Astro.props;
+---
+
+<a href={url} {...rest} class={className}>
+    <slot/>
+</a>
+
+<style>
+    a:hover{
+        text-decoration-line: underline;
+    }
+    .default{
+        padding: 0.25rem;
+        margin: 0.25rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

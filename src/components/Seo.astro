@@ -1,0 +1,34 @@
+---
+
+interface Props {
+	title: string;
+	description: string;
+	canonical?: string;
+	image?: string;
+}
+
+const {
+	title,
+	description,
+	canonical,
+	image = "/favicon.svg",
+} = Astro.props as Props
+
+const determineCanonicalURL = () => {
+	if (Astro.url.host.includes("localhost")) return "http://localhost:4321"
+	return canonical || Astro.url.pathname
+}
+
+const canonicalURL = new URL(determineCanonicalURL(), Astro.site)
+---
+<title>{title}</title>
+<meta charset="UTF-8" />
+<meta name="description" content={description} />
+<!-- <link rel="canonical" href={canonicalURL} />-->
+<meta name="viewport" content="width=device-width" />
+<meta name="theme-color" content="#d5ff00" />
+
+<meta name="keywords" content="astro, component" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<link rel="icon" type="image/svg+xml" href={image}/>

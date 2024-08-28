@@ -1,0 +1,261 @@
+---
+import Dropdown from '../../components/base/Dropdown.astro';
+import Layout from '../../layouts/Layout.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/dropdown/code-component.md';
+import Css from '../../i18n/base/dropdown/code-css.md';
+import Js from '../../i18n/base/dropdown/code-js.md';
+import OneImplementacion from '../../i18n/base/dropdown/code-one.md';
+import TwoImplementacion from '../../i18n/base/dropdown/code-two.md';
+import ThreeImplementacion from '../../i18n/base/dropdown/code-three.md';
+import FourImplementacion from '../../i18n/base/dropdown/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+
+<Layout 
+    title="Components Dropdown."
+    description='Component UI Diff to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Dropdown</h2>
+            <p>Dropdown can open a menu or any other element when the button is clicked.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>title (optional): String value displayed on the dropdown button. Defaults to an empty string</li>
+                            <li>
+                                class (optional): String value added as a class name to the entire dropdown element. 
+                                Defaults to "default".
+                            </li>
+                            <li>
+                                Additional props (using spread syntax ...rest): Allows passing any additional attributes 
+                                to the component.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>The component uses a div with the class "dropdown" as the main container.</li>
+                            <li>
+                                <p>Inside the dropdown, there are two slotted elements:</p>
+                                <li>
+                                    slot name="boton": This slot allows you to customize the button element 
+                                    that triggers the dropdown. By default, it uses a button with the class "button-dropdown" 
+                                    and the title prop as its text content.
+                                </li>
+                                <li>
+                                    slot: This slot allows you to define the content that appears inside the dropdown menu when opened.
+                                </li>
+                            </li>
+                            <li>
+                                The dropdown content is another div with class names based on a combination of "dropdown-content" 
+                                and the provided class prop (using class binding with :list). This div also receives any additional 
+                                props passed through the spread syntax (...rest).
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The styles define the appearance of the dropdown and its elements.</li>
+                            <li>
+                                The .dropdown class sets its position to relative, allowing the content 
+                                to be positioned absolutely within it.
+                            </li>
+                            <li>
+                                The .dropdown-content class defines the position as absolute, 
+                                display as none initially (hidden), and a z-index of 10 to ensure it 
+                                appears above other elements when opened.
+                            </li>
+                            <li>
+                                The .default class sets default styles for the dropdown, including width, 
+                                height, font size, and line-height. This class gets applied if no custom 
+                                class is provided through the class prop.
+                            </li>
+                            <li>
+                                The .default-button class styles the dropdown button, defining padding, 
+                                background color, border radius, font properties, and a white border with hover effect.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>The script uses JavaScript to handle the opening and closing of the dropdown.</li>
+                            <li>It retrieves all elements with the class "dropdown".</li>
+                            <li>
+                                <p>
+                                    It defines two functions: closeAllDropdowns, (Main function): Loops 
+                                    through all dropdowns. For each dropdown
+                                </p>
+                                <li>
+                                    It retrieves the button element (.button-dropdown) and the content element (.dropdown-content).
+                                </li>
+                                <li>
+                                    It adds a click event listener to the button. When clicked, 
+                                    it toggles the "active" class on the button and shows/hides the content element.
+                                </li>
+                                <li>
+                                    Optionally, it retrieves an element with the class "close-focus-out" 
+                                    (presumably used to close the dropdown on clicking outside). 
+                                    If present, it adds an event listener to the document for clicks. 
+                                    When clicked outside the specific dropdown, it closes the content element.
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Dropdown title='click to open'>
+                    <ul class="bg-black w-fit h-fit text-sm p-3 flex flex-col gap-3">
+                        <li>My Information</li>
+                        <li>Profile</li>
+                        <li>Pay</li>
+                        <li>Github</li>
+                        <li>Facebook</li>
+                    </ul>
+                </Dropdown>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Dropdown tabindex="0">
+                    <button slot="boton" class="button-dropdown border border-blue-200 p-1">
+                        <p class="close-focus-out">click me</p>
+                    </button>
+                    <ul tabindex="0" class="bg-black w-40 text-sm p-3 flex flex-col gap-3">
+                        <li>My Information</li>
+                        <li>Profile</li>
+                        <li>Team</li>
+                        <li>Keyboard image</li>
+                        <li>Power level english</li>
+                    </ul>
+                </Dropdown>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Dropdown>
+                    <button slot="boton" class="button-dropdown p-1">Information</button>
+                    <ul tabindex="0" class="bg-red-400 w-36 p-3 flex flex-col gap-2 right-0 close-focus-out">
+                        <li>My Information</li>
+                        <li>Profile</li>
+                    </ul>
+                </Dropdown>
+                <Dropdown>
+                    <button slot="boton" class="button-dropdown p-1">Help</button>
+                    <ul tabindex="0" class="bg-green-400 w-fit p-3 flex flex-col gap-2 right-0 close-focus-out">
+                        <li>Support</li>
+                        <li>Number</li>
+                        <li>Contact</li>
+                    </ul>
+                </Dropdown>
+                <Dropdown>
+                    <button slot="boton" class="button-dropdown p-1">Feedback</button>
+                    <ul tabindex="0" class="bg-blue-400 w-fit p-3 flex flex-col gap-2 right-0 close-focus-out">
+                        <li>Time</li>
+                        <li>Advertising</li>
+                    </ul>
+                </Dropdown>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center h-60 fondo-previsual">
+                <Dropdown title='click to open'>
+                    <ul tabindex="0" class="bg-purple-300 text-sm w-40 max-h-48 p-3 flex flex-col gap-1 overflow-scroll">
+                        <li>
+                            <button>Letter A</button>
+                        </li>
+                        <li> 
+                            <button>Letter B</button>
+                        </li>
+                        <li> 
+                            <button>Letter C</button>
+                        </li>
+                        <li> 
+                            <button>Letter D</button>
+                        </li>
+                        <li> 
+                            <button>Letter E</button>
+                        </li>
+                        <li> 
+                            <button>Letter F</button>
+                        </li>
+                        <li> 
+                            <button>Letter G</button>
+                        </li>
+                        <li> 
+                            <button>Letter H</button>
+                        </li>
+                        <li>
+                            <button>Letter I</button>
+                        </li>
+                        <li>
+                            <button>Letter J</button>
+                        </li>
+                    </ul>
+                </Dropdown>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,23 @@
+---
+interface Props {
+    head: any[];
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='default';
+const { head, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<tr class={className} {...rest}>
+    {
+        head.map( (title: any) => <th>{title}</th>)
+    }
+</tr>
+
+<style>
+    .default{
+        background-color: rgb(101, 51, 148);
+        border: 1px white solid;
+    }
+</style>

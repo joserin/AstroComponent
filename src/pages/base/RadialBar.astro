@@ -1,0 +1,113 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import RadialProgress from '../../components/base/RadialProgress.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import ComponentRadial from '../../i18n/base/progress/code-component-radial.md';
+import CssRadial from '../../i18n/base/progress/code-css-radial.md';
+import ThreeImplementacion from '../../i18n/base/progress/code-three.md';
+
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components RadialBar."
+    description='Component UI RadialBar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Radial Bar</h2>
+            <p>Radial bar can be used to show the progress of a task or to show the passing of time.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                value: (number) - Required. Defines the fill level of the progress bar.
+                            </li>
+                            <li>
+                                strokeW (number): Optional. Sets the thickness of the progress bar stroke. Defaults to 2.
+                            </li>
+                            <li>
+                                size (number): Optional. Sets the size of the progress bar container as a percentage of its
+                                parent element. Defaults to 15.
+                            </li>
+                            <li>
+                                class (string): Optional. Allows applying custom CSS classes to the progress bar element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The component renders a container element with the class radial-progress-container
+                            </li>
+                            <li>
+                                specifica-bar: This slot allows overriding the default SVG astro for the progress bar.
+                            </li>
+                            <li>
+                                Default slot: This slot can be used to place content inside the progress bar container.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                The styles define the positioning of the progress bar container and its content (default class).
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <ComponentRadial />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <CssRadial />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <RadialProgress value={10} strokeW={1} class='text-yellow-400'>
+                    <span class=" text-white">10%</span>
+                </RadialProgress>
+                <RadialProgress value={60} strokeW={2}>
+                    <span class=" text-white">60%</span>
+                </RadialProgress>
+                <RadialProgress value={90} strokeW={3} class='text-red-600'>
+                    <span class=" text-white">90%</span>
+                </RadialProgress>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

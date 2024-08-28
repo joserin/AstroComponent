@@ -1,0 +1,140 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Menu from '../../components/structure/menu.astro';
+import MenuElement from '../../components/structure/Menu-Element.astro'
+import Dropdown from '../../components/base/Dropdown.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import OneImplementacion from '../../i18n/structure/menubar/code-one.md';
+import TwoImplementacion from '../../i18n/structure/menubar/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+---
+<Layout 
+    title="Components Menu bar."
+    description='Component UI Menu bar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Menubar</h2>
+            <p>A visually persistent menu common in desktop applications that provides quick access to a consistent set of commands.</p>
+        </header>
+        <section class="h-72 fondo-previsual">
+            <Scroll class='w-full h-72'>
+                <div class="flex flex-col gap-2 information">
+                    <h3>Component Breakdown</h3>
+                    <ul>
+                        <li>
+                            Menu: The component likely renders a horizontal or vertical layout of its child MenuElement components.
+                        </li>
+                        <li>
+                            MenuElement: The component likely has no specific functionality beyond holding a Dropdown
+                        </li>
+                        <li>Dropdown: The component toggles the visibility of its options list when clicked.</li>
+                    </ul>
+                </div>
+            </Scroll>
+        </section>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center h-60 fondo-previsual">
+                <Menu class='flex gap-1'>
+                    <MenuElement>
+                        <Dropdown title='Name'>
+                            <ul class="bg-purple-400 w-36 p-2 flex flex-col gap-1 text-sm close-focus-out">
+                                <li>My Information</li>
+                                <li>Profile</li>
+                                <li>Pay</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                    <MenuElement>
+                        <Dropdown title='More'>
+                            <ul class="bg-purple-400 w-36 p-2 flex flex-col gap-1 text-sm close-focus-out">
+                                <li>Github</li>
+                                <li>Facebook</li>
+                                <li>Team</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                    <MenuElement>
+                        <Dropdown title='Information'>
+                            <ul class="bg-purple-400 w-36 p-1 flex flex-col gap-1 close-focus-out">
+                                <li>Keyboard image</li>
+                                <li>Power level english</li>
+                                <li>Exit</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                </Menu>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center h-60 fondo-previsual pt-10">
+                <Menu class='bg-black flex flex-col text-sm text-white h-fit'>
+                    <MenuElement class='p-1 w-fit border'>
+                        <Dropdown class='p-2' tabindex="0">
+                            <div slot="boton" class="button-dropdown">
+                                <p class="close-focus-out">Items 1</p>
+                            </div>
+                            <ul tabindex="0" class="bg-black border w-36 p-3 flex flex-col gap-3 absolute left-14">
+                                <li>My Information</li>
+                                <li>Profile</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                    <MenuElement class='p-1 w-fit border'>
+                        <Dropdown class='p-2' tabindex="0">
+                            <div slot="boton" class="button-dropdown">
+                                <p class="close-focus-out">Items 2</p>
+                            </div>
+                            <ul tabindex="0" class="bg-black border w-36 p-3 flex flex-col gap-3 absolute left-14">
+                                <li>Pay</li>
+                                <li>Github</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                    <MenuElement class='p-1 w-fit border'>
+                        <Dropdown class='p-2' tabindex="0">
+                            <div slot="boton" class="button-dropdown">
+                                <p class="close-focus-out">Items 3</p>
+                            </div>
+                            <ul tabindex="0" class="bg-black border w-36 p-3 flex flex-col gap-3 absolute left-14">
+                                <li>Facebook</li>
+                                <li>Team</li>
+                            </ul>
+                        </Dropdown>
+                    </MenuElement>
+                </Menu>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    .information ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 1.1rem;
+    }
+    .information li{
+        padding: 0.1rem;
+    }
+    .information h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

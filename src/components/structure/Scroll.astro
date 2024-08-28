@@ -1,0 +1,22 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='w-full h-full';
+const { class: className= defaulClass, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={[className]}>
+    <slot/>
+</div>
+
+<style>
+    div{
+        overflow: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgb(36, 36, 44) rgb(148, 158, 161);
+    }
+</style>
+

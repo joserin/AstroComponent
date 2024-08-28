@@ -1,0 +1,21 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass='deactive';
+const { title, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<div {...rest} class:list={[className, 'tab-select']}>
+    <slot/>
+</div>
+
+<style>
+    .deactive{
+        display: none;
+    }
+    .active{
+        display: block;
+    }
+</style>

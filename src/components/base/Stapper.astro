@@ -1,0 +1,29 @@
+---
+interface Props {
+    title:string;
+    identify:string
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='bg-red-200 w-10 h-10';
+
+
+const { identify , title, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<section class="flex flex-row items-center gap-3">
+    <div {...rest} class:list={[className]}>{identify}</div>
+    <span>
+        <slot/>
+    </span>
+</section>
+
+<style>
+    div{
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>

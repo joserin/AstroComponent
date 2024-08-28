@@ -1,0 +1,15 @@
+---
+interface Props {
+    column?: any[];
+    class?: string;
+    [x: string]: any;
+}
+const { column=[], class: className, ...rest } = Astro.props;
+---
+{
+    column.map( (element: any) => 
+        <td class={className} {...rest}>
+            {element}
+        </td>
+    )
+}

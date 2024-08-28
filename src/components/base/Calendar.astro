@@ -1,0 +1,215 @@
+---
+interface Props {
+    daysInfo?:string[];
+    monthsInfo?:string[];
+    class?: string;
+    [x: string]: any;
+}
+
+const defaultClass='default';
+const daysDefault = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const monthDefault = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+const { class: className = defaultClass, daysInfo = daysDefault, monthsInfo = monthDefault,  ...rest } = Astro.props;
+
+const  todayDate = new Date();
+const  year = todayDate.getFullYear();
+const  month = todayDate.getMonth();
+---
+
+<div {...rest} class:list={["calendar default", className]}>
+    <header>
+        <button class='prev cursor-pointer p-1' name="before">
+            <slot name="beforeButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M13 12h-10" />
+                    <path d="M6 15l-3 -3l3 -3" />
+                    <path d="M17 12a2 2 0 1 1 4 0a2 2 0 0 1 -4 0z" />
+                </svg>
+            </slot>
+        </button>
+        <div>
+            <select class="month-input" aria-label="selection month">
+                {
+                    monthsInfo.map((mes, index) => (
+                        <option value={index} selected={index === month}>
+                            {mes}
+                        </option>
+                    ))
+                }
+            </select>
+            <input type="number" class="year-input w-20 text-center" min="0" value={year} aria-label="selection year"/>
+        </div>
+        <button class="next cursor-pointer p-1" name="after">
+            <slot name="AfterButton">
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                    <path d="M11 12h10" />
+                    <path d="M18 9l3 3l-3 3" />
+                    <path d="M7 12a2 2 0 1 1 -4 0a2 2 0 0 1 4 0z" />
+                </svg>
+            </slot>
+        </button>
+    </header>
+    <div>
+        <section>
+            <ul class="days flex flex-row justify-center">
+                {
+                    daysInfo.map(day => <li>{day}</li>)
+                }
+            </ul>
+            <ul class="dates flex flex-row justify-center"></ul>
+        </section>
+    </div>
+</div>
+
+<style>
+    .days, .dates {
+        display: grid;
+        grid-template-columns: repeat(7, 32px);
+        gap: 0.7rem;
+        margin-block: 0.7rem;
+    }
+    header{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    .default{
+        background-color: white;
+        padding: 0.5rem;
+        border: 1px solid black;
+        color: black;
+    }
+    .today{
+        background-color: aqua;
+    }
+</style>
+
+<script>
+    const monthInput = document.querySelector(".month-input");
+    const yearInput = document.querySelector(".year-input");
+    const dates = document.querySelector(".dates") as HTMLElement;
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
+
+    const currentDate = new Date();
+    let selectedDate = new Date();
+    let year = currentDate.getFullYear();
+    let month = currentDate.getMonth();
+    let aux = false;
+
+    monthInput?.addEventListener("change", () => {
+        month = (monthInput as HTMLSelectElement).selectedIndex;
+        displayDates();
+    });
+
+    yearInput?.addEventListener("change", () => {
+        year = Number((yearInput as HTMLInputElement).value);
+        displayDates();
+    });
+
+    const updateYearMonth = () => {
+        (monthInput as HTMLSelectElement).selectedIndex = month;
+        (yearInput as HTMLInputElement).value = year.toString();
+    };
+
+    const handleDateClick = (e: any) => {
+        const button = e.target;
+        const datesList = button.parentElement as HTMLElement;
+        const selectedButtons = datesList.querySelectorAll('.selected') as NodeListOf<HTMLElement>;
+
+        selectedDate = new Date(year, month, parseInt(button.textContent));
+        const isToday = currentDate.getDate() === selectedDate.getDate() && currentDate.getFullYear() === selectedDate.getFullYear() && currentDate.getMonth() === selectedDate.getMonth();
+
+        if(isToday){
+            aux = true;
+        }
+        
+        if(selectedButtons){
+            for (const selectedButton of selectedButtons) {
+                console.log('before',aux)
+                selectedButton.classList.remove('selected');
+                if (Number(selectedButton.textContent) !== currentDate.getDate()) {
+                    selectedButton.style.backgroundColor = '';
+                }else{
+                    if(aux){
+                        selectedButton.style.backgroundColor = 'lightblue'
+                    }else{
+                        selectedButton.style.backgroundColor = ''
+                    }
+                    aux = false;
+                }
+            }
+        }
+        button.classList.add('selected');
+        button.style.backgroundColor =  "#e6a6fe ";
+    };
+    
+    const createButton = (text: any, isDisabled = false, type = 0) => {
+
+        const comparisonDate = new Date(year, month + type, text);
+        const isToday = currentDate.getDate() === comparisonDate.getDate() && currentDate.getFullYear() === comparisonDate.getFullYear() && currentDate.getMonth() === comparisonDate.getMonth();
+
+        const button = document.createElement("button");
+        button.textContent = text;
+        
+        button.disabled = isDisabled;
+        if(isDisabled){
+            button.style.backgroundColor =  "lightgray";
+            button.style.color = "gray";
+        }
+        if(isToday){
+            button.style.backgroundColor =  "lightblue";
+        }
+        //button.classList.toggle("selected", selected);
+        return button;
+    };
+    
+    const displayDates = () => {
+        
+        updateYearMonth();
+        dates.innerHTML = "";
+
+        const lastOfPrevMonth = new Date(year, month, 0);
+
+        for (let i = 0; i <= lastOfPrevMonth.getDay(); i++) {
+            const text = lastOfPrevMonth.getDate() - lastOfPrevMonth.getDay() + i;
+            const button = createButton(text, true, -1);
+            dates.appendChild(button);
+        }
+        const lastOfMOnth = new Date(year, month + 1, 0);
+
+        for (let i = 1; i <= lastOfMOnth.getDate(); i++) {
+            const button = createButton(i, false);
+            button.addEventListener("click", handleDateClick);
+            dates.appendChild(button);
+        }
+
+        const firstOfNextMonth = new Date(year, month + 1, 1);
+
+        for (let i = firstOfNextMonth.getDay(); i < 7; i++) {
+            const text = firstOfNextMonth.getDate() - firstOfNextMonth.getDay() + i;
+
+            const button = createButton(text, true, 1);
+            dates.appendChild(button);
+        }
+    };
+
+    nextBtn?.addEventListener("click", () => {
+        if (month === 11) year++;
+        month = (month + 1) % 12;
+        displayDates();
+    });
+
+    prevBtn?.addEventListener("click", () => {
+        if (month === 0) year--;
+        month = (month - 1 + 12) % 12;
+        displayDates();
+    });
+
+    displayDates();
+</script>

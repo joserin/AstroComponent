@@ -1,0 +1,67 @@
+---
+interface Props {
+    start:number;
+    end:number;
+    step?:number;
+    time?:number;
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='default';
+const { start, end, step = 0, time=1000, class: className= defaulClass, ...rest } = Astro.props;
+---
+
+<div class:list={[className, "count"]}>
+    <div class="countdown" {...rest} data-start={start} data-end={end} data-step={step} data-time={time}>{start}</div>
+    <slot/>
+</div>
+
+<style>
+    .default{
+        display: flex;
+        background-color: aquamarine;
+        width: fit-content;
+        padding: 0.25rem;
+        gap: 0.5rem;
+    }
+</style>
+
+<script>
+    const countElement = document.getElementsByClassName("count");
+
+    if(countElement){
+        for(let i=0; i < countElement.length; i++){
+
+            const countdownElement = countElement[i].querySelector(".countdown") as HTMLElement;
+            const startString = countdownElement?.dataset.start;
+            const endString = countdownElement?.dataset.end;
+            const stepString = countdownElement?.dataset.step;
+            const timeString = countdownElement?.dataset.time;
+
+            if(startString && endString && stepString && timeString){
+
+                let tiempoRestante: number = parseInt(startString);
+                let intervalo: number= 0;
+
+                function actualizarContador(end:number, start: number, steps:number) {
+                    if(start > end){
+                        if(steps > 0) tiempoRestante-= steps;
+                        else tiempoRestante--;
+                    }else{
+                        if(steps > 0) tiempoRestante+= steps;
+                        else tiempoRestante++;
+                    }
+
+                    if (tiempoRestante < end && start > end) {
+                        tiempoRestante = start;
+                    }else if(tiempoRestante > end && start < end){
+                        tiempoRestante = start;
+                    }
+                    countdownElement.textContent = tiempoRestante.toString();
+                }
+                intervalo = setInterval(actualizarContador, parseInt(timeString), parseInt(endString), parseInt(startString), parseInt(stepString));
+            }
+        }
+    }
+</script>

@@ -1,0 +1,53 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass='default';
+const { class: className = defaulClass, ...rest } = Astro.props;
+---
+<section>
+    <span class="buttonToast">
+        <slot name="toastButton" />
+    </span>
+    <span class="hidden">
+        <div class:list={[className, 'toast']} {...rest}>
+            <slot/>
+        </div>
+    </span>
+</section>
+
+<style>
+    .toast{
+        position: fixed;
+        align-items: center;
+        z-index: 100;
+    }
+    .default{
+        border-radius: 0.5rem;
+        padding: 4px;
+        bottom: 0px;
+        right: 0px;
+        background-color: rgb(108, 19, 98);
+    }
+</style>
+
+<script>
+    const buttonOpenToast = document.getElementsByClassName('buttonToast');
+    if(buttonOpenToast){
+        for(let i=0; i < buttonOpenToast.length; i++){
+            buttonOpenToast[i].addEventListener("click", ()=>{
+                const openModal = buttonOpenToast[i].nextElementSibling as HTMLElement;
+                
+                if(openModal){
+                    openModal.classList.remove("hidden");
+                    openModal.classList.add("block");
+                    setTimeout(() =>{
+                        openModal.classList.remove("block");
+                        openModal.classList.add("hidden");
+                    }, 3000);
+                }
+            });
+        }
+    }
+</script>

@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Collapse from '../../components/structure/Collapse.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/collapsible/code-component.md';
+import Css from '../../i18n/structure/collapsible/code-css.md';
+import Js from '../../i18n/structure/collapsible/code-js.md';
+import OneImplementacion from '../../i18n/structure/collapsible/code-one.md';
+import TwoImplementacion from '../../i18n/structure/collapsible/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/collapsible/code-three.md';
+import FourImplementacion from '../../i18n/structure/collapsible/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+
+---
+<Layout 
+    title="Components Collapsible."
+    description='Component UI Collapsible to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Collapse</h2>
+            <p>Collapse is used for showing and hiding content.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>Title (optional, string): Sets the text displayed on the button that triggers the collapse.</li>
+                            <li>Class (optional, string): Adds a custom class to the button for further styling.</li>
+                            <li>Additional props ([x: string]: any): Allows passing any additional attributes to the button element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                A slot named "boton" is provided within the div. This allows users to insert 
+                                custom button content within the component.
+                            </li>
+                            <li>A main element acts as the hidden content panel</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The div element is positioned relatively to accommodate the absolute positioning of the content panel.</li>
+                            <li>The default class (default) styles the button</li>
+                            <li>The main element styles, Absolute positioning to overlap the button element when shown</li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                This part utilizes Javascript to handle the collapse functionality. 
+                                It finds all elements with the class "collapse-Button"
+                            </li>
+                            <li>For each button, it searches for additional elements: .icon-rotate, .focus, The next sibling element</li>
+                            <li>
+                                <p>An event listener is added to the button to handle clicks: </p>
+                                <li>Toggles the "active" class on the button for visual feedback.</li>
+                                <li>If ".icon-rotate" is found, toggles a "rotate-180"</li>
+                                <li>Shows/hides the content panel based on its current display state.</li>
+                            </li>
+                            <li>
+                                <p>An additional event listener is added to the button for blur events</p>
+                                <li>Removes the "active" class from the button on blur.</li>
+                                <li>Hides the content panel.</li>
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+                
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Collapse title='second'>
+                    <div class="w-96">
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum provident tempora possimus deserunt inventore 
+                        necessitatibus incidunt voluptate debitis soluta similique pariatur vitae at, dolore minus commodi nihil quisquam. 
+                        Vitae, aliquam!
+                    </div>
+                </Collapse>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Collapse>
+                    <button slot="boton" class='flex justify-between gap-2 collapse-Button p-2'>
+                        <p>This is a test</p>
+                        <picture class="icon-rotate">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M15 12h3.586a1 1 0 0 1 .707 1.707l-6.586 6.586a1 1 0 0 1 -1.414 0l-6.586 -6.586a1 1 0 0 1 .707 -1.707h3.586v-3h6v3z" />
+                                <path d="M15 3h-6" />
+                                <path d="M15 6h-6" />
+                            </svg>
+                        </picture>
+                    </button>
+                    <div class="w-96">
+                        segundo asalto: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Optio debitis ratione, vel doloribus, 
+                        asperiores at harum repudiandae fuga quibusdam accusamus velit consequuntur! Quaerat cupiditate doloribus tempore 
+                        odio deserunt culpa asperiores.
+                    </div>
+                </Collapse>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <div class="flex relative w-44 justify-center items-center border-[1px] border-black">
+                    <Collapse class='p-1 absolute left-0'>
+                        <button slot="boton" class='flex justify-between gap-2 collapse-Button' aria-label="button-collapsible">
+                            <picture class=" hover:bg-slate-500 bg-opacity-9">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 20h-6a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h6" />
+                                    <path d="M18 14v7" />
+                                    <path d="M18 3v7" />
+                                    <path d="M15 18l3 3l3 -3" />
+                                    <path d="M15 6l3 -3l3 3" />
+                                </svg>
+                            </picture>
+                        </button>
+                        <div>
+                            <p>uno</p>
+                            <p>two</p>
+                        </div>
+                    </Collapse>
+                    <p>3 repositories</p>
+                </div>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Collapse>
+                    <button slot="boton" class=" p-3 collapse-Button">
+                        <span class="focus">three</span>
+                    </button>
+                    <div>
+                        tercer azalto
+                    </div>
+                </Collapse>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>        
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

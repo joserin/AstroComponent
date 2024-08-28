@@ -1,0 +1,56 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass="default peer-checked:bg-blue-600 after:bg-white peer-checked:after:bg-blue-300";
+const {  class: className = defaulClass, ...rest } = Astro.props;
+---
+<label class="switch-container">
+    <input type="checkbox" class="peer" {...rest} aria-label="input-switch">
+    <div class:list={[className, 'slider peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full']}></div>
+</label>
+
+<style>
+    .switch-container{
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    div{
+        position: relative;
+        background-color: darkgray;
+        border-radius: 9999px;
+    }
+    input{
+        position: absolute;
+        width: 100%;
+        cursor: pointer;
+        opacity: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .slider::after{
+        content: '';
+        position: absolute;
+        top: 2px;
+        inset-inline-start: 2px;
+        border-radius: 9999px;
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+    }
+    .default{
+        width: 3rem;
+        height: 1.5rem;
+    }
+    .default::after{
+        width: 1.25rem;
+        height: 1.25rem;
+    }
+</style>
+

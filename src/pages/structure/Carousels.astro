@@ -1,0 +1,246 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Carousel from '../../components/structure/Carousel.astro';
+import CarouselButton from '../../components/structure/CarouselButton.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+import Button from "../../components/base/Button.astro";
+
+import Component from '../../i18n/structure/carousel/code-component.md';
+import Css from '../../i18n/structure/carousel/code-css.md';
+import Js from '../../i18n/structure/carousel/code-js.md';
+import OneImplementacion from '../../i18n/structure/carousel/code-one.md';
+import TwoImplementacion from '../../i18n/structure/carousel/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/carousel/code-three.md';
+import FourImplementacion from '../../i18n/structure/carousel/code-four.md';
+import FiveImplementacion from '../../i18n/structure/carousel/code-five.md';
+import SixImplementacion from '../../i18n/structure/carousel/code-six.md';
+import SevenImplementacion from '../../i18n/structure/carousel/code-seven.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+
+---
+<Layout 
+    title="Components Carousel."
+    description='Component UI Carousel to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Carousel</h2>
+            <p>Carousel show images or content in a scrollable area.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[21.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-80 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                class: An optional CSS class to customize the Carousel's styling. 
+                                ...rest: Allows for passing any additional props to the picture element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Employs a picture element as the main container to apply styles and enable scrolling.
+                                The slot allows for inserting content within the Carousel.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                Sets relative positioning and horizontal overflow to allow for scrolling.
+                                Applies the default class to activate scroll-snap-type and hide the scrollbar.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                Retrieves all elements with the class carousel.
+                                Iterates over each carousel to find necessary elements: container, slides, and buttons.
+                            </li>
+                            <li>
+                                Calculates the width of each slide.
+                                Adds click events to the buttons to control the container's scrolling.
+                            </li>
+                        </ul>
+                        <h3>Structure</h3>
+                        <ul>
+                            <li>Carousel: This is the main container that allows for horizontal scrolling of its internal elements.</li>
+                            <li>
+                                CarouselButton: This is an optional component that adds navigation buttons to control the Carousel's scrolling.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="h-80">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="h-80">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+            <section slot="js" class="h-80">
+                <Scroll class='w-full h-72'>
+                    <Js/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-72 fondo-previsual">
+                <Carousel class='default snap-x w-72 h-72 aspect-square'>
+                    <img src="/img-1.webp" alt="pineapple" />
+                    <img src="/img-2.webp" alt="lemon" />
+                    <img src="/img-3.webp" alt="nacelle" />
+                    <img src="/img-4.webp" alt="grapes" />
+                </Carousel>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[26.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-[25rem] fondo-previsual">
+                <Carousel class='default flex-col snap-y w-72 h-[25rem] aspect-auto'>
+                    <img src="/img-1.webp" 
+                        class="w-fit h-fit" alt="pineapple" />
+                    <img src="/img-2.webp" 
+                        class="w-fit h-fit" alt="lemon" />
+                    <img src="/img-3.webp" 
+                        class="w-fit h-fit" alt="nacelle" />
+                    <img src="/img-4.webp" 
+                        class="w-fit h-fit" alt="grapes" />
+                </Carousel>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-[25rem]'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-72 fondo-previsual">
+                <Carousel class='default snap-x w-96 h-72'>
+                    <img src="/img-1.webp" 
+                        class="w-fit h-72" alt="pineapple" />
+                    <img src="/img-2.webp"
+                        class="w-fit h-72" alt="lemon" />
+                    <img src="/img-3.webp" 
+                        class="w-fit h-72" alt="nacelle" />
+                    <img src="/img-4.webp" 
+                        class="w-fit h-72" alt="grapes" />
+                </Carousel>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-72 fondo-previsual">
+                <Carousel class='default snap-x w-52 h-72'>
+                    <img src="/img-1.webp" 
+                        class="snap-center w-fit h-fit" alt="pineapple" />
+                    <img src="/img-2.webp" 
+                        class="snap-center w-fit h-fit" alt="lemon" />
+                    <img src="/img-3.webp" 
+                        class="snap-center w-fit h-fit" alt="nacelle" />
+                    <img src="/img-4.webp" 
+                        class="snap-center w-fit h-fit" alt="grapes" />
+                </Carousel>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-72 fondo-previsual">
+                <Carousel class='default snap-x w-60 h-72'>
+                    <img src="/img-1.webp" 
+                        class="snap-end w-fit h-72" alt="pineapple" />
+                    <img src="/img-2.webp" 
+                        class="snap-end w-fit h-72" alt="lemon" />
+                    <img src="/img-3.webp" 
+                        class="snap-end w-fit h-72" alt="nacelle" />
+                    <img src="/img-4.webp" 
+                        class="snap-end w-fit h-72" alt="grapes" />
+                </Carousel>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-60 fondo-previsual">
+                <CarouselButton idPtrevButton='prev' idNextButton="next">
+                    <img src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp" 
+                        class="w-full h-60" alt="city day"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp" 
+                        class="w-full h-60" alt="city night"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp" 
+                        class="w-full h-60" alt="city forest"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp" 
+                        class="w-full h-60" alt="city town"/>
+                </CarouselButton>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-60 fondo-previsual">
+                <CarouselButton class='flex flex-col w-[30rem]'>
+                    <img src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp" 
+                        class="w-full h-60" alt="city day"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp" 
+                        class="w-full h-60" alt="city night"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp" 
+                        class="w-full h-60" alt="city forest"/>
+                    <img src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp" 
+                        class="w-full h-60" alt="city town"/>
+                    <footer slot="button-move" class="flex w-full justify-center gap-5 list-buttons absolute bottom-0">
+                        <Button class='bg-blue-400 px-2 rounded-full hover:bg-blue-700'>1</Button>
+                        <Button class='bg-blue-400 px-2 rounded-full hover:bg-blue-700'>2</Button>
+                        <Button class='bg-blue-400 px-2 rounded-full hover:bg-blue-700'>3</Button>
+                        <Button class='bg-blue-400 px-2 rounded-full hover:bg-blue-700'>4</Button>
+                    </footer>
+                </CarouselButton>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SevenImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

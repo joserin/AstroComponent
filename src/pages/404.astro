@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Error from '../components/Error.astro';
+---
+
+<Layout 
+	title="Components to Astro."
+	description="this web is a collection of high-performance, pre-built components designed to accelerate development of visually stunning and user-friendly Astro applications.">
+	<main class="h-full">
+		<Error
+			error="404"
+			message="Page not found"
+			contextMessage="Greetings! We are sorry but we could not find the url you were looking for."
+		/>
+	</main>
+
+</Layout>

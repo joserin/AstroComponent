@@ -1,0 +1,16 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const { class: className, ...rest } = Astro.props;
+---
+<ol class={className} {...rest}>
+    <slot/>
+</ol>
+
+<style>
+    ol{
+        display: flex;
+    }
+</style>

@@ -1,0 +1,69 @@
+---
+interface Props {
+    title?:string;
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass='default bg-purple-700 hover:bg-purple-500';
+const { title, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<div class={className}>
+    <slot name="boton">
+        <button {...rest} class="collapse-Button px-2 py-1 w-fit h-fit">{title}</button>
+    </slot>
+    <main class="hidden overflow-hidden">
+        <slot/>
+    </main>
+</div>
+
+<style>
+    div{
+        position: relative;
+    }
+    .default{
+        border-radius: 0.5rem;
+        font-weight: 500;
+        font-size: 0.8rem;
+        line-height: 1.25rem;
+    }
+    main{
+        position: absolute;
+    }
+</style>
+
+<script>
+    const collapseBoton = document.getElementsByClassName("collapse-Button");
+    
+    if (collapseBoton) {
+        for(let i=0; i < collapseBoton.length; i++){
+
+            const rotateIcon = collapseBoton[i].querySelector(".icon-rotate");
+            const focus = collapseBoton[i].querySelector(".focus");
+            const panel = collapseBoton[i].nextElementSibling as HTMLElement;
+
+            collapseBoton[i].addEventListener("click", () =>{
+                collapseBoton[i].classList.toggle("active");
+                if(rotateIcon){
+                    rotateIcon.classList.toggle("rotate-180");
+                }
+                if(panel){
+                    if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                }
+            });
+            
+            if(focus){
+                collapseBoton[i].addEventListener("blur", () => {
+                    collapseBoton[i].classList.remove("active");
+                    if (panel) {
+                        panel.style.display = "none";
+                    }
+                });
+            }
+        }
+    }
+  </script>

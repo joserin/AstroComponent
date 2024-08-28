@@ -1,0 +1,128 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Select from '../../components/base/Select.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/select/code-component.md';
+import Css from '../../i18n/base/select/code-css.md';
+import OneImplementacion from '../../i18n/base/select/code-one.md';
+import TwoImplementacion from '../../i18n/base/select/code-two.md';
+import ThreeImplementacion from '../../i18n/base/select/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+const val = ['Homer', 'Marge', 'Bart', 'Lisa', 'Maggie'];
+const day = ['mo', 'tus', 'wen', 'tr', 'fri'];
+---
+<Layout 
+    title="Components Select."
+    description='Component UI Select to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Select</h2>
+            <p>Displays a list of options for the user to pick from—triggered by a button.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>values: An array of strings representing the options for the select element.</li>
+                            <li>title: A string to display as the default option (placeholder).</li>
+                            <li>class: A string for custom CSS classes.</li>
+                            <li>..rest: Accepts any additional props that can be passed to the underlying select element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Renders a select element with the provided props.</li>
+                            <li>Contains a slot element to allow for custom option content.</li>
+                            <li>If values has elements, a disabled selected option is rendered with the title prop as its text.</li>
+                            <li>
+                                Maps the values array to create option elements for each value, converting 
+                                the value to lowercase for the value attribute.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                Defines a default class .default with basic styling for the select element, 
+                                including background color, border, font, and dimensions.
+                            </li>
+                            <li>
+                                Defines a .default:focus class for styling the focused state of the select element.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Select>
+                    <option disabled selected>Pick your favorite Simpson</option>
+                    <option>Homer</option>
+                    <option>Marge</option>
+                    <option>Bart</option>
+                    <option>Lisa</option>
+                    <option>Maggie</option>
+                </Select>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-52 fondo-previsual">
+                <Select values={val}/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-52'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-52 fondo-previsual">
+                <Select values={day} title='Day of the week' class='w-1/2 p-2 text-red-600 border-2 border-blue-600 font-semibold text-xl text-center'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-52'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

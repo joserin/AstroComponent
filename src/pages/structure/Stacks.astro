@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Stack from '../../components/structure/Stack.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/stack/code-component.md';
+import Css from '../../i18n/structure/stack/code-css.md';
+import Js from '../../i18n/structure/stack/code-js.md';
+import OneImplementacion from '../../i18n/structure/stack/code-one.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'JS'];
+---
+<Layout 
+    title="Components Stack."
+    description='Component UI Stack to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Stack</h2>
+            <p>Stack visually puts elements on top of each other.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                class (optional): A string to add additional CSS classes to the component. 
+                                This allows for further customization beyond the default styling.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>div element: The main container element for the component.</li>
+                            <li>
+                                slot: A placeholder for the content you want to display within the stacked list. 
+                                You can place any HTML elements or components inside the slot to create the list items.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>The .default class, which is applied to the component by default.</li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>his JavaScript code dynamically positions the child elements (*) within the .stack container.</li>
+                            <li>It selects all child elements using document.querySelectorAll</li>
+                            <li>If there are elements found, it iterates through them using a loop</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center h-60 pt-16 fondo-previsual">
+                <Stack>
+                    <div class="w-32 h-20 rounded bg-yellow-700 p-1">
+                        <p>1 2 3</p>
+                    </div>
+                    <div class="w-32 h-20 rounded bg-red-600 p-1">2</div>
+                    <div class="w-32 h-20 rounded bg-blue-500 p-1">3</div>
+                </Stack>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

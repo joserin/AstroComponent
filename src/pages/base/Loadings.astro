@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Loading from '../../components/base/loading.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/loading/code-component.md';
+import Css from '../../i18n/base/loading/code-css.md';
+import OneImplementacion from '../../i18n/base/loading/code-one.md';
+import TwoImplementacion from '../../i18n/base/loading/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Loading."
+    description='Component UI Loading to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Loading</h2>
+            <p>Loading shows an animation to indicate that something is loading.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                title?: string: Optional text content to be displayed within the component, 
+                                potentially providing additional information about the loading state.
+                            </li>
+                            <li>
+                                class?: string: Optional custom class name to be applied to the component's 
+                                outer div, allowing for custom styling.
+                            </li>
+                            <li>
+                                [x: string]: any: Allows for passing arbitrary props to the component.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>A div element with the specified class .default-circle</li>
+                            <li>
+                                slot: A slot element allows for custom content to be inserted within the component, 
+                                in this case, the title if provided.
+                            </li>
+                            <li>title: Displays the title prop within the slot if it exists.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default-circle: Defines the base styles for the loading indicator, creating a 
+                                circular element with a rotating border animation.
+                            </li>
+                            <li>
+                                .default-bar: Defines styles for a potential progress bar, though it's not 
+                                used in the provided template.
+                            </li>
+                            <li>@keyframes spin: Defines the animation for the circular loading indicator.</li>
+                            <li>@keyframes progress: Defines the animation for a potential progress bar.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <div class="flex gap-3">
+                    <Loading title='loading'/>
+                </div>
+            </section>
+            <section slot="implementation">
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[13.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-48 fondo-previsual">
+                <div class="overflow-hidden">
+                    <Loading class='default-bar'>
+                        wait a sec
+                    </Loading>
+                </div>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-48'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>
+

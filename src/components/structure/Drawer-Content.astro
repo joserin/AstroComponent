@@ -1,0 +1,29 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaultClass="default transform -translate-x-full peer-checked:translate-x-0";
+const { class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<div class:list={[className, 'drawer-container']} {...rest}>
+    <slot/>
+</div>
+
+<style>
+    .drawer-container{
+        position: fixed;
+        z-index: 99;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 500ms;
+    }
+    .default{
+        width: fit-content;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background-color: black;
+    }
+</style>

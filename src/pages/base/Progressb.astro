@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Progress from '../../components/base/Progress.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import ComponentProgress from '../../i18n/base/progress/code-component-progress.md';
+import CssProgress from '../../i18n/base/progress/code-css-progress.md';
+import OneImplementacion from '../../i18n/base/progress/code-one.md';
+import TwoImplementacion from '../../i18n/base/progress/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components ProgressBar."
+    description='Component UI ProgressBar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Progress</h2>
+            <p>Progress bar can be used to show the progress of a task or to show the passing of time.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                value: A number representing the percentage of the progress bar to be filled.
+                            </li>
+                            <li>
+                                class: An optional string to add custom CSS classes to the progress bar.
+                            </li>
+                            <li>
+                                rest: A spread operator to allow for additional custom props to be passed to the inner div.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Outer div with class background-Bar: This div serves as the container for the progress bar, 
+                                providing the overall background and styling.
+                            </li>
+                            <li>
+                                Inner div with dynamic class and style: class, style and spread operator
+                            </li>
+                            <li>
+                                Slot: This allows for custom content to be placed inside the progress bar, 
+                                such as a percentage label or other elements.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .background-Bar: Defines the overall appearance of the progress bar container, 
+                                including height, width, background color, and text alignment.
+                            </li>
+                            <li>
+                                .background-Bar .progress: Styles the inner div that represents the progress, 
+                                setting its height and background color.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <ComponentProgress />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <CssProgress />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <Progress value={10} class='progress'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Progress value={50} class='h-[30px] bg-red-600 flex justify-center items-center'>
+                    <span class=" text-sm ">50%</span>
+                </Progress>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

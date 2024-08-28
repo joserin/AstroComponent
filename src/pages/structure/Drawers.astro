@@ -1,0 +1,177 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Drawer from '../../components/structure/Drawer.astro';
+import DrawerContent from '../../components/structure/Drawer-Content.astro';
+import DrawerLabel from '../../components/structure/Drawer-Label.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/drawer/code-component.md';
+import Css from '../../i18n/structure/drawer/code-css.md';
+import OneImplementacion from '../../i18n/structure/drawer/code-one.md';
+import TwoImplementacion from '../../i18n/structure/drawer/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/drawer/code-three.md';
+import FourImplementacion from '../../i18n/structure/drawer/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+
+---
+<Layout 
+    title="Components Drawer."
+    description='Component UI Drawer to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Drawer</h2>
+            <p>Drawer is a grid layout that can show/hide a sidebar on the left or right side of the page.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: Optional custom class for the outer div.</li>
+                            <li>Component Drawer-Label</li>
+                            <li>identifier: Required ID for the modal and its label.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Uses a slot to allow custom content within the checkbox.</li>
+                            <li>Component Drawer</li>
+                            <li>Renders a div with an optional class.</li>
+                            <li>Contains an invisible checkbox input with the peer class for styling interactions.</li>
+                            <li>Component Drawer-Content</li>
+                            <li>Renders a div with the drawer-container and optional custom class.</li>
+                            <li>Component Drawer-Label</li>
+                            <li>Renders a label with the default-background class and for attribute linked to the identifier.</li>
+                            <li>Uses a slot to allow custom content within the modal.</li>
+                            <li>Renders a span with the custom class and the identifier as the ID.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>Component Drawer</li>
+                            <li>Styles the checkbox input to be invisible but clickable.</li>
+                            <li>Styles the outer div with default padding, background color, and hover effects.</li>
+                            <li>Component Drawer-Content</li>
+                            <li>Styles the drawer container with fixed positioning, z-index, and transition effects.</li>
+                            <li>Styles the default drawer with width, height, position, and background color.</li>
+                            <li>Component Drawer-Label</li>
+                            <li>Styles the default background as a full-screen overlay with opacity and display: none.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-60 fondo-previsual">
+                <Drawer>
+                    <button class="px-1">left</button>
+                    <DrawerContent>
+                        <main class="w-80">
+                            display left
+                        </main>
+                    </DrawerContent>
+                </Drawer>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center items-center h-60 fondo-previsual">
+                <Drawer class='border border-white p-1'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M8 13v-8.5a1.5 1.5 0 0 1 3 0v7.5" />
+                        <path d="M11 11.5v-2a1.5 1.5 0 1 1 3 0v2.5" />
+                        <path d="M14 10.5a1.5 1.5 0 0 1 3 0v1.5" />
+                        <path d="M17 11.5a1.5 1.5 0 0 1 3 0v4.5a6 6 0 0 1 -6 6h-2h.208a6 6 0 0 1 -5.012 -2.7a69.74 69.74 0 0 1 -.196 -.3c-.312 -.479 -1.407 -2.388 -3.286 -5.728a1.5 1.5 0 0 1 .536 -2.022a1.867 1.867 0 0 1 2.28 .28l1.47 1.47" />
+                    </svg>
+                    <DrawerContent class="top-0 left-0 w-full h-fit transform -translate-y-full bg-black shadow-lg peer-checked:translate-y-0">
+                        <main class="h-56">
+                            display top
+                        </main>
+                    </DrawerContent>
+                </Drawer>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center items-center h-60 fondo-previsual">
+                <Drawer id="drawer">
+                    <DrawerLabel identifier='drawer'/>
+                    <DrawerContent>
+                        <div class="w-80">
+                            display bottom
+                        </div>
+                    </DrawerContent>
+                </Drawer>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 m-1 justify-center items-center h-60 fondo-previsual">
+                <Drawer id="menu" class='bg-red-500 rounded-full p-1'>
+                    <DrawerLabel identifier='menu'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M4 6l16 0" />
+                            <path d="M4 12l16 0" />
+                            <path d="M4 18l16 0" />
+                        </svg>
+                    </DrawerLabel>
+                    <DrawerContent class='text-black top-0 right-0 bg-white/80 w-fit h-full transform translate-x-full peer-checked:-translate-x-0'>
+                        <div class="w-80">
+                            display bottom
+                        </div>
+                    </DrawerContent>
+                </Drawer>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

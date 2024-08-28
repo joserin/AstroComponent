@@ -1,0 +1,44 @@
+---
+interface Props {
+    class?: string;
+    endLine?:boolean;
+    [x: string]: any;
+}
+const defaulClass="default horizontal";
+const { endLine = false , class: className = defaulClass, ...rest } = Astro.props;
+---
+<span>
+    <slot/>
+    {
+        !endLine && <div class={className} {...rest}></div>
+    }
+</span>
+
+<style>
+    span{
+        display: flex;
+        align-items: center;
+    }
+    .default{
+        background-color: white;
+        display: none;
+    }
+    .horizontal{
+        width: 100%;
+        height: 0.125rem;
+    }
+    .vertical{
+        height: 100%;
+        width: 0.125rem;
+    }
+    @media (min-width: 640px) {
+        .default {
+            display: flex;
+        }
+    }
+    @media (prefers-color-scheme: dark) {
+        .default {
+            background-color: black;
+        }
+    }
+</style>

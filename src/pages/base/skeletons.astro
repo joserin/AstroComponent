@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Skeleton from '../../components/base/Skeleton.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/skeleton/code-component.md';
+import Css from '../../i18n/base/skeleton/code-css.md';
+import OneImplementacion from '../../i18n/base/skeleton/code-one.md';
+import TwoImplementacion from '../../i18n/base/skeleton/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Skeleton."
+    description='Component UI Skeleton to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Skeleton</h2>
+            <p>Use to show a placeholder while content is loading.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                class?: string: An optional prop to provide a custom CSS class to the component. 
+                                If not provided, the default class will be applied.
+                            </li>
+                            <li>
+                                [x: string]: any: Allows for any additional props to be passed to the component. 
+                                These props will be spread onto the underlying div element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Renders a div element. Applies the className prop to the class attribute.</li>
+                            <li>Spreads any additional props (from rest) onto the div element.</li>
+                            <li>
+                                slot: A slot element, allowing content to be injected into the component 
+                                from the parent component. This makes the component reusable and flexible.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default: Defines the default styles for the component, including a pulsing 
+                                animation and rounded corners.
+                            </li>
+                            <li>@keyframes pulse: Defines the keyframes for the pulse animation.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Skeleton>
+                    <div class="w-32 h-32 bg-yellow-200"></div>
+                </Skeleton>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Skeleton>
+                    <div class="flex flex-col gap-4 w-52">
+                        <div class="flex gap-4 items-center">
+                          <div class="bg-white w-16 h-16 rounded-full shrink-0"></div>
+                          <div class="flex flex-col gap-4">
+                            <div class="bg-white h-4 w-20"></div>
+                            <div class="bg-white h-4 w-28"></div>
+                          </div>
+                        </div>
+                        <div class="bg-white h-32 w-full"></div>
+                    </div>
+                </Skeleton>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

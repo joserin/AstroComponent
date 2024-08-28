@@ -1,0 +1,134 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Components to Astro."
+	description="this web is a collection of high-performance, pre-built components designed to accelerate development of visually stunning and user-friendly Astro applications."
+	canonical='http://localhost:4321/'
+	>
+	<main class="p-2 md:p-5">
+		<header class="text-center text-base md:text-xl p-3 md:p-10">
+			<h1 class="font-bold text-xl md:text-5xl">The library</h1>
+			<p class="text-xs md:text-lg">Creating User Interfaces with Astro</p>
+		</header>
+		<div class="m-5 p-2 md:p-5 flex gap-5 flex-wrap justify-center items-center">
+			<section>
+				<div class="div-default">
+					<header class="flex justify-center items-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="30" height="30" viewBox="0 0 24 24" 
+						stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M3 12l3 3l3 -3l-3 -3z" />
+							<path d="M15 12l3 3l3 -3l-3 -3z" />
+							<path d="M9 6l3 3l3 -3l-3 -3z" />
+							<path d="M9 18l3 3l3 -3l-3 -3z" />
+						</svg>
+					</header>
+					<div class="p-3 flex flex-col w-full">
+						<span class="font-semibold text-lg">The Astro UI library</span>
+						<p class="p-1">
+							Is a collection of pre-built, highly customizable UI components.
+						</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="div-default">
+					<header class="flex justify-center items-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="30" height="30" viewBox="0 0 24 24" 
+						stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M3 12l3 3l3 -3l-3 -3z" />
+							<path d="M15 12l3 3l3 -3l-3 -3z" />
+							<path d="M9 6l3 3l3 -3l-3 -3z" />
+							<path d="M9 18l3 3l3 -3l-3 -3z" />
+						</svg>
+					</header>
+					<div class="p-3 flex flex-col w-full">
+						<span class="font-semibold text-lg">Who it's for</span>
+						<p class="p-1">
+							Designed for developers of all levels
+						</p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<div class="div-default">
+					<header class="flex justify-center items-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="30" height="30" viewBox="0 0 24 24" 
+						stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M3 12l3 3l3 -3l-3 -3z" />
+							<path d="M15 12l3 3l3 -3l-3 -3z" />
+							<path d="M9 6l3 3l3 -3l-3 -3z" />
+							<path d="M9 18l3 3l3 -3l-3 -3z" />
+						</svg>
+					</header>
+					<div class="p-3 flex flex-col w-full">
+						<span class="font-semibold text-lg">Benefits</span>
+						<p class="p-1">
+							Library empowers you to create stunning and consistent user interfaces.
+						</p>
+					</div>
+				</div>
+			</section>
+		</div>
+		<h1 class="text-center p-2 md:p-10 font-bold text-2xl md:text-5xl">Highlight key features</h1>
+		<div class="m-5 flex gap-5">
+			<section>
+				<div class="flex flex-col justify-center items-center w-40 h-52 md:w-52 md:h-64 rounded-xl overflow-hidden border-2">
+					<header class="flex justify-center items-center">
+						<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="50" height="50" viewBox="0 0 24 24" 
+						stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+							<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+							<path d="M3 12l3 3l3 -3l-3 -3z" />
+							<path d="M15 12l3 3l3 -3l-3 -3z" />
+							<path d="M9 6l3 3l3 -3l-3 -3z" />
+							<path d="M9 18l3 3l3 -3l-3 -3z" />
+						</svg>
+					</header>
+					<div class="p-3 flex flex-col w-full">
+						<span class="font-semibold text-lg">Components</span>
+						<p class="p-1">List of components available</p>
+					</div>
+					<footer class="flex justify-end pr-2">
+						<a href="/component/" class='hover:bg-blue-300 bg-blue-700 p-1 w-fit rounded-xl'>See list</a>
+					</footer>
+				</div>
+			</section>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	section{
+		background: rgb(124,50,161);
+		background: radial-gradient(circle, rgba(124,50,161,1) 0%, rgba(0,0,0,1) 100%);
+	}
+	.div-default{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		gap: 1.25rem;
+		width: 17rem;
+		height: 14rem;
+		border-radius: 0.75rem;
+		overflow: hidden;
+		border-width: 2px;
+	}
+	@media (max-width: 768px) {
+		.div-default {
+			width: 14rem;
+			height: 10rem;
+			gap: 0.5rem;
+		}
+	}
+	@media (max-width: 400px) {
+		.div-default {
+			width: 12rem;
+			height: 9rem;
+			gap: 0.5rem;
+		}
+	}
+</style>

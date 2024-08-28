@@ -1,0 +1,27 @@
+---
+interface Props {
+  url: string;
+  class?: string;
+  [x: string]: any;
+}
+
+const defaulClass='default transition focus-visible:ring-2 ring-offset-2 ring-gray-200';
+
+const { url, class: className= defaulClass, ...rest } = Astro.props;
+---
+
+<a href={url} {...rest} class={className}>
+  <slot/>
+</a>
+
+<style>
+  .default{
+    padding: 0.5rem 0.25rem;
+    border-radius: 0.25rem;
+    text-align: center;
+    background-color: aquamarine;
+  }
+  .default:hover{
+    background-color: blue;
+  }
+</style>

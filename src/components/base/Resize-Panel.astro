@@ -1,0 +1,95 @@
+---
+interface Props {
+    position?: 'side' | 'bottom';
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='resize-x bg-red-300 w-20 h-20';
+"flex h-full w-full data-[panel-group-direction=vertical]:flex-col"
+"relative flex w-px items-center justify-center bg-border after:absolute after:inset-y-0 after:left-1/2 after:w-1 after:-translate-x-1/2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring focus-visible:ring-offset-1 data-[panel-group-direction=vertical]:h-px data-[panel-group-direction=vertical]:w-full data-[panel-group-direction=vertical]:after:left-0 data-[panel-group-direction=vertical]:after:h-1 data-[panel-group-direction=vertical]:after:w-full data-[panel-group-direction=vertical]:after:-translate-y-1/2 data-[panel-group-direction=vertical]:after:translate-x-0 [&[data-panel-group-direction=vertical]>div]:rotate-90"
+const { position, class: className= defaulClass, ...rest } = Astro.props;
+
+/*{withHandle && (
+      <div className="z-10 flex h-4 w-3 items-center justify-center rounded-sm border bg-border">
+        <GripVertical className="h-2.5 w-2.5" />
+      </div>
+    )}*/
+---
+<!-- 
+<div class:list={["elemento", className]} {...rest}>
+    <slot/>
+    {
+        position !== undefined && <div class:list={[position, 'resizable__control']}></div>
+    }
+</div>
+-->
+
+<div class:list={[className, 'resizable-group-style']}>
+
+</div>
+
+<style>
+    .resizable-group-style{
+        overflow: hidden;
+        max-width: 100%;
+        max-height: 100%;
+    }
+    .elemento {
+        position: relative;
+        width: 100%;
+    }
+
+    .side {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 0.4rem;
+        display: flex;
+        cursor: col-resize;
+        background-color: white;
+    }
+    .bottom {
+        position: absolute;
+        bottom: 0;
+        height: 0.4rem;
+        cursor: col-resize;
+        background-color: white;
+    }
+</style>
+
+<script>
+    /*
+    function makeResizable(selector: string) {
+        document.querySelectorAll(selector).forEach(function (element) {
+            const resizer = element.querySelector(".resizable__control") as HTMLElement;
+            const minimum_size = 20;
+            let original_width = 0;
+            let original_height = 0;
+            let original_x = 0;
+            let original_mouse_x = 0;
+            resizer?.addEventListener("mousedown", function (e:Event) {
+                e.preventDefault();
+                original_width = parseFloat(getComputedStyle(element, null).getPropertyValue("width").replace("px", "") );
+                original_height = parseFloat(getComputedStyle(element, null).getPropertyValue("height").replace("px", ""));
+                original_x = element.getBoundingClientRect().left;
+                window.addEventListener("mousemove", resize);
+                window.addEventListener("mouseup", stopResize);
+            });
+
+            function resize(e: any) {
+                if (resizer?.classList.contains("resizable__control")) {
+                    const width = original_width + (e.pageX - original_mouse_x);
+                    if (width > minimum_size) {
+                        (element as HTMLElement).style.width = width + "px";
+                    }
+                }
+            }
+            function stopResize() {
+                window.removeEventListener("mousemove", resize);
+            }
+        });
+    }
+    makeResizable(".elemento");*/
+</script>

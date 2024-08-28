@@ -1,0 +1,24 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+
+const defaultClass="default text-black bg-white";
+const { class: className = defaultClass, ...rest } = Astro.props;
+---
+
+<div {...rest} class={className} role="alert">
+    <slot/>
+</div>
+
+<style>
+    .default{
+        padding: 1rem;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+        display: flex;
+        gap: 0.75rem;
+        border-radius: 0.75rem;
+    }
+</style>

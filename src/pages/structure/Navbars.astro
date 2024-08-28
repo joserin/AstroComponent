@@ -1,0 +1,266 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/structure/Navbar.astro';
+import ButtonLink from '../../components/base/ButtonLink.astro';
+import Button from '../../components/base/Button.astro';
+import Dropdown from '../../components/base/Dropdown.astro';
+import Avatar from '../../components/base/Avatar.astro';
+import Indicator from '../../components/base/Indicator.astro';
+import IndicatorBadge from '../../components/base/Indicator-Badge.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/navbar/code-component.md';
+import Css from '../../i18n/structure/navbar/code-css.md';
+import OneImplementacion from '../../i18n/structure/navbar/code-one.md';
+import TwoImplementacion from '../../i18n/structure/navbar/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/navbar/code-three.md';
+import FourImplementacion from '../../i18n/structure/navbar/code-four.md';
+import FiveImplementacion from '../../i18n/structure/navbar/code-five.md';
+import SixImplementacion from '../../i18n/structure/navbar/code-six.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components NavBar."
+    description='Component UI NavBar to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Navbar</h2>
+            <p>Navbar is used to show a navigation bar on the top of the page.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class?: string: An optional prop to provide a custom CSS class to the component.</li>
+                            <li>
+                                [x: string]: any: A rest prop to allow for any additional attributes to be passed 
+                                to the component.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Creates a div element and spreads the rest of the props onto it. The className prop, 
+                                either provided by the user or set to the default defaultClass, is applied to the div.
+                            </li>
+                            <li>
+                                slot: A slot element to allow for custom content to be inserted into the component.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default: Defines the default styles for the component, including:
+                                Display as a flex container with horizontal layout.
+                                Content height adjusts to fit its content.
+                                Full width. Gap of 2.5rem between child elements.
+                                Light gray background color. Rounded corners.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[13.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-48 fondo-previsual">
+                <Navbar>
+                    <ButtonLink url="" class='text-black text-xl font-semibold hover:font-bold rounded-lg p-1'>Home</ButtonLink>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-48'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Navbar class='flex justify-between bg-white w-full items-center px-3 py-1'>
+                    <ButtonLink url="" class='text-black text-xl font-bold hover:font-semibold hover:text-blue-700 rounded-lg p-1'>Home</ButtonLink>
+                    <picture>
+                        <Button class='hover:bg-slate-200 p-1'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            </svg>
+                        </Button>
+                    </picture>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Navbar class='flex justify-between bg-white w-full items-center px-3 py-1'>
+                    <picture class="border-2 flex items-center">
+                        <Button class='hover:bg-blue-100'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M4 6l16 0" />
+                                <path d="M4 12l16 0" />
+                                <path d="M4 18l16 0" />
+                            </svg>
+                        </Button>
+                    </picture>
+                    <ButtonLink url="" class='text-black text-xl font-bold hover:bg-slate-300 rounded-lg p-1'>Home</ButtonLink>
+                    <picture class="border-2 flex items-center">
+                        <Button class='hover:bg-red-100'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M5 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                                <path d="M19 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                            </svg>
+                        </Button>
+                    </picture>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Navbar class='flex justify-center w-fit items-center p-1 gap-5'>
+                    <Dropdown>
+                        <span slot="boton" class="button-dropdown">
+                            <p class="close-focus-out">Part one</p>
+                        </span>
+                        <ul class="w-36 p-3 text-sm flex flex-col gap-1 bg-yellow-500">
+                            <li>My Information</li>
+                            <li>Profile</li>
+                            <li>Watch out</li>
+                        </ul>
+                    </Dropdown>
+                    <Dropdown>
+                        <span slot="boton" class="button-dropdown">
+                            <p class="close-focus-out">Part two</p>
+                        </span>
+                        <ul class="w-36 p-3 text-sm flex flex-col gap-1 bg-blue-500">
+                            <li>Password</li>
+                            <li>Tools</li>
+                            <li>Help</li>
+                        </ul>
+                    </Dropdown>
+                    <ButtonLink url="" class='text-xl font-bold hover:bg-slate-300 rounded-lg p-1'>Home</ButtonLink>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Navbar class=' bg-lime-100 flex justify-between w-full items-center p-1'>
+                    <ButtonLink url="" class='text-black text-xl font-bold hover:bg-lime-200 rounded-lg p-1'>Home</ButtonLink>
+                    <div class="flex justify-center items-center gap-2">
+                        <input class="p-1 bg-lime-300 text-black" type="search" aria-label="insert-search"/>
+                        <Dropdown>
+                            <Avatar slot="boton" class="button-dropdown cursor-pointer">
+                                <img class="close-focus-out w-10 h-10 rounded-3xl" src="/img-1.webp" alt="test image">
+                            </Avatar>
+                            <ul class="w-40 p-1 flex flex-col gap-3 bg-black absolute right-0">
+                                <li>My Information</li>
+                                <li>Profile</li>
+                                <li>Watch out</li>
+                            </ul>
+                        </Dropdown>
+                    </div>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Navbar class='flex justify-between w-full items-center p-1 bg-purple-400'>
+                    <picture class="flex items-center p-1">
+                        <Button class='hover:bg-purple-300'>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M4 6l16 0" />
+                                <path d="M4 12l16 0" />
+                                <path d="M4 18l16 0" />
+                            </svg>
+                        </Button>
+                    </picture>
+                    <ButtonLink url="" class='text-black text-xl hover:font-bold hover:bg-purple-200 rounded-lg p-1'>Home</ButtonLink>
+                    <Dropdown class='p-1'>
+                        <Avatar slot="boton" class="button-dropdown cursor-pointer">
+                            <Indicator class='px-2 py-1 text-center bg-purple-300 rounded-lg hover:bg-purple-500'>
+                                <IndicatorBadge class='w-6 h-6 text-[0.6rem] rounded-full bg-purple-950 -top-2 -left-4'>+99</IndicatorBadge>
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="close-focus-out rounded-3xl" width="20" height="20" viewBox="0 0 24 24" stroke-width="1" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+                                        <path d="M17 17h-11v-14h-2" />
+                                        <path d="M6 5l14 1l-1 7h-13" />
+                                    </svg>
+                                </div>
+                            </Indicator>
+                        </Avatar>
+                        <div class="w-40 p-2 flex flex-col gap-3 bg-black absolute right-0 bottom-0">
+                            <h3 class=" font-semibold text-xl">+99 items</h3>
+                            <span>cost $999</span>
+                            <Button class=' bg-slate-500'>view card</Button>
+                        </div>
+                    </Dropdown>
+                </Navbar>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

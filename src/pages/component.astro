@@ -1,0 +1,1022 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/segment/Card.astro';
+import ButtonLink from '../components/base/ButtonLink.astro';
+---
+
+<Layout 
+	title="Ui components library to Astro."
+	description='List of component library for Astro'
+	>
+	<main class="p-2 md:p-5">
+		<header class="p-2">
+			<h1>List Components</h1>
+			<h2 class="text-xs md:text-sm">The component library for Astro</h2>
+		</header>
+		<div class="flex flex-col justify-center items-center">
+			<h3 id="_base">Base</h3>
+			<div class="m-1 md:m-4 flex gap-2 md:gap-5 flex-wrap justify-center items-center">
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M19.875 6.27c.7 .398 1.13 1.143 1.125 1.948v7.284c0 .809 -.443 1.555 -1.158 1.948l-6.75 4.27a2.269 2.269 0 0 1 -2.184 0l-6.75 -4.27a2.225 2.225 0 0 1 -1.158 -1.948v-7.285c0 -.809 .443 -1.554 1.158 -1.947l6.75 -3.98a2.33 2.33 0 0 1 2.25 0l6.75 3.98h-.033z" />
+								<path d="M12 8v4" />
+								<path d="M12 16h.01" />
+							</svg>					  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Alert</h4>
+							<p class="p-1">Alert informs events.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Alert/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M20 6v12a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2z" />
+								<path d="M10 16h6" />
+								<path d="M13 11m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M4 8h4" />
+								<path d="M4 12h4" />
+								<path d="M4 16h4" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Avatar</h4>
+							<p class="p-1">Used to show a thumbnail</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Avatar/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M17 17v-13l-5 3l-5 -3v13l5 3z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Badge</h4>
+							<p class="p-1">Badges are used to inform</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Badge/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon " width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+								<path d="M13 10.5v3a1.5 1.5 0 0 0 3 0v-3a1.5 1.5 0 0 0 -3 0z" />
+								<path d="M8 12h2" />
+								<path d="M10 9h-2v6" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Button</h4>
+							<p class="p-1">Buttons allow the user to take actions</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Buttons/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon " width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+								<path d="M13 10.5v3a1.5 1.5 0 0 0 3 0v-3a1.5 1.5 0 0 0 -3 0z" />
+								<path d="M8 12h2" />
+								<path d="M10 9h-2v6" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">ButtonLink</h4>
+							<p class="p-1">Buttons link allow the user to take actions</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/ButtonLinks/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M9 5h9a2 2 0 0 1 2 2v9m-.184 3.839a2 2 0 0 1 -1.816 1.161h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 1.158 -1.815" />
+								<path d="M16 3v4" />
+								<path d="M8 3v1" />
+								<path d="M4 11h7m4 0h5" />
+								<path d="M3 3l18 18" />
+							  </svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Calendar</h4>
+							<p class="p-1">Selecting and editing dates</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Calendars/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M8 9h8" />
+								<path d="M8 13h6" />
+								<path d="M9 18h-3a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-3l-3 3l-3 -3z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">ChatBubble</h4>
+							<p class="p-1">Show one line of conversation</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/ChatBubble/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M20.779 10.007a9 9 0 1 0 -10.77 10.772" />
+								<path d="M13 21h8v-7" />
+								<path d="M12 8v4l3 3" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Countdown</h4>
+							<p class="p-1">Transition effect of changing numbers.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Countdowns/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M5 10h14" />
+								<path d="M5 14h14" />
+								<path d="M5 19l14 -14" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Diff</h4>
+							<p class="p-1">Diff comparison of two items.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Diff/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+								<path d="M9 11l3 3l3 -3" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Detail</h4>
+							<p class="p-1">Detail can open a menu without js.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/DropdownDetails/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 3m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" />
+								<path d="M9 11l3 3l3 -3" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Dropdown</h4>
+							<p class="p-1">Dropdown can open a menu.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/DropdownMenu/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+								<path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+								<path d="M9 12h6" />
+								<path d="M9 16h6" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">File Input</h4>
+							<p class="p-1">File Input for uploading files.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/FileImputs/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M4 10.005h16v-5a1 1 0 0 0 -1 -1h-14a1 1 0 0 0 -1 1v5z" />
+								<path d="M4 15.005v-.01" />
+								<path d="M4 20.005v-.01" />
+								<path d="M9 20.005v-.01" />
+								<path d="M15 20.005v-.01" />
+								<path d="M20 20.005v-.01" />
+								<path d="M20 15.005v-.01" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Hover Information</h4>
+							<p class="p-1">Preview content.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/HoverInfo/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M7 9v5a5 5 0 0 0 10 0v-5" />
+								<path d="M5 5h14" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Indicator</h4>
+							<p class="p-1">Used to place an element on the corner</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Indicators/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M8 8h8v8h-8z" />
+								<path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+								<path d="M16 16l3.3 3.3" />
+								<path d="M16 8l3.3 -3.3" />
+								<path d="M8 8l-3.3 -3.3" />
+								<path d="M8 16l-3.3 3.3" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Input OTP</h4>
+							<p class="p-1">Accessible one-time.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/InputOtps/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M4 3h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M18 3h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M11 3h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M4 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M18 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M11 10h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+								<path d="M11 17h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1v-2a1 1 0 0 1 1 -1z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Kbd</h4>
+							<p class="p-1">Kbd used to display keyboard</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Kbds/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M15 4.55a8 8 0 0 0 -6 14.9m0 -4.45v5h-5" />
+								<path d="M18.37 7.16l0 .01" />
+								<path d="M13 19.94l0 .01" />
+								<path d="M16.84 18.37l0 .01" />
+								<path d="M19.37 15.1l0 .01" />
+								<path d="M19.94 11l0 .01" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Loading</h4>
+							<p class="p-1">Loading shows an animation</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Loadings/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
+								<path d="M15.005 19.31l-1.591 1.59a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 13.592 -4.638" />
+								<path d="M19 16v3" />
+								<path d="M19 22v.01" />
+							</svg>				  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Popover</h4>
+							<p class="p-1">Displays rich content in a portal</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Popovers/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M4 20l14 0" />
+							</svg>			  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Progress</h4>
+							<p class="p-1">show the passing of time</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Progressb/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 12m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M9 8m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M15 4m0 1a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-4a1 1 0 0 1 -1 -1z" />
+								<path d="M4 20l14 0" />
+							</svg>			  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Radial</h4>
+							<p class="p-1">show the progress bar</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/RadialBar/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M7 3m0 2a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2z" />
+								<path d="M17 17v2a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h2" />
+							</svg>			  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Radio Group</h4>
+							<p class="p-1">A set of checkable buttons</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/RadioButtons/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M14 6m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M4 6l8 0" />
+								<path d="M16 6l4 0" />
+								<path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M4 12l2 0" />
+								<path d="M10 12l10 0" />
+								<path d="M17 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M4 18l11 0" />
+								<path d="M19 18l1 0" />
+							</svg>				  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Range slider</h4>
+							<p class="p-1">Select a value by sliding a handle</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Ranges/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M17.8 19.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+								<path d="M6.2 19.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+								<path d="M12 9.817l-2.172 1.138a.392 .392 0 0 1 -.568 -.41l.415 -2.411l-1.757 -1.707a.389 .389 0 0 1 .217 -.665l2.428 -.352l1.086 -2.193a.392 .392 0 0 1 .702 0l1.086 2.193l2.428 .352a.39 .39 0 0 1 .217 .665l-1.757 1.707l.414 2.41a.39 .39 0 0 1 -.567 .411l-2.172 -1.138z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Rating</h4>
+							<p class="p-1">Radio buttons to rate something.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Ratings/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<!-- 
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M5 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M19 5m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M5 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M19 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M5 7v10" />
+								<path d="M7 5h10" />
+								<path d="M7 19h10" />
+								<path d="M19 7v10" />
+								<path d="M10 10h4" />
+								<path d="M12 14v-4" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Resizable</h4>
+							<p class="p-1">Accessible resizable panel.</p>
+						</div>
+						<footer class='fotter-button'>
+							<ButtonLink class='p-2 hover:bg-indigo-900' url="/base/Resizables/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				-->
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 12l3 0" />
+								<path d="M12 3l0 3" />
+								<path d="M7.8 7.8l-2.2 -2.2" />
+								<path d="M16.2 7.8l2.2 -2.2" />
+								<path d="M7.8 16.2l-2.2 2.2" />
+								<path d="M12 12l9 3l-4 2l-2 4l-3 -9" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Select</h4>
+							<p class="p-1">Pick a value from a list of options</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Selects/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M10 20.415a8 8 0 1 0 3 -15.415h-3" />
+								<path d="M13 8l-3 -3l3 -3" />
+								<path d="M7 17l4 -4l-4 -4l-4 4z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Skeleton</h4>
+							<p class="p-1">Use to show a placeholder</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/skeletons/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M22 5h-5v5h-5v5h-5v5h-5" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Steps</h4>
+							<p class="p-1">Show a list of steps in a process.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Steps/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M21 21l-6 -6" />
+								<path d="M3.291 8a7 7 0 0 1 5.077 -4.806a7.021 7.021 0 0 1 8.242 4.403" />
+								<path d="M17 4v4h-4" />
+								<path d="M16.705 12a7 7 0 0 1 -5.074 4.798a7.021 7.021 0 0 1 -8.241 -4.403" />
+								<path d="M3 16v-4h4" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Swap</h4>
+							<p class="p-1">Toggle the visibility of two elements</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Swaps/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 5a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-14z" />
+								<path d="M9 3l-6 6" />
+								<path d="M14 3l-7 7" />
+								<path d="M19 3l-7 7" />
+								<path d="M21 6l-4 4" />
+								<path d="M3 10h18" />
+								<path d="M10 10v11" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Table</h4>
+							<p class="p-1">A date picker component.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Tables/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M8 12m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M2 6m0 6a6 6 0 0 1 6 -6h8a6 6 0 0 1 6 6v0a6 6 0 0 1 -6 6h-8a6 6 0 0 1 -6 -6z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Switch</h4>
+							<p class="p-1">Toggle between checked and not checked</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Switchs/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M18 4a3 3 0 0 1 2 5.235v8.765a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-8.764a3 3 0 0 1 1.824 -5.231h12.176v-.005z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Toast</h4>
+							<p class="p-1">Wrapper to stack elements</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Toasts/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 18m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M12 13l-1.707 -1.707a1 1 0 0 0 -.707 -.293h-2.586a2 2 0 0 1 -2 -2v-3a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v3a2 2 0 0 1 -2 2h-2.586a1 1 0 0 0 -.707 .293l-1.707 1.707z" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Tooltip</h4>
+							<p class="p-1">A popup that displays information</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/base/Tooltips/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+			</div>
+			
+			<h3 id="_segment">Segment</h3>
+			<div class="m-1 md:m-4 flex gap-2 md:gap-5 flex-wrap justify-center items-center">
+				<section>
+					<Card class="card-style">
+						<header slot="header" class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M10 12h-7l3 -3m0 6l-3 -3" />
+								<path d="M14 12h7l-3 -3m0 6l3 -3" />
+								<path d="M3 6v-3h18v3" />
+								<path d="M3 18v3h18v-3" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Accordion</h4>
+							<p class="p-2">Showing and hiding content</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-1 hover:bg-purple-900' url="/segment/Accordions/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M3 5m0 3a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-12a3 3 0 0 1 -3 -3z" />
+								<path d="M3 10l18 0" />
+								<path d="M7 15l.01 0" />
+								<path d="M11 15l2 0" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Card</h4>
+							<p class="p-1">Used to group and display content</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/segment/Cards/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+			</div>
+
+			<h3 id="_structure">Structure</h3>
+			<div class="m-1 md:m-4 flex gap-2 md:gap-5 flex-wrap justify-center items-center">
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M16 3h5v5" />
+								<path d="M8 3h-5v5" />
+								<path d="M21 3l-7.536 7.536a5 5 0 0 0 -1.464 3.534v6.93" />
+								<path d="M3 3l7.536 7.536a5 5 0 0 1 1.464 3.534v.93" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Breadcrumbs</h4>
+							<p class="p-1">Breadcrumbs to navigate</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Breadcrumbs/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M7 5m0 1a1 1 0 0 1 1 -1h8a1 1 0 0 1 1 1v12a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1z" />
+								<path d="M22 17h-1a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h1" />
+								<path d="M2 17h1a1 1 0 0 0 1 -1v-8a1 1 0 0 0 -1 -1h-1" />
+							</svg>				  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Carousel</h4>
+							<p class="p-1">Carousel show images in area.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Carousels/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z" />
+								<path d="M9 4v16" />
+								<path d="M15 10l-2 2l2 2" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Collapse</h4>
+							<p class="p-1">Showing and hiding content.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Collapsibles/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 5v14" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Divider</h4>
+							<p class="p-1">Divider content vertically or horizontally.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Dividers/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 20l0 -10" />
+								<path d="M12 20l4 -4" />
+								<path d="M12 20l-4 -4" />
+								<path d="M4 4l16 0" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Drawer</h4>
+							<p class="p-1">Layout that can show/hide</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Drawers/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M4 6l16 0" />
+								<path d="M4 12l16 0" />
+								<path d="M4 18l16 0" />
+							</svg>					  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Menu</h4>
+							<p class="p-1">Display a list of links</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Menus/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M18 15l3 -3l-3 -3" />
+								<path d="M3 12h18" />
+								<path d="M3 9v6" />
+							</svg>					  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Menu Bar</h4>
+							<p class="p-1">A visually persistent menu</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/MenuBar/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12.077 20h-5.077v-16h11v14h-5.077" />
+							</svg>					  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Modal</h4>
+							<p class="p-1">Modal is used to show a dialog.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Modals/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M4 6a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z" />
+								<path d="M4 9h1" />
+								<path d="M19 9h1" />
+								<path d="M9 9h1" />
+								<path d="M14 9h1" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Navbar</h4>
+							<p class="p-1">Show a navigation bar.</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Navbars/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" class="icon" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M14 3v4a1 1 0 0 0 1 1h4" />
+								<path d="M19 18v1a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-1" />
+								<path d="M3 14h4m4.5 0h4m4.5 0h4" />
+								<path d="M5 10v-5a2 2 0 0 1 2 -2h7l5 5v2" />
+							</svg>					  
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Pagination</h4>
+							<p class="p-1">buttons to navigate</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-indigo-900' url="/structure/Paginations/">go</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 3a3 3 0 0 0 -3 3v12a3 3 0 0 0 3 3" />
+								<path d="M6 3a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3" />
+								<path d="M13 7h7a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-7" />
+								<path d="M5 7h-1a1 1 0 0 0 -1 1v8a1 1 0 0 0 1 1h1" />
+								<path d="M17 12h.01" />
+								<path d="M13 12h.01" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Scroll-area</h4>
+							<p class="p-1">Augments native</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Scroll-Area/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 2l-8 4l8 4l8 -4l-8 -4" />
+								<path d="M4 10l8 4l8 -4" />
+								<path d="M4 18l8 4l8 -4" />
+								<path d="M4 14l8 4l8 -4" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Stack</h4>
+							<p class="p-1">Stack visually puts elements</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Stacks/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M13 9a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1v10a1 1 0 0 1 -1 1h-6a1 1 0 0 1 -1 -1v-10z" />
+								<path d="M18 8v-3a1 1 0 0 0 -1 -1h-13a1 1 0 0 0 -1 1v12a1 1 0 0 0 1 1h9" />
+								<path d="M16 9h2" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Tabs</h4>
+							<p class="p-1">known as tab panels</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Tabs/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+				<section>
+					<Card class="card-style">
+						<header class="flex justify-center items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 24 24" stroke-width="1" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+								<path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+								<path d="M12 20m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+								<path d="M10 20h-6" />
+								<path d="M14 20h6" />
+								<path d="M12 15l-2 -2h-3a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h10a1 1 0 0 1 1 1v8a1 1 0 0 1 -1 1h-3l-2 2z" />
+								<path d="M10 8h4" />
+								<path d="M12 6v4" />
+							</svg>
+						</header>
+						<div class="p-3 flex flex-col">
+							<h4 class="font-semibold">Timeline</h4>
+							<p class="p-1">Shows a list of events</p>
+						</div>
+						<footer slot="footer" class='fotter-button'>
+							<ButtonLink class=' p-2 hover:bg-purple-900' url="/structure/Timelines/">See Example</ButtonLink>
+						</footer>
+					</Card>
+				</section>
+			</div>
+		</div>
+	</main>
+
+</Layout>
+
+<style>
+	section{
+		background: rgb(124,50,161);
+		background: radial-gradient(circle, rgba(108, 68, 150, 0.8) 0%, rgba(0,0,0,1) 100%);
+	}
+	.card-style{
+		position: relative;
+		border-width: 1px;
+		align-items: center;
+		width: 13rem;
+		height: 16rem;
+	}
+	.fotter-button{
+		position: absolute;
+		width: 100%;
+		bottom: 0px;
+		display: flex;
+		justify-content: center;
+	}
+	@media (max-width: 767px) {
+		.card-style {
+			width: 9rem;
+			height: 11rem;
+			font-size: 0.75rem;
+		}
+		svg{
+			width: 3rem;
+			height: 3rem;
+		}
+	}
+</style>

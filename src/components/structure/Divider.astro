@@ -1,0 +1,30 @@
+---
+interface Props {
+    class?: string;
+    direction?: "horizontal" | "vertical"
+    [x: string]: any;
+}
+const { direction ="vertical", class: className, ...rest } = Astro.props;
+---
+<div class="flex items-center">
+    <div class={direction}>
+        <div {...rest} class:list={[className]}></div>
+        <slot/>
+        <div {...rest} class:list={[className]}></div>
+    </div>
+</div>
+
+<style>
+    .horizontal{
+        display: flex;
+        flex-direction:row;
+        justify-content: center;
+        align-items: center;
+    }
+    .vertical{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+</style>

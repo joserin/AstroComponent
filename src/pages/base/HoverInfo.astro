@@ -1,0 +1,124 @@
+---
+import Hover from '../../components/base/Hover.astro';
+import Layout from '../../layouts/Layout.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/hover/code-component.md';
+import Css from '../../i18n/base/hover/code-css.md';
+import OneImplementacion from '../../i18n/base/hover/code-one.md';
+import TwoImplementacion from '../../i18n/base/hover/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Hover."
+    description='Component UI Hover to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Hover Information</h2>
+            <p>
+                This component creates a hoverable element. When the element is hovered over, the content within 
+                the hover slot is displayed as a tooltip-like overlay. The main content is displayed below the hover element.
+            </p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>title (optional): A string that will be displayed as the hover content.</li>
+                            <li>class (optional): A custom CSS class to be applied to the hover element.</li>
+                            <li>rest: A spread operator to allow for any additional props to be passed to the hover element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>container-hover: This is the main container that positions the hover element and content relatively.</li>
+                            <li>hover-element: This element is displayed on hover and contains the hover content.</li>
+                            <li>It uses the list directive to combine the hover-element class with the provided className prop.</li>
+                            <li>The slot name="hover" is used to render the content passed to the hover slot.</li>
+                            <li>
+                                hover-content: This element displays the main content and is initially hidden. 
+                                It is displayed on hover of the hover-element.
+                            </li>
+                            <li>The slot is used to render the default content passed to the component.</li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>container-hover: Sets the position to relative for absolute positioning of the hover content.</li>
+                            <li>default: Defines default styles for the hover element when no custom class is provided.</li>
+                            <li>hover-content: Initially hides the hover content.</li>
+                            <li>
+                                hover-element:hover + .hover-content: Displays the hover content when the hover 
+                                element is hovered over. It also positions it absolutely within the container.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[14.8rem]'>
+            <section slot="preview" class="flex m-1 gap-1 justify-center items-center h-52 fondo-previsual">
+                <Hover title='ver informacion'>
+                    <p class="text-orange-700 w-52 text-lg flex justify-center p-1">
+                        this is the information
+                    </p>
+                </Hover>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-52'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[14.8rem]'>
+            <section slot="preview" class="flex m-1 gap-1 justify-center items-center h-52 fondo-previsual">
+                <Hover>
+                    <header slot="hover" >
+                        <a href="www.google.com"> Ir a google</a>
+                    </header>
+                    <div class="bg-red-700 p-1">
+                        www.google.com
+                    </div>
+                </Hover>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-52'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

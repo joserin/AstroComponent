@@ -1,0 +1,29 @@
+---
+interface Props {
+    position?: 'horizontal' | 'vertical';
+    class?: string;
+    [x: string]: any;
+}
+
+const defaulClass='';
+const { position, class: className= defaulClass, ...rest } = Astro.props;
+
+---
+
+<div class:list={[className, 'resizableGroup-style']} {...rest}>
+    <slot/>
+</div>
+
+<style>
+    .horizontal{
+        display: flex;
+        flex-direction: row;
+    }
+    .vertical{
+        display: flex;
+        flex-direction: column;
+    }
+    .resizableGroup-style{
+        border: 3px salmon solid;
+    }
+</style>

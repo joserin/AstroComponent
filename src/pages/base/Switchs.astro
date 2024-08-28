@@ -1,0 +1,129 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Toggle from '../../components/base/Toggle.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/toggle/code-component.md';
+import Css from '../../i18n/base/toggle/code-css.md';
+import OneImplementacion from '../../i18n/base/toggle/code-one.md';
+import TwoImplementacion from '../../i18n/base/toggle/code-two.md';
+import ThreeImplementacion from '../../i18n/base/toggle/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Switch."
+    description='Component UI Switch to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Toggle Switch</h2>
+            <p>A control that allows the user to toggle between checked and not checked.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: A custom class name that can be passed to the component for additional styling.</li>
+                            <li>
+                                ...rest: This allows for the passing of any other arbitrary props to the underlying input element.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                label: This is the main container for the toggle switch, providing basic styling and accessibility.
+                            </li>
+                            <li>
+                                input: A hidden checkbox input element that controls the state of the toggle switch.
+                            </li>
+                            <li>
+                                div: This element visually represents the toggle switch itself, with dynamic 
+                                styling based on the input's checked state.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>switch-container: Styles the main container with positioning, display, alignment, and cursor properties.</li>
+                            <li>div: Styles the toggle switch appearance, including background color and border radius.</li>
+                            <li>
+                                input: Styles the hidden input element with absolute positioning, opacity, 
+                                and other accessibility-related properties.
+                            </li>
+                            <li>
+                                .slider::after: Styles the toggle switch's handle, including position, size, shape, and transition effects.
+                            </li>
+                            <li>
+                                .default: Defines default dimensions for the toggle switch and its handle.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[9.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-32 fondo-previsual">
+                <Toggle/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-32'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[10.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-36 fondo-previsual">
+                <Toggle class='default peer-checked:bg-yellow-200 after:bg-slate-200 peer-checked:after:bg-yellow-500'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-36'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Toggle class='w-8 h-4 peer-checked:bg-green-200 after:w-3 after:h-2 after:m-0.5 after:bg-red-400 peer-checked:after:bg-green-400'/>
+                <Toggle class='w-8 h-4 peer-checked:bg-green-200 after:w-3 after:h-2 after:m-0.5 after:bg-red-500 peer-checked:after:bg-green-500'/>
+                <Toggle class='w-8 h-4 peer-checked:bg-green-200 after:w-3 after:h-2 after:m-0.5 after:bg-red-600 peer-checked:after:bg-green-600'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-56'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

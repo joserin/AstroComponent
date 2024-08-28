@@ -1,0 +1,141 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Toast from '../../components/base/Toast.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/toast/code-component.md';
+import Css from '../../i18n/base/toast/code-css.md';
+import OneImplementacion from '../../i18n/base/toast/code-one.md';
+import TwoImplementacion from '../../i18n/base/toast/code-two.md';
+import ThreeImplementacion from '../../i18n/base/toast/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+<Layout 
+    title="Components Toast."
+    description='Component UI Toast to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Toast</h2>
+            <p>Toast is a wrapper to stack elements, positioned on the corner of page.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: A custom class name that can be passed to the component for additional styling.</li>
+                            <li>...rest: Allows for the passing of any additional attributes to the inner div element.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>section: Encapsulates the entire component.</li>
+                            <li>
+                                buttonToast: A span with the class 'buttonToast' to trigger the toast. 
+                                It contains a slot for custom button content.
+                            </li>
+                            <li>
+                                hidden: A span with the class 'hidden' to initially hide the toast content.
+                            </li>
+                            <li>
+                                div: The toast content itself. It has dynamic classes based on the provided 
+                                className and the default 'toast' class. It also accepts additional attributes 
+                                through the ...rest prop.
+                            </li>
+                            <li>
+                                slot: A default slot for custom content within the toast.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .toast: Defines the base styles for the toast, including positioning, alignment, and z-index.
+                            </li>
+                            <li>
+                                .default: Defines the default styles for the toast, including border radius, padding, 
+                                position, background color, and other visual properties.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>Adds an event listener to the 'buttonToast' element.</li>
+                            <li>On click, removes the 'hidden' class and adds the 'block' class to the toast element.</li>
+                            <li>After 3 seconds, removes the 'block' class and adds the 'hidden' class to hide the toast.</li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Toast>
+                    <button slot="toastButton">add</button>
+                    <div>a new date</div>
+                </Toast>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Toast class='top-0 right-0 p-2 bg-lime-700'>
+                    <button slot="toastButton">view</button>
+                    <div>the perfect sun</div>
+                </Toast>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[12.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-44 fondo-previsual">
+                <Toast class='left-0 bottom-0 w-full bg-white h-10 flex text-center justify-center'>
+                    <button slot="toastButton">see</button>
+                    <div class="text-black font-bold text-2xl">This is the party</div>
+                </Toast>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-44'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

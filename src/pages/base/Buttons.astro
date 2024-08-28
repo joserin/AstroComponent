@@ -1,0 +1,224 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Button from "../../components/base/Button.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/button/code-component.md';
+import Css from '../../i18n/base/button/code-css.md';
+import OneImplementacion from '../../i18n/base/button/code-one.md';
+import TwoImplementacion from '../../i18n/base/button/code-two.md';
+import ThreeImplementacion from '../../i18n/base/button/code-three.md';
+import FourImplementacion from '../../i18n/base/button/code-four.md';
+import FiveImplementacion from '../../i18n/base/button/code-five.md';
+import SixImplementacion from '../../i18n/base/button/code-three.md';
+import SevenImplementacion from '../../i18n/base/button/code-four.md';
+import EightImplementacion from '../../i18n/base/button/code-five.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Button"
+    description='Component UI Button to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Button</h2>
+            <p>Buttons allow the user to take actions or make choices.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: An optional string prop that allows users to provide custom CSS classes to the tooltip.</li>
+                            <li>
+                                rest: A spread operator that allows for passing additional props to the component, 
+                                which can be useful for custom attributes or other purposes.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                Outer div: The main container for the tooltip. It positions the tooltip as an 
+                                inline-block element relative to its content.
+                            </li>
+                            <li>
+                                Inner main element: This element contains the actual tooltip content and has 
+                                the tooltipop class for styling. It's positioned absolutely, hidden by default, 
+                                and will become visible on hover.
+                            </li>
+                            <li>
+                                First slot: This slot is used to render the content of the tooltip.
+                            </li>
+                            <li>
+                                Second slot: This slot is likely intended for triggering the tooltip. 
+                                It's a generic slot that can be used to place any element that will trigger the tooltip's appearance.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>div: Sets the tooltip container as an inline-block element with relative positioning.</li>
+                            <li>
+                                main: Styles the tooltip content. It's positioned absolutely, has a higher z-index 
+                                to ensure it appears above other elements, and is initially hidden.
+                            </li>
+                            <li>
+                                .default: Defines the default styling for the tooltip, including position, 
+                                background color, padding, and dimensions.
+                            </li>
+                            <li>
+                                .tooltip:hover .tooltipop: This CSS selector ensures that the tooltip 
+                                becomes visible when hovering over the .tooltip element.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>basico</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <Button>Button Text</Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Active</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <Button class="px-3 py-2 border-2 bg-white text-black border-black hover:shadow-lg active:bg-blue-400"> Button Text </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Button de texto</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <Button class="hover:underline text-blue-400 hover:font-semibold"> Button Text </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Button redondeado</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-40 fondo-previsual">
+                <Button class="px-2 py-1 bg-blue-400 hover:font-semibold rounded-full active:bg-blue-700 hover:bg-blue-300"> Button Text </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Button icono</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Button class="px-2 py-1 border-2 border-blue-100 active:bg-blue-300 hover:bg-blue-200 flex justify-center items-center rounded-lg">
+                    <span> Button Text </span>
+                    <svg class="w-[40px] h-[30px] text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.1" d="M20 12H8m12 0-4 4m4-4-4-4M9 4H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h2"/>
+                      </svg>
+                </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Button Redes</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-row gap-5 justify-center items-center h-60 fondo-previsual">
+                <Button class="px-2 py-1 border-2 border-blue-100 active:bg-blue-300 hover:bg-blue-200 flex justify-center items-center rounded-lg font-semibold">
+                    <svg class="w-[30px] h-[25px] text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M13.135 6H15V3h-1.865a4.147 4.147 0 0 0-4.142 4.142V9H7v3h2v9.938h3V12h2.021l.592-3H12V6.591A.6.6 0 0 1 12.592 6h.543Z" clip-rule="evenodd"/>
+                    </svg>
+                    <span> Facebook </span>
+                </Button>
+                <Button class="px-2 py-1 border-2 border-blue-100 active:bg-blue-300 hover:bg-blue-200 flex justify-center items-center rounded-lg font-semibold">
+                    <svg class="w-[30px] h-[25px] text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M22 5.892a8.178 8.178 0 0 1-2.355.635 4.074 4.074 0 0 0 1.8-2.235 8.343 8.343 0 0 1-2.605.981A4.13 4.13 0 0 0 15.85 4a4.068 4.068 0 0 0-4.1 4.038c0 .31.035.618.105.919A11.705 11.705 0 0 1 3.4 4.734a4.006 4.006 0 0 0 1.268 5.392 4.165 4.165 0 0 1-1.859-.5v.05A4.057 4.057 0 0 0 6.1 13.635a4.192 4.192 0 0 1-1.856.07 4.108 4.108 0 0 0 3.831 2.807A8.36 8.36 0 0 1 2 18.184 11.732 11.732 0 0 0 8.291 20 11.502 11.502 0 0 0 19.964 8.5c0-.177 0-.349-.012-.523A8.143 8.143 0 0 0 22 5.892Z" clip-rule="evenodd"/>
+                      </svg>
+                    <span> Twitter </span>
+                </Button>            
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SixImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Button 2</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-3 rounded-2xl p-2 justify-center items-center h-60 fondo-previsual">
+                <Button class="px-2 py-1 border-2 border-blue-400 active:bg-blue-300 hover:bg-blue-200 flex justify-center items-center rounded-lg">
+                    <span> Save </span>
+                </Button>
+                <Button class="px-2 py-1 border-2 border-blue-100 active:bg-blue-300 hover:bg-blue-200 flex justify-center items-center rounded-lg">
+                    <span> Cancel </span>
+                </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <SevenImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <h4>Icon Click</h4>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[17.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-64 fondo-previsual">
+                <Button class="bg-yellow-300 hover:bg-red-500 p-1">
+                    <svg class="text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.537 12.625a4.421 4.421 0 0 0 2.684 4.047 10.96 10.96 0 0 1-1.384 2.845c-.834 1.218-1.7 2.432-3.062 2.457-1.34.025-1.77-.794-3.3-.794-1.531 0-2.01.769-3.275.82-1.316.049-2.317-1.318-3.158-2.532-1.72-2.484-3.032-7.017-1.27-10.077A4.9 4.9 0 0 1 8.91 6.884c1.292-.025 2.51.869 3.3.869.789 0 2.27-1.075 3.828-.917a4.67 4.67 0 0 1 3.66 1.984 4.524 4.524 0 0 0-2.16 3.805m-2.52-7.432A4.4 4.4 0 0 0 16.06 2a4.482 4.482 0 0 0-2.945 1.516 4.185 4.185 0 0 0-1.061 3.093 3.708 3.708 0 0 0 2.967-1.416Z"/>
+                    </svg>
+                </Button>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-64'>
+                    <EightImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

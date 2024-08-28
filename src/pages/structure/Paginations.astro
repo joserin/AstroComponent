@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+//import PaginationData from '../../components/structure/Pagination-Data.astro';
+import PaginationUrl from '../../components/structure/pagination-Url.astro'; 
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/pagination/code-component.md';
+import Css from '../../i18n/structure/pagination/code-css.md';
+import Js from '../../i18n/structure/pagination/code-js.md';
+import OneImplementacion from '../../i18n/structure/pagination/code-one.md';
+import TwoImplementacion from '../../i18n/structure/pagination/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+
+const page = '/Paginations/'
+---
+<Layout 
+    title="Components Pagination."
+    description='Component UI Pagination to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold"> Pagination</h2>
+            <p>Pagination is a group of buttons that allow the user to navigate between a set of related content.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>totalCount: (number) - Total number of pages available.</li>
+                            <li>currentUrl: (string) - Base URL for the pages (without page number).</li>
+                            <li>currentPage: (number) - Current page being displayed.</li>
+                            <li>class: (string) - Optional class name to be applied to the pagination container.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The component uses an nav element with the provided classes and spreads any additional props received.
+                            </li>
+                            <li>
+                                Previous Button: A button with the ID "prev" is displayed only if the current page is greater than 1. 
+                                Clicking it triggers navigation to the previous page by updating the URL.
+                            </li>
+                            <li>
+                                Page Numbers: It iterates through an array containing a limited range of page numbers around the current page 
+                                (excluding the current page itself). For each page number:
+                            </li>
+                            <li>
+                                Next Button: A button with the ID "next" is displayed only if the current page is less than the total number of pages. 
+                                Clicking it triggers navigation to the next page by updating the URL.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .button-page-style: Applies styles to both the current page indicator and page number links, 
+                                including padding, minimum size, and flexbox alignment.
+                            </li>
+                            <li>
+                                button: Applies styles to the "prev" and "next" buttons, including background color and hover effects.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                Previous Button Click: When clicked, it checks if the current page is greater than 1. If so, it decrements 
+                                the current page number and updates the window location with the new URL constructed from the base URL and 
+                                the updated page number.
+                            </li>
+                            <li>
+                                Next Button Click: Similar to the previous button click, it checks if the current page is less than the total number of pages. 
+                                If so, it increments the current page number and updates the window location with the new URL.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <PaginationUrl totalCount={2} currentPage={1} currentUrl={page}/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <!-- 
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60">
+                <PaginationData class='defaul' totalPage={5} currentPage={0} elementCount={1}/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>-->
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,164 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InputFile from '../../components/base/InputFile.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/inputfile/code-component.md';
+import Css from '../../i18n/base/inputfile/code-css.md';
+import OneImplementacion from '../../i18n/base/inputfile/code-one.md';
+import TwoImplementacion from '../../i18n/base/inputfile/code-two.md';
+import ThreeImplementacion from '../../i18n/base/inputfile/code-three.md';
+import FourImplementacion from '../../i18n/base/inputfile/code-four.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title='Components Input'
+    description='Component UI Input to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">File Input</h2>
+            <p>File Input is a an input field for uploading files.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                title (optional): A string that provides a label for the input field. 
+                                If not provided, the slot content will be used as the label.
+                            </li>
+                           <li>
+                                class (optional): A string that defines the CSS class to be applied to 
+                                the input element. If not provided, the default class 'default' will be used.
+                           </li>
+                           <li>
+                                nameLabel: A required string that serves as the ID for both the label and the input element.
+                           </li>
+                           <li>
+                                [x: string]: any: Allows for additional props to be passed to the input element.
+                           </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                <p>label element</p>
+                                <li>Contains the for attribute set to the nameLabel prop to associate the label with the input.</li>
+                                <li>
+                                    A slot is provided for custom label content. If no content is provided, the title prop will be used.
+                                </li>
+                            </li>
+                            <li>
+                                <p>input element</p>
+                                <li>
+                                    Has the class attribute dynamically set based on the provided className prop or
+                                    the default 'default' class.
+                                </li>
+                                <li>
+                                    The id attribute is set to the nameLabel prop to match the label's for attribute.
+                                </li>
+                                <li>
+                                    The type attribute is set to "file" to indicate a file input field.
+                                </li>
+                                <li>
+                                    The ...rest spread operator passes any additional props to the input element.
+                                </li>
+                            </li>
+                           
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .default class: Applies basic styling to the input element, including padding and hiding the input by default.
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual">
+                <div class="bg-slate-600 border p-1">
+                    <InputFile nameLabel='avatar' title='choose'/>
+                </div>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual">
+                <InputFile class='bg-red-700 border' nameLabel='apu' title='Choose'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual">
+                <InputFile class='border-2 border-blue-500' nameLabel='two' title='Select'/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-40 fondo-previsual">
+                <InputFile nameLabel='three'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ffffff" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                        <path d="M7 9l5 -5l5 5" />
+                        <path d="M12 4l0 12" />
+                    </svg>
+                </InputFile>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

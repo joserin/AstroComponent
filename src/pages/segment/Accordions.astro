@@ -1,0 +1,198 @@
+---
+import Accordion from '../../components/segment/Accordion.astro';
+import Layout from '../../layouts/Layout.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/segment/accordion/code-component.md';
+import Css from '../../i18n/segment/accordion/code-css.md';
+import OneImplementacion from '../../i18n/segment/accordion/code-one.md';
+import TwoImplementacion from '../../i18n/segment/accordion/code-two.md';
+import ThreeImplementacion from '../../i18n/segment/accordion/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Accordion."
+    description='Component UI Accordion to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Accordion</h2>
+            <p>
+                This component renders an accordion element, providing a visually appealing way to toggle the visibility 
+                of content sections. Users can click on the title area to expand or collapse the content.
+            </p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        
+                            <p class="title">Props</p>
+                            <ul>
+                                <li>Title (optional, string): Sets the title text displayed within the component.</li>
+                                <li>Class (optional, string): Assigns a custom CSS class to the component's collapsible sections.</li>
+                                <li>Additional properties ([x: string]: any): Allows passing any other attributes to the component 
+                                    for further customization.
+                                </li>
+                            </ul>
+                            <p class="title">Template</p>
+                            <ul>
+                                <li>Includes a hidden radio input (input) for handling the collapse/expand functionality.</li>
+                                <li>Uses slots to define the content structure</li>
+                                <li>A div with conditional CSS classes (peer-checked:max-h-fit, peer-checked:mt-5, element-container) 
+                                    controls the content visibility
+                                </li>
+                            </ul>
+                            <p class="title">Styles</p>
+                            <ul>
+                                <li>.default: Default styles for the component (padding, border radius, background color).</li>
+                                <li>.accordion-content: Positioning-related styles (likely for positioning within the larger accordion).</li>
+                                <li>.input-style: Styles for the hidden radio input (positioning, cursor, and z-index for click handling).</li>
+                                <li>.element-container: Controls content visibility (overflow, initial max-height).</li>
+                            </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Accordion name="uno">
+                    <header>first</header>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno">
+                    <header>second</header>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno">
+                    <header>third</header>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+            </section>
+            <section slot="implementation">
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-5 justify-center items-center h-60 fondo-previsual">
+                <Accordion name="uno" class='p-1 bg-blue-600 rounded-xl w-1/2 hover:bg-blue-800'>
+                    <header>
+                        <h3>first</h3>
+                    </header>
+                    <span class="text-2xl absolute -top-1.5 right-2 peer-checked:hidden">+</span>
+                    <span class="text-2xl absolute -top-1.5 right-2 hidden peer-checked:flex">-</span>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno" class='p-1 bg-blue-600 rounded-xl w-1/2 hover:bg-blue-800'>
+                    <header>
+                        <h3>second</h3>
+                    </header>
+                    <span class="text-2xl absolute -top-1.5 right-2 peer-checked:hidden">+</span>
+                    <span class="text-2xl absolute -top-1.5 right-2 hidden peer-checked:flex">-</span>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno" class='p-1 bg-blue-600 rounded-xl w-1/2 hover:bg-blue-800'>
+                    <header>
+                        <h3>third</h3>
+                    </header>
+                    <span class="text-2xl absolute -top-1.5 right-2 peer-checked:hidden">+</span>
+                    <span class="text-2xl absolute -top-1.5 right-2 hidden peer-checked:flex">-</span>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+            </section>
+            <section slot="implementation" class="max-h-60">
+                <Scroll class='h-60'>
+                    <TwoImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-5 justify-center items-center h-60 fondo-previsual">
+                <Accordion name="uno"'>
+                    <header>
+                        <h3>first</h3>
+                    </header>
+                    <svg class="w-6 h-6 absolute bottom-0 right-2 rotate-0 peer-checked:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
+                    </svg>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno">
+                    <header>
+                        <h3>second</h3>
+                    </header>
+                    <svg class="w-6 h-6 absolute bottom-0 right-2 rotate-0 peer-checked:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
+                    </svg>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+                <Accordion name="uno">
+                    <header>
+                        <h3>third</h3>
+                    </header>
+                    <svg class="w-6 h-6 absolute bottom-0 right-2 rotate-0 peer-checked:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
+                    </svg>
+                    <div slot='content'>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis incidunt corporis aperiam.
+                    </div>
+                </Accordion>
+            </section>
+            <section slot="implementation" class="w-full max-h-60">
+                <Scroll class='h-60'>
+                    <ThreeImplementacion/>
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    .title{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

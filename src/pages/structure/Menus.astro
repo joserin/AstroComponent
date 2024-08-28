@@ -1,0 +1,176 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Menu from '../../components/structure/menu.astro';
+import MenuElement from '../../components/structure/Menu-Element.astro'
+import Button from '../../components/base/Button.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/menu/code-component.md';
+import Css from '../../i18n/structure/menu/code-css.md';
+import OneImplementacion from '../../i18n/structure/menu/code-one.md';
+import TwoImplementacion from '../../i18n/structure/menu/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/menu/code-three.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS'];
+---
+
+<Layout 
+    title="Components Menu."
+    description='Component UI Menu to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Menu</h2>
+            <p>Menu is used to display a list of links vertically or horizontally.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2 information">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: Optional string to add custom CSS classes.</li>
+                            <li>...rest: Other arbitrary props passed to the component.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>Component Menu</li>
+                            <li>Renders an ul element with the provided className and rest props.</li>
+                            <li>Contains a slot element to allow for dynamic content injection.</li>
+                            <li>Component Menu Element</li>
+                            <li>
+                                Renders an li element with the provided className and rest props.
+                            </li>
+                            <li>
+                                Contains a slot element to allow for dynamic content injection.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>Component Menu</li>
+                            <li>
+                                Defines a default .default class with styling for the ul element, 
+                                including background color, dimensions, padding, border radius, display, 
+                                flex direction, gap, and alignment.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Menu>
+                    <MenuElement>Element one</MenuElement>
+                    <MenuElement>Second</MenuElement>
+                    <MenuElement>Test</MenuElement>
+                    <MenuElement>Commond</MenuElement>
+                    <MenuElement>Details</MenuElement>
+                </Menu>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Menu class='bg-purple-700 flex flex-col gap-1 w-40'>
+                    <MenuElement>
+                        <Button class='w-full text-left rounded-lg bg-purple-600 hover:bg-purple-400 px-2 py-1'>Items 1</Button>
+                    </MenuElement>
+                    <MenuElement>
+                        <Button class='w-full text-left rounded-lg bg-purple-600 hover:bg-purple-400 px-2 py-1'>Items 2</Button>
+                    </MenuElement>
+                    <MenuElement>
+                        <Button class='w-full text-left rounded-lg bg-purple-600 hover:bg-purple-400 px-2 py-1'>Items 3</Button>
+                    </MenuElement>
+                    <MenuElement>
+                        <Button class='w-full text-left rounded-lg bg-purple-600 hover:bg-purple-400 px-2 py-1'>Items 4</Button>
+                    </MenuElement>
+                    <MenuElement>
+                        <Button class='w-full text-left rounded-lg bg-purple-600 hover:bg-purple-400 px-2 py-1'>Items 5</Button>
+                    </MenuElement>
+                </Menu>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-60 fondo-previsual">
+                <Menu>
+                    <MenuElement class='hover:bg-slate-300 p-1 rounded-xl'>
+                        <a href="" aria-label="test link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M5 12l-2 0l9 -9l9 9l-2 0" />
+                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+                                <path d="M10 12h4v4h-4z" />
+                            </svg>
+                        </a>
+                    </MenuElement>
+                    <MenuElement class='hover:bg-slate-300 p-1 rounded-xl'>
+                        <a href="" aria-label="test link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M12 9h.01" />
+                                <path d="M11 12h1v4h1" />
+                                <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9 -9 9s-9 -1.8 -9 -9s1.8 -9 9 -9z" />
+                            </svg>
+                        </a>
+                    </MenuElement>
+                    <MenuElement class='hover:bg-slate-300 p-1 rounded-xl'>
+                        <a href="" aria-label="test link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M6 18l0 -3" />
+                                <path d="M10 18l0 -6" />
+                                <path d="M14 18l0 -9" />
+                                <path d="M18 18l0 -12" />
+                            </svg>
+                        </a>
+                    </MenuElement>
+                </Menu>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    .information ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    .information li{
+        padding: 0.1rem;
+    }
+    .information h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

@@ -1,0 +1,118 @@
+---
+interface Props {
+    idPtrevButton?:string;
+    idNextButton?:string;
+    class?: string;
+    [x: string]: any;
+}
+const defaulClass='aspect-video w-1/2';
+const { idPtrevButton, idNextButton, class: className = defaulClass, ...rest } = Astro.props;
+---
+
+<section {...rest} class:list={[className, 'carousel']}>
+    <picture class="slides-container ">
+        <slot/>
+    </picture>
+    <slot name="button-move">
+        <button id={idPtrevButton} class='default-button left-0 button-before'>&#8249;</button>
+        <button id={idNextButton} class='default-button right-0 button-after'>&#8250;</button>
+    </slot>
+</section>
+
+<style>
+    section{
+        display: flex;
+        position: relative;
+        overflow: hidden;
+    }
+    picture{
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        width: 100%;
+    }
+    
+    .slides-container::-webkit-scrollbar { 
+        display: none; 
+    }
+    .default-button{
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        margin: auto;
+        background-color: rgb(68, 68, 68);
+        width: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        cursor: pointer;
+        opacity: 0.5;
+        transition-property: opacity;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 150ms;
+    }
+    .default:hover{
+        opacity: 0.7;
+    }
+    .default:focus{
+        opacity: 0.9;
+    }
+</style>
+
+<script is:inline define:vars={{idPtrevButton, idNextButton}}>
+    
+    const carousel = document.getElementsByClassName("carousel");
+    if(carousel){
+        for(let i=0; i < carousel.length; i++){
+            const Container = carousel[i].querySelector(".slides-container");
+            const slider = carousel[i].querySelectorAll(".slides-container img");
+            const botones = carousel[i].querySelectorAll(".list-buttons button");
+
+            if(slider){
+
+                if(botones.length > 0){
+                    let slideWidth = 0;
+                    slider[0].onload = function() {
+                        slideWidth = slider[0].clientWidth;
+                    };
+
+                    const goToImage = (index) => {
+                        if (Container) {
+                            Container.scrollLeft = index * slideWidth;
+                        }
+                    };
+                    for(let j=0; j < botones.length; j++){
+                        if(botones[j]){
+                            botones[j].addEventListener("click", () => goToImage(j));
+                        }
+                    }
+                }else{
+                    
+                    const prevButton = document.getElementById(idPtrevButton);
+                    const nextButton = document.getElementById(idNextButton);
+
+                    if(nextButton){
+                        console.log(prevButton, nextButton)
+                        nextButton.addEventListener("click", () => {
+                            if (Container) {
+                                const slideWidth = slider[0].clientWidth;
+                                console.log(slideWidth)
+                                Container.scrollLeft += slideWidth;
+                            }
+                        });
+                    }
+                    if(prevButton){
+                        prevButton.addEventListener("click", () => {
+                            if (Container) {
+                                const slideWidth = slider[0].clientWidth;
+                                console.log(slideWidth)
+                                Container.scrollLeft -= slideWidth;
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    }
+</script>

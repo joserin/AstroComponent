@@ -1,0 +1,31 @@
+---
+interface Props {
+    class?: string;
+    [x: string]: any;
+}
+const defaultClass='default';
+const { class: className = defaultClass, ...rest } = Astro.props;
+---
+<span class={className} {...rest}>
+    <slot/>
+</span>
+
+<style>
+    span{
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .default{
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.75rem;
+        line-height: 1rem;
+        font-weight: 700;
+        border-radius: 9999px;
+        top: -0.5rem;
+        inset-inline-end: -0.5rem;
+        background-color: rgb(190, 37, 37)
+    }
+</style>

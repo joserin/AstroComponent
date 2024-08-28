@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import InputOtp from '../../components/base/InputOtp.astro';
+import InputOtpGroup from '../../components/base/InputOtpGroup.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/inputotp/code-component.md';
+import Css from '../../i18n/base/inputotp/code-css.md';
+import Js from '../../i18n/base/inputotp/code-js.md';
+import OneImplementacion from '../../i18n/base/inputotp/code-one.md';
+import TwoImplementacion from '../../i18n/base/inputotp/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+
+<Layout 
+    title="Components Input OTP."
+    description='Component UI Input OTP to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Input OTP</h2>
+            <p>This component creates a styled input element that accepts only a single character.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>
+                                <li>Component Input OTP</li>
+                                <li>
+                                    class: An optional string prop that allows users to add custom CSS classes to the component. 
+                                    If not provided, the defaultClass will be applied.
+                                </li>
+                                <li>
+                                    rest: An object containing any additional props that are passed to the component. 
+                                    These props will be spread onto the input element.
+                                </li>
+                            </li>
+                            <li>
+                                <li>Component Input OTP Group</li>
+                                <li>count: (Number) This is a required prop that defines the number of input fields in the group.</li>
+                                <li>
+                                    class: (String, Optional) This allows you to add an additional class name to the container element.
+                                </li>
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                <li>Component Input OTP</li>
+                                <li>
+                                    input element: An input element with the following attributes: class, ...rest and type: Set to
+                                    "text" for a single-line text input.
+                                </li>
+                            </li>
+                            <li>
+                                <li>Component Input OTP Group</li>
+                                <li>
+                                    The component uses a div element with the class otp-container to wrap the input fields.
+                                </li>
+                                <li>
+                                    It dynamically generates an empty array with a length equal to the count prop.
+                                </li>
+                                <li>
+                                    The code then iterates through the array using map to create the desired number of input fields.
+                                </li>
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                <li>Component Input OTP</li>
+                                <li>
+                                    .default: Defines the default styling for the input element, including background color, 
+                                    height, width, borders, font size, and line height.
+                                </li>
+                                <li>
+                                    .input-select: Defines the general styling for the input element, including display, 
+                                    alignment, border radius, and text alignment.
+                                </li>
+                            </li>
+                            <li>
+                                <p>Component Input OTP Group</p>
+                                <li>
+                                    .otp-container: This styles the container with flexbox properties for centering the input fields.
+                                </li>
+                                <li>
+                                    .default: This defines the default styles for the input fields, including background color, 
+                                    size, font size, and line-height. 
+                                </li>
+                                <li>
+                                    .input-group: This styles the individual input fields for alignment within the container.
+                                </li>
+                            </li>
+                            
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                <li>Component Input OTP</li>
+                                <li>
+                                    Event listener: Adds an event listener to the input element that limits its 
+                                    input to a single character.
+                                </li>
+                            </li>
+                            <li>
+                                <li>Component Input OTP Group</li>
+                                <li>
+                                    This script manages the dynamic behavior of the input fields, specifically 
+                                    focusing and disabling them as the user enters the OTP.
+                                </li>
+                                <li>
+                                    It iterates through all elements with the otp-container class and loops 
+                                    through the input fields within each container.
+                                </li>
+                                <li>
+                                    Initially, it focuses on the first input field. Subsequent input fields are initially disabled.
+                                </li>
+                                <li>
+                                    When a user types a character in an input field, it: Limits the input to a single character. 
+                                    Enables the next input field and focuses on it.
+                                </li>
+                                <li>
+                                    Backspacing in an empty field allows the user to navigate back to the previous input field, 
+                                    clear its value, and enable it for further input.
+                                </li>
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <InputOtp/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[11.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center h-40 fondo-previsual">
+                <InputOtpGroup count={5}/>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-40'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

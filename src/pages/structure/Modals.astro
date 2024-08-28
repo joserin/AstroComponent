@@ -1,0 +1,249 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Modal from "../../components/structure/Modal.astro";
+import Button from "../../components/base/Button.astro";
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/structure/modal/code-component.md';
+import Css from '../../i18n/structure/modal/code-css.md';
+import Js from '../../i18n/structure/modal/code-js.md';
+import OneImplementacion from '../../i18n/structure/modal/code-one.md';
+import TwoImplementacion from '../../i18n/structure/modal/code-two.md';
+import ThreeImplementacion from '../../i18n/structure/modal/code-three.md';
+import FourImplementacion from '../../i18n/structure/modal/code-four.md';
+import FiveImplementacion from '../../i18n/structure/modal/code-five.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'JS'];
+---
+<Layout 
+    title="Components Modal."
+    description='Component UI Modal to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class=" text-2xl font-bold">Modal</h2>
+            <p>Modal is used to show a dialog or a box when you click a button..</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class (string): An optional prop that lets you add custom CSS classes to the modal container.</li>
+                            <li>
+                                buttonText (string): This prop allows you to customize the text 
+                                displayed on the button that opens the modal. Defaults to undefined.
+                            </li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                div with the class modal-content which serves as the main container for the modal.
+                            </li>
+                            <li>
+                                Button Slot (slot name="button-open"): This slot allows you to place custom content 
+                                for the button that opens the modal. By default, it renders a button with the class 
+                                button-modal and the text specified by the buttonText prop.
+                            </li>
+                            <li>
+                                Dialog: This is the actual modal content. It uses the dialog element and 
+                                applies classes based on a list.
+                            </li>
+                            <li>
+                                Content Slot (slot): This slot allows you to place the content that will 
+                                be displayed inside the modal body.
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                .button-modal: Styles the button that opens the modal. It includes properties for 
+                                padding, border-radius, and background color.
+                            </li>
+                            <li>
+                                .modal-background: Styles the background overlay of the modal. 
+                                It sets properties for position, size, justification, alignment, background color, and z-index.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>It retrieves all elements with the class modal-content and iterates through them.</li>
+                            <li>
+                                It finds the button that opens the modal (buttonsModalOpen) and the potential 
+                                close buttons (modalCloseButtons, modalCloseEsc, modalCloseClick).
+                            </li>
+                            <li>
+                                If the buttonsModalOpen button exists, it adds a click event listener. When clicked, 
+                                it finds the corresponding modal dialog (targetModal) and replaces the class "hidden" 
+                                with "flex" to display the modal.
+                            </li>
+                            <li>
+                                A function closeModalView is defined to close the modal by replacing the class 
+                                "flex" with "hidden" on the target modal element.
+                            </li>
+                            <li>
+                                Event listeners are added to the close buttons (if they exist) and 
+                                the Esc key to call the closeModalView function and close the modal.
+                            </li>
+                            <li>
+                                For modalCloseClick, it checks if the clicked element or its parents 
+                                contain the close button element before calling closeModalView to prevent 
+                                unintended closing on clicks outside the close button area.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component/>
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css/>
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js/>
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-60 fondo-previsual">
+                <Modal buttonText='open' class="flex flex-col gap-5 p-5 rounded-xl transition-opacity duration-500">
+                    <div class='bg-white flex flex-col gap-3 p-3'>
+                        <header>
+                            <h5 class="text-2xl">Title</h5>
+                        </header>
+                        <div>
+                            <p>Press button cerrar to close</p>
+                        </div>
+                        <footer class="flex justify-end">
+                            <Button class="modal-close px-2 py-1 bg-slate-200 hover:bg-slate-300 w-fit" >cerrar </Button>
+                        </footer>
+                    </div>
+                </Modal>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-60 fondo-previsual">
+                <Modal class="flex flex-col gap-5 p-5 rounded-xl transition-opacity duration-500 modal-closeEsc">
+                    <Button slot='button-open' class="px-2 py-1 rounded-xl bg-red-700 hover:bg-red-500 button-modal">opened</Button>
+                    <div class='bg-white flex flex-col gap-3 p-5'>
+                        <header>
+                            <h5 class="text-2xl">Title</h5>
+                        </header>
+                        <div>
+                            <p>Press ESC key button to close</p>
+                        </div>
+                    </div>
+                </Modal>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-60 fondo-previsual">
+                <Modal buttonText='abrir 2'>
+                    <div class="flex flex-col gap-5 bg-green-200 p-5">
+                        <header>
+                            <h5 class="text-2xl">Log in</h5>
+                        </header>
+                        <div>
+                            <p>Press button cerrar to close</p>
+                        </div>
+                        <footer class="flex justify-center">
+                            <Button class="px-2 py-1 bg-yellow-200 hover:bg-yellow-300 w-fit" >Agregar</Button>
+                            <Button class="modal-close px-2 py-1 bg-yellow-200 hover:bg-yellow-300 w-fit" >cerrar 2</Button>
+                        </footer>
+                    </div>
+                </Modal>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <ThreeImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-60 fondo-previsual">
+                <Modal>
+                    <Button slot="button-open" class="button-modal border p-1">abrir 3</Button>
+                    <div class="bg-green-200 p-2 relative">
+                        <header>
+                            <h5 class="text-2xl">Log in</h5>
+                            <span class="absolute w-fit right-0 top-0 p-1">
+                                <Button class="modal-close p-1 hover:bg-yellow-300 w-fit rounded-full">
+                                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6"/>
+                                    </svg>
+                                </Button>
+                            </span>
+                        </header>
+                        <div class="flex flex-col gap-3">
+                            <p>Press button cerrar to close</p>
+                        </div>
+                    </div>
+                </Modal>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FourImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex flex-col gap-1 justify-center items-center h-60 fondo-previsual">
+                <Modal buttonText="open 4" class='modal-closeClick'>
+                    <div class='bg-white flex flex-col gap-3 p-5'>
+                        <header>
+                            <h5 class="text-2xl">title</h5>
+                        </header>
+                        <div>
+                            <p>Click outside to close</p>
+                        </div>
+                        <footer class="flex justify-end">
+                            <Button class="modal-close px-2 py-1 bg-slate-200 hover:bg-slate-300 w-fit" >cerrar </Button>
+                        </footer>
+                    </div>
+                </Modal>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <FiveImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+</style>

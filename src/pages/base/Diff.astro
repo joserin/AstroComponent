@@ -1,0 +1,161 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Diffs from '../../components/base/diff.astro';
+import SectionTab from '../../components/sectionTab.astro';
+import Scroll from '../../components/structure/Scroll.astro';
+
+import Component from '../../i18n/base/diff/code-component.md';
+import Css from '../../i18n/base/diff/code-css.md';
+import Js from '../../i18n/base/diff/code-js.md';
+import OneImplementacion from '../../i18n/base/diff/code-one.md';
+import TwoImplementacion from '../../i18n/base/diff/code-two.md';
+
+const defaultTitle = ['Preview', 'Implementation'];
+const basicTitle = ['Information','Component', 'CSS', 'Js'];
+---
+<Layout 
+    title="Components Diff."
+    description='Component UI Diff to astro'>
+    <div class="maqueta">
+        <header>
+            <h2 class="text-2xl font-bold"> </h2>
+            <p>This component creates a before-after slider that allows users to visually compare two images.</p>
+        </header>
+        <SectionTab titles={basicTitle} slotName={['preview', 'component', 'css', 'js']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex flex-col gap-2 h-72 p-3 my-3 fondo-previsual">
+                <Scroll class='w-full h-72'>
+                    <div class="flex flex-col gap-2">
+                        <h3>Props</h3>
+                        <ul>
+                            <li>class: (Optional) An additional class name you can add to the main container.</li>
+                        </ul>
+                        <h3>Template</h3>
+                        <ul>
+                            <li>
+                                The component uses a main container with the class "container". This container holds 
+                                all the other elements.
+                            </li>
+                            <li>
+                                Inside the container, two slots are defined named "first-image" and "second-image". 
+                                These slots are where you would place the images you want to compare.
+                            </li>
+                            <li>
+                                A range input element with class "slider" is used for user interaction. 
+                                It has properties like min (0), max (100), and initial value (50) representing the 
+                                percentage of the first image displayed.
+                            </li>
+                            <li>
+                                <p>
+                                    Two additional elements, "slider-line" and "slider-button", are for visual 
+                                    representation but are hidden with aria-hidden="true".
+                                </p>
+                                <li>
+                                    The "slider-line" represents the dividing line between the two images 
+                                    and uses the --position variable to control its placement.
+                                </li>
+                                <li>
+                                    The "slider-button" is a draggable knob displayed on the dividing 
+                                    line and uses an SVG icon for its visual representation.
+                                </li>
+                            </li>
+                        </ul>
+                        <h3>Styles</h3>
+                        <ul>
+                            <li>
+                                The slider element is initially hidden with opacity set to 0. 
+                                It becomes visible and allows interaction
+                            </li>
+                            <li>
+                                The slider line uses the --position variable to determine 
+                                its location based on the slider value.
+                            </li>
+                        </ul>
+                        <h3>Script</h3>
+                        <ul>
+                            <li>
+                                The script dynamically updates the --position variable based on the user's 
+                                interaction with the slider. This variable controls the placement of the slider 
+                                line and visually adjusts the portion of each image displayed.
+                            </li>
+                        </ul>
+                    </div>
+                </Scroll>
+            </section>
+            <section slot="component" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Component />
+                </Scroll>
+            </section>
+            <section slot="css" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Css />
+                </Scroll>
+            </section>
+            <section slot="js" class="max-h-72">
+                <Scroll class='w-full h-72'>
+                    <Js />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[19.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-72 fondo-previsual">
+                <Diffs>
+                    <img slot="first-image" src="/img-2.webp" alt="color photo" />
+                    <img slot="second-image" src="/img-2.webp" alt="black and white"
+                        class="blur-sm cover-background"/>
+                </Diffs>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-72'>
+                    <OneImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+        <SectionTab titles={defaultTitle} slotName={['preview', 'implementation']} class='h-[16.8rem]'>
+            <section slot="preview" class="flex gap-1 justify-center items-center m-1 h-60 fondo-previsual">
+                <Diffs>
+                    <div slot="first-image" class="bg-red-400 text-9xl font-black flex text-center items-center h-[100%]">DIFF</div>
+                    <div slot="second-image" class="bg-blue-200 text-9xl font-black flex text-center items-center cover-background">
+                        DIFF
+                    </div>
+                </Diffs>
+            </section>
+            <section slot="implementation" >
+                <Scroll class='w-full h-60'>
+                    <TwoImplementacion />
+                </Scroll>
+            </section>
+        </SectionTab>
+    </div>
+</Layout>
+
+<style>
+    .cover-background{
+        position: absolute;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        inset: 0;
+        width: var(--position)
+    }
+    ul{
+        display: flex;
+        flex-direction: column;
+        text-wrap: pretty;
+        gap: 0.25rem;
+        font-weight: 200;
+        font-size: 0.8rem;
+    }
+    li{
+        padding: 0.1rem;
+    }
+    h3{
+        text-align: center;
+        font-weight: 700;
+        color: rgb(205, 155, 251);
+    }
+    img{
+        width: 12.5rem;
+        height: 17rem;
+    }
+</style>
